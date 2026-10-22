@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cobra7 | تعليم الأمن السيبراني والبرمجة · خدمات · متجر تقنية</title>
+<meta name="description" content="Cobra7 شركة تقنية: كورسات أمن سيبراني وبرمجة، خدمات تصميم المواقع والبرامج، ومتجر أجهزة كمبيوتر ولابتوبات ومستلزماتها."><style>
+  :root {
+    --black: #0a0a0f;
+    --purple: #3b0a5e;
+    --purple-light: #7b2cbf;
+    --green: #39ff14;
+    --red: #ff1744;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: #e0e0e0; }
+  header {
+    background: linear-gradient(135deg, var(--black), var(--purple));
+    padding: 20px 40px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;
+    border-bottom: 2px solid var(--green);
+  }
+  header h1 { color: var(--green); font-size:26px; letter-spacing:2px; }
+  nav {display:flex;flex-wrap:wrap;gap:22px;align-items:center}
+  nav a { color:#d9b8ff; margin-left:0; text-decoration:none; font-weight:900; font-size:17px; transition:0.3s; text-shadow:0 0 7px #9d4edd,0 0 15px #7b2cbf; }
+  nav a:hover { color:#fff; text-shadow:0 0 8px #c77dff,0 0 20px #9d4edd,0 0 30px #7b2cbf; transform:translateY(-1px); }
+  .hero {
+    text-align:center;
+    padding:100px 20px;
+    background: radial-gradient(circle at center, var(--purple) 0%, var(--black) 70%);
+  }
+  .hero h2 { font-size:40px; color:#fff; margin-bottom:20px; }
+  .hero span { color: var(--green); }
+  .hero p { font-size:18px; color:#ccc; max-width:600px; margin:0 auto 30px; }
+  .btn {
+    background: var(--red);
+    color:#fff; padding:14px 32px; border:none; border-radius:6px;
+    font-size:16px; font-weight:bold; cursor:pointer; transition:0.3s; text-decoration:none; display:inline-block;
+  }
+  .btn:hover { background: var(--green); color:var(--black); }
+  section { padding:80px 40px; }
+  .courses { background:#111018; }
+  .courses h2 { text-align:center; color:var(--green); margin-bottom:15px; font-size:32px; }
+  .courses .sub { text-align:center; color:#aaa; margin-bottom:50px; }
+  .course-grid { display:flex; flex-wrap:wrap; gap:30px; justify-content:center; max-width:1100px; margin:0 auto; }
+  .card {
+    position:relative;
+    background: linear-gradient(145deg, #15121e, #1d0f2b);
+    border:1px solid var(--purple-light);
+    border-radius:10px; padding:30px 25px 25px; width:320px;
+    transition:0.3s;
+  }
+  .card:hover { border-color: var(--red); transform:translateY(-5px); }
+  .num {
+    position:absolute; top:-18px; right:20px;
+    width:38px; height:38px; border-radius:50%;
+    background: var(--green); color: var(--black);
+    font-weight:bold; font-size:18px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .card h3 { color:#fff; margin-bottom:12px; margin-top:6px; }
+  .card p { color:#aaa; font-size:14px; line-height:1.6; }
+  .about { text-align:center; }
+  .about h2 { color:var(--red); font-size:32px; margin-bottom:20px; }
+  .about p { max-width:700px; margin:0 auto; color:#ccc; line-height:1.8; }
+  footer {
+    background:var(--black); border-top:2px solid var(--purple-light);
+    text-align:center; padding:30px; color:#777;
+  }
+
+  .card{cursor:pointer}.open-course{display:inline-block;margin-top:18px;color:var(--green);font-weight:bold}
+  .course-modal{display:none;position:fixed;inset:0;z-index:1000;background:#000e;padding:18px;overflow:auto}
+  .course-modal.show{display:block}.lesson-shell{max-width:1100px;margin:20px auto;background:#100d17;border:1px solid var(--purple-light);border-radius:14px;overflow:hidden}
+  .lesson-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:20px;border-bottom:1px solid #39214c}
+  .lesson-head h2,.lesson-sidebar h3{color:var(--green)}.close-modal{background:#291338;color:white;border:1px solid var(--purple-light);padding:10px 16px;border-radius:7px;cursor:pointer}
+  .lesson-layout{display:grid;grid-template-columns:280px 1fr;min-height:450px}.lesson-sidebar{padding:18px;background:#0c0b11;border-left:1px solid #39214c}
+  .lesson-list{list-style:none;display:grid;gap:8px;margin-top:12px}.lesson-list button{width:100%;text-align:right;color:#ddd;background:#17121f;border:1px solid #33213f;padding:12px;border-radius:7px;cursor:pointer}
+  .lesson-list button.active,.lesson-list button:hover{border-color:var(--green);color:var(--green)}.lesson-content{padding:24px;min-width:0}
+  .lesson-content h3{color:white;font-size:25px;margin-bottom:12px}.lesson-description{color:#ccc;line-height:1.8;margin-bottom:18px}
+  .video-frame{width:100%;aspect-ratio:16/9;background:#050505;border:1px solid #352044;border-radius:10px;overflow:hidden;margin:15px 0 22px}
+  .video-frame iframe,.video-frame video{width:100%;height:100%;border:0;display:block}.video-placeholder{height:100%;display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center;color:#aaa;text-align:center;padding:20px}
+  .resource-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}.resource-list a{color:var(--green);text-decoration:none;border:1px solid #4d2c65;background:#17121f;border-radius:7px;padding:10px 13px;overflow-wrap:anywhere}
+  .lesson-nav{display:flex;justify-content:space-between;gap:10px;margin-top:24px}.lesson-nav button{padding:11px 16px;border:0;border-radius:7px;background:var(--red);color:white;cursor:pointer;font-weight:bold}
+  .lesson-nav button:disabled{opacity:.35;cursor:not-allowed}.course-note{color:#999;font-size:13px;margin-top:18px;line-height:1.7}
+  @media(max-width:760px){header{padding:18px}header h1{font-size:20px}section{padding:55px 18px}.hero h2{font-size:29px}.lesson-layout{grid-template-columns:1fr}.lesson-sidebar{border-left:0;border-bottom:1px solid #39214c}.lesson-list{grid-template-columns:1fr 1fr}.lesson-content{padding:17px}}
+
+  .about-card{max-width:900px;margin:0 auto;padding:35px;background:linear-gradient(145deg,#15121e,#1d0f2b);border:1px solid var(--purple-light);border-radius:18px;display:flex;align-items:center;gap:30px;text-align:right;box-shadow:0 15px 45px #0005}
+  .profile-photo{width:210px;height:210px;flex-shrink:0;object-fit:cover;border-radius:50%;border:3px solid var(--green);box-shadow:0 0 25px #39ff1440}
+  .about-card h3{color:var(--green);font-size:25px;margin:10px 0}.about-card .role{color:#bbb;margin-bottom:15px}.about-card p{max-width:none;margin:0;line-height:1.9}
+  .contact-grid{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-top:30px}.social-link{min-width:180px;padding:18px 24px;border:1px solid var(--purple-light);border-radius:10px;background:#17121f;color:#fff;text-decoration:none;font-weight:bold;transition:.25s}.social-link:hover{transform:translateY(-4px);border-color:var(--green);color:var(--green)}
+  .more-section{text-align:center;background:#111018}.more-section h2{color:var(--green);margin-bottom:15px}.more-section p{color:#bbb;line-height:1.8;max-width:700px;margin:0 auto 25px}
+  @media(max-width:650px){.about-card{flex-direction:column;text-align:center;padding:24px}.profile-photo{width:170px;height:170px}.social-link{width:100%}}
+
+  @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Orbitron:wght@500;600;700;800&display=swap');
+  :root{--black:#050708;--green:#39ff14;--green2:#00e676;--purple:#7c3aed;--purple2:#a855f7;--red:#ff1744;--text:#eef2f5}
+  *{font-family:'Cairo','Segoe UI',Tahoma,sans-serif}
+  body{background:#030506;overflow-x:hidden}
+  body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(circle at 15% 20%,#39ff1412 0 12%,transparent 32%),radial-gradient(circle at 85% 15%,#8b5cf622 0 14%,transparent 34%),linear-gradient(180deg,#030506,#07050b 55%,#030506)}
+  header{position:sticky;top:0;z-index:100;background:rgba(3,5,6,.78);backdrop-filter:blur(16px);padding:17px 40px;border-bottom:1px solid #39ff1455;box-shadow:0 0 30px #39ff1410,0 8px 35px #0008}
+  header h1{font-family:'Orbitron','Cairo',sans-serif;color:#fff;letter-spacing:2px;text-shadow:0 0 8px #39ff14,0 0 25px #39ff1466;font-size:25px}
+  nav a{color:#d9d9e8;text-shadow:0 0 8px #8b5cf655;font-weight:700;position:relative;padding:6px 2px}
+  nav a:after{content:"";position:absolute;right:0;left:0;bottom:0;height:2px;background:linear-gradient(90deg,var(--green),var(--purple2));transform:scaleX(0);transform-origin:center;transition:.3s;box-shadow:0 0 10px var(--green)}
+  nav a:hover:after{transform:scaleX(1)}
+  .hero{position:relative;min-height:calc(100vh - 76px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:90px 20px;overflow:hidden;background:radial-gradient(ellipse at 50% 45%,#7c3aed22 0%,#39ff1410 24%,transparent 58%)}
+  .hero:before{content:"";position:absolute;width:520px;height:520px;border:1px solid #39ff1428;border-radius:50%;box-shadow:0 0 45px #39ff1412,inset 0 0 45px #7c3aed12;animation:spin 18s linear infinite}
+  .hero:after{content:"";position:absolute;width:760px;height:760px;border:1px dashed #a855f722;border-radius:50%;animation:spin 28s linear infinite reverse}
+  .hero-logo{position:absolute;z-index:1;width:380px;height:380px;object-fit:contain;border-radius:50%;opacity:.34;filter:drop-shadow(0 0 18px #39ff14) drop-shadow(0 0 45px #7c3aed);mix-blend-mode:screen;animation:logoFloat 5s ease-in-out infinite}
+  @keyframes logoFloat{0%,100%{transform:scale(1) translateY(0)}50%{transform:scale(1.035) translateY(-8px)}}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .hero>*{position:relative;z-index:2}
+  .hero h2{font-size:clamp(34px,6vw,68px);font-weight:900;line-height:1.25;max-width:950px;margin-bottom:22px;color:#fff;text-shadow:0 0 12px #fff2,0 0 35px #7c3aed55}
+  .hero h2 span{color:var(--green);text-shadow:0 0 8px var(--green),0 0 30px #39ff1466}
+  .hero p{font-size:19px;max-width:720px;line-height:2;color:#c9ccd4;text-shadow:0 0 10px #000;margin-bottom:36px}
+  .btn{background:linear-gradient(135deg,var(--green),#12c94b);color:#031006;border:1px solid #8aff72;border-radius:10px;padding:15px 35px;font-size:17px;font-weight:900;box-shadow:0 0 12px #39ff1466,0 0 35px #39ff1428;transition:.3s;position:relative;overflow:hidden}
+  .btn:before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent,#fff8,transparent);transform:translateX(-120%);transition:.6s}
+  .btn:hover:before{transform:translateX(120%)}
+  .btn:hover{background:linear-gradient(135deg,#b06cff,#7c3aed);color:#fff;border-color:#d8b4ff;box-shadow:0 0 18px #a855f799,0 0 45px #7c3aed55;transform:translateY(-3px)}
+  .more-section,.courses{background:linear-gradient(180deg,#07090a,#090610);position:relative}
+  .more-section h2,.courses h2{font-size:35px;text-shadow:0 0 15px #39ff1455}
+  .about-card,.card,.social-link{box-shadow:0 0 25px #39ff1408,0 15px 50px #0009}
+  footer{background:#020304}
+  @media(max-width:760px){header{position:relative;padding:15px 18px}.hero{min-height:75vh;padding:70px 18px}.hero:before{width:330px;height:330px}.hero:after{width:480px;height:480px}.hero p{font-size:16px}.hero h2{font-size:32px}}
+
+
+
+  /* ===== Premium Cyber Notice + Journey ===== */
+  .cyber-notice{position:relative;padding:85px 20px 45px;overflow:hidden;background:linear-gradient(180deg,#030506,#07040d);isolation:isolate}
+  .cyber-notice:before{content:"";position:absolute;inset:-30%;z-index:-3;background:radial-gradient(circle at 20% 30%,#39ff1420,transparent 24%),radial-gradient(circle at 80% 40%,#a855f720,transparent 27%),radial-gradient(circle at 50% 100%,#7c3aed18,transparent 35%);animation:ambientMove 12s ease-in-out infinite alternate}
+  .notice-grid{position:absolute;inset:0;z-index:-2;opacity:.22;background-image:linear-gradient(#7c3aed22 1px,transparent 1px),linear-gradient(90deg,#39ff1422 1px,transparent 1px);background-size:55px 55px;mask-image:linear-gradient(to bottom,transparent,#000 18%,#000 82%,transparent);animation:gridMove 12s linear infinite}
+  .notice-orb{position:absolute;border-radius:50%;filter:blur(8px);opacity:.6;z-index:-1}
+  .notice-orb-1{width:260px;height:260px;right:3%;top:20%;background:#39ff1422;box-shadow:0 0 100px #39ff1455;animation:floatOrb 7s ease-in-out infinite}
+  .notice-orb-2{width:300px;height:300px;left:2%;bottom:0;background:#8b5cf622;box-shadow:0 0 120px #8b5cf655;animation:floatOrb 9s ease-in-out infinite reverse}
+  .notice-card{position:relative;max-width:1100px;margin:0 auto;padding:38px 45px;background:linear-gradient(145deg,rgba(8,12,12,.95),rgba(17,7,28,.96));border:1px solid #7c3aed;border-radius:24px;box-shadow:0 0 0 1px #39ff1420 inset,0 0 25px #7c3aed44,0 0 70px #39ff1415,0 25px 70px #000c;overflow:hidden}
+  .notice-card:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 20%,#39ff1408 40%,transparent 60%);transform:translateX(-120%);animation:scan 6s ease-in-out infinite}
+  .notice-card:after{content:"";position:absolute;inset:8px;border:1px solid #39ff1422;border-radius:18px;pointer-events:none}
+  .notice-top{position:relative;display:flex;align-items:center;justify-content:center;gap:22px;text-align:center;z-index:1}
+  .notice-kicker{display:block;color:#39ff14;font-family:'Orbitron','Cairo',sans-serif;font-size:11px;letter-spacing:2px;margin-bottom:3px;text-shadow:0 0 10px #39ff14}
+  .notice-top h2{font-size:42px;color:#c084fc;text-shadow:0 0 10px #a855f7,0 0 35px #7c3aed;font-weight:900}
+  .notice-icon{width:46px;height:46px;border:2px solid #a855f7;border-radius:12px;display:grid;place-items:center;color:#39ff14;font-size:26px;box-shadow:0 0 18px #a855f755, inset 0 0 15px #39ff1420;animation:pulseGlow 2s ease-in-out infinite}
+  .notice-divider{width:min(620px,90%);height:1px;margin:18px auto 22px;background:linear-gradient(90deg,transparent,#39ff14,#a855f7,transparent);box-shadow:0 0 12px #39ff14}
+  .notice-card h3{text-align:center;color:#39ff14;font-size:25px;margin-bottom:18px;text-shadow:0 0 12px #39ff1466}
+  .notice-card p{position:relative;z-index:1;color:#d9dbe2;line-height:2;text-align:center;font-size:16px}
+  .notice-card strong{color:#ff4d6d;text-shadow:0 0 8px #ff174466}
+  .legal-box{position:relative;margin:25px auto 20px;padding:22px 25px;border-radius:15px;background:linear-gradient(135deg,#100912,#0a0d0e);border:1px solid #ff174466;box-shadow:inset 0 0 30px #ff17440a,0 0 20px #7c3aed15}
+  .legal-title{text-align:center;color:#d8a4ff;font-size:23px;font-weight:900;margin-bottom:8px;text-shadow:0 0 12px #a855f7}
+  .ethics-line{position:relative;z-index:1;margin-top:22px;text-align:center;color:#39ff14;font-size:17px;font-weight:900;text-shadow:0 0 9px #39ff14,0 0 25px #39ff1455}
+  .journey-section{position:relative;min-height:430px;display:flex;align-items:center;justify-content:center;text-align:center;padding:75px 20px;overflow:hidden;background:radial-gradient(ellipse at center bottom,#7c3aed20,transparent 48%),linear-gradient(180deg,#07040d,#020405)}
+  .journey-section:before{content:"";position:absolute;width:620px;height:620px;border:1px solid #7c3aed2e;border-radius:50%;box-shadow:0 0 80px #7c3aed20,inset 0 0 80px #39ff1412;animation:spin 25s linear infinite}
+  .journey-section:after{content:"";position:absolute;left:-10%;right:-10%;bottom:-75px;height:190px;background:radial-gradient(ellipse,#39ff1420 0%,transparent 62%);filter:blur(10px);animation:pulseGlow 4s ease-in-out infinite}
+  .journey-content{position:relative;z-index:2;max-width:800px}
+  .journey-badge{display:inline-block;padding:7px 15px;border:1px solid #39ff1466;border-radius:30px;color:#39ff14;font-family:'Orbitron','Cairo',sans-serif;font-size:11px;letter-spacing:2px;box-shadow:0 0 15px #39ff1420;background:#39ff1408}
+  .journey-content h2{font-size:clamp(36px,5vw,58px);margin:18px 0;color:#fff;text-shadow:0 0 15px #fff2,0 0 35px #7c3aed55}
+  .journey-content h2 span{color:#39ff14;text-shadow:0 0 9px #39ff14,0 0 30px #39ff1466}
+  .journey-content p{max-width:700px;margin:0 auto 30px;color:#cdd0d8;font-size:18px;line-height:2}
+  .journey-btn{display:inline-flex;align-items:center;gap:18px;text-decoration:none;padding:16px 30px;border-radius:13px;background:linear-gradient(135deg,#39ff14,#00c853);box-shadow:0 0 18px #39ff1477,0 0 55px #7c3aed33;color:#031006}
+  .journey-btn b{font-size:25px;line-height:1;transition:.3s}.journey-btn:hover b{transform:translateX(-6px)}
+  @keyframes ambientMove{0%{transform:translate3d(-2%,-1%,0) scale(1)}100%{transform:translate3d(2%,2%,0) scale(1.08)}}
+  @keyframes gridMove{from{background-position:0 0,0 0}to{background-position:0 55px,55px 0}}
+  @keyframes floatOrb{0%,100%{transform:translateY(0) translateX(0)}50%{transform:translateY(-28px) translateX(20px)}}
+  @keyframes scan{0%,55%{transform:translateX(-120%)}75%,100%{transform:translateX(120%)}}
+  @keyframes pulseGlow{0%,100%{filter:brightness(1);transform:scale(1)}50%{filter:brightness(1.35);transform:scale(1.04)}}
+  @media(max-width:700px){.notice-card{padding:30px 18px}.notice-top h2{font-size:34px}.notice-icon{width:40px;height:40px;font-size:22px}.notice-card h3{font-size:21px}.notice-card p{font-size:14px}.journey-content p{font-size:16px}.journey-section:before{width:400px;height:400px}}
+
+  /* Keep the Cobra logo centered inside the hero's animated circle. */
+  .hero > .hero-logo{
+    position:absolute;
+    top:50%;
+    left:50%;
+    translate:-50% -50%;
+    z-index:1;
+    width:min(350px, 68vw);
+    height:min(350px, 68vw);
+    object-fit:contain;
+    opacity:.48;
+    pointer-events:none;
+  }
+  @media(max-width:760px){
+    .hero > .hero-logo{width:min(245px, 68vw);height:min(245px, 68vw);opacity:.42}
+  }
+
+
+  .offer{padding:70px 20px;text-align:center;background:linear-gradient(180deg,var(--black),#12091c)}
+  .offer h2{color:var(--green);font-size:34px;margin-bottom:10px}
+  .offer .sub{color:#aaa;margin-bottom:34px}
+  .offer-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;max-width:1000px;margin:0 auto}
+  .offer-card{width:290px;padding:28px 22px;background:linear-gradient(145deg,#15121e,#1d0f2b);border:1px solid var(--purple-light);border-radius:14px;text-decoration:none;color:#e0e0e0;transition:.3s}
+  .offer-card:hover{border-color:var(--green);transform:translateY(-5px);box-shadow:0 0 22px #39ff1430}
+  .offer-card .ic{font-size:38px;display:block;margin-bottom:10px}
+  .offer-card h3{color:#fff;margin-bottom:8px}
+  .offer-card p{color:#aaa;font-size:14px;line-height:1.8}
+  .offer-card .go{display:block;margin-top:12px;color:var(--green);font-weight:bold;font-size:14px}
+</style>
+</head><body>
+<header>
+  <h1>COBRA7</h1>
+  <nav><a href="index.html#home">الرئيسية</a><a href="courses.html">الأكاديمية</a><a href="shop.html">المتجر</a><a href="workshops.html">الورش</a><a href="consulting.html">الاستشارات</a><a href="community.html">المجتمع</a><a href="services.html">الخدمات</a><a href="certifications.html">الشهادات</a><a href="index.html#contact">تواصل</a></nav>
+</header>
+<section class="hero" id="home">
+  <img class="hero-logo" src="cobra-logo.jpg" alt="شعار كوبرا">
+  <h2>أهلًا في <span>Cobra7</span></h2>
+  <p>أهلاً في Cobra7 — شركتنا شاملة في عالم التقنية والأمن السيبراني.
+
+نقدم لك برامج تدريبية متخصصة، متجراً موثوقاً للأدوات والمعدات التقنية، وفريق خبراء جاهز لتطوير حلولك الرقمية. من التعليم إلى التنفيذ، احنا معاك في كل خطوة.</p>
+</section>
+<section class="offer" id="offer">
+  <h2>ماذا نقدم في Cobra7؟</h2>
+  <p class="sub">سبعة أقسام تغطي كل احتياجك التقني</p>
+  <div class="offer-grid">
+    <a class="offer-card" href="courses.html"><span class="ic">🎓</span><h3>الأكاديمية</h3><p>كورسات أمن سيبراني وبرمجة من الصفر للاحتراف بمسار منظم.</p><span class="go">استكشف الكورسات ←</span></a>
+    <a class="offer-card" href="shop.html"><span class="ic">🛒</span><h3>المتجر</h3><p>لابتوبات وكمبيوترات وكل ملحقاتها وأدواتها.</p><span class="go">زور المتجر ←</span></a>
+    <a class="offer-card" href="workshops.html"><span class="ic">🧪</span><h3>ورش العمل</h3><p>تدريب عملي على منصات موثوقة، وبعد ما تخلص تشوف الحل بالتفصيل.</p><span class="go">ابدأ التدريب ←</span></a>
+    <a class="offer-card" href="consulting.html"><span class="ic">🔐</span><h3>الاستشارات الأمنية</h3><p>فحص أمني للشركات واختبارات اختراق مصرح بها.</p><span class="go">اطلب استشارة ←</span></a>
+    <a class="offer-card" href="community.html"><span class="ic">💬</span><h3>المجتمع التقني</h3><p>مجتمع بيجمع المتعلمين والمحترفين للنقاش وتبادل الخبرة.</p><span class="go">انضم للمجتمع ←</span></a>
+    <a class="offer-card" href="services.html"><span class="ic">💻</span><h3>الخدمات</h3><p>تصميم مواقع وتطبيقات وحلول برمجية، والمزيد قريبًا.</p><span class="go">شوف الخدمات ←</span></a>
+    <a class="offer-card" href="certifications.html"><span class="ic">🏅</span><h3>الشهادات والبطاقات المهنية</h3><p>بنأهلك لشهادات موثقة من شركات عالمية معروفة.</p><span class="go">ابدأ مسارك ←</span></a>
+  </div>
+</section>
+<section class="cyber-notice" id="notice">
+  <div class="notice-orb notice-orb-1"></div>
+  <div class="notice-orb notice-orb-2"></div>
+  <div class="notice-grid"></div>
+  <div class="notice-card">
+    <div class="notice-top">
+      <span class="notice-icon">⚠</span>
+      <div>
+        <span class="notice-kicker">COBRA • SECURITY AWARENESS</span>
+        <h2>تنبيه</h2>
+      </div>
+      <span class="notice-icon">⚠</span>
+    </div>
+    <div class="notice-divider"></div>
+    <h3>للأغراض التعليمية فقط</h3>
+    <p>جميع المحتويات والتقنيات والأدوات والموارد المتوفرة على هذه المنصة مخصصة <strong>للأغراض التعليمية والبحثية</strong> فقط. تهدف هذه المواد إلى مساعدة متخصصي الأمن والطلاب والمخترقين الأخلاقيين على تحسين مهاراتهم ومعارفهم في مجال الأمن السيبراني.</p>
+    <div class="legal-box">
+      <div class="legal-title">إشعار قانوني</div>
+      <p><strong>لا</strong> تستخدم هذه الأساليب ضد أنظمة لا تملكها أو لا تملك <strong>تفويضًا كتابيًا صريحًا</strong> لاختبارها. يُعدّ الوصول غير المصرح به إلى أنظمة الحاسوب غير قانوني ويعاقب عليه القانون في معظم الدول. يتحمل المستخدمون وحدهم مسؤولية أفعالهم. لا يتحمل منشئو هذه المنصة والقائمون على صيانتها أي مسؤولية عن إساءة استخدام هذه المعلومات.</p>
+    </div>
+    <div class="ethics-line">🛡️ احرص دائمًا على اتباع أساليب القرصنة الأخلاقية والحصول على التفويض اللازم! 🛡️</div>
+  </div>
+</section>
+
+<section class="journey-section">
+  <div class="journey-glow"></div>
+  <div class="journey-content">
+    <span class="journey-badge">YOUR CYBER JOURNEY</span>
+    <h2>ابدأ رحلتك مع <span>كوبرا</span></h2>
+    <p>محتوى تعليمي منظم يساعدك على فهم الكمبيوتر والشبكات والبرمجة والأمن السيبراني، مع التدرج نحو التطبيق العملي.</p>
+    <a class="btn journey-btn" href="courses.html"><span>استكشف الكورسات</span> <b>←</b></a>
+  </div>
+</section>
+<section class="about" id="about">
+  <h2>عن المؤسس والشركة</h2>
+  <div class="about-card">
+  <img src="islam-cobra.jpg" alt="المطور إسلام علي محمود شمس الدين" class="profile-photo">
+    <div><h3>المؤسس: إسلام علي محمود شمس الدين</h3><div class="role">الشهرة: كوبرا</div>
+    <p>Cobra7 شركة تقنية بتقدم تعليم الأمن السيبراني والبرمجة، وخدمات تطوير المواقع والبرامج، ومتجر للأجهزة والأدوات والكماليات. هدفنا نأهل الشباب لسوق العمل، ونوفر للعملاء حلول تقنية موثوقة.</p></div>
+  </div>
+</section>
+<section class="about" id="contact">
+  <h2>تواصل معنا</h2>
+  <p>تابع Cobra7 على منصات التواصل الاجتماعي، أو كلمنا على تيليجرام لأي طلب خدمة أو شراء.</p>
+  <div class="contact-grid">
+    <a class="social-link" href="https://www.youtube.com/@cobra_security7" rel="noopener noreferrer">▶ يوتيوب</a>
+    <a class="social-link" href="t.me/cobra7_com">✈ تيليجرام</a>
+    <a class="social-link" href="https://www.instagram.com/cobra7_com?exln=NXA4dzUyc2d5N204">◎ إنستجرام</a>
+  </div>
+</section>
+<footer><p>&copy; 2026 Cobra7. جميع الحقوق محفوظة.</p></footer>
+</body></html>

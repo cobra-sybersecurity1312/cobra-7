@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>مسار | Cobra7</title><style>
+  :root{--black:#050607;--black2:#0b0e0c;--green:#39ff14;--green2:#16c60c;--red:#ff1744;--white:#f5f7f6;--muted:#a9b0ac;}
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,sans-serif}
+  html{scroll-behavior:smooth}
+  body{background:var(--black);color:var(--white);overflow-x:hidden}
+  body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 25%,#39ff1408,transparent 35%),linear-gradient(180deg,#050607,#080a09 55%,#030403);z-index:-1}
+  header{background:#050607eF;padding:20px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;border-bottom:1px solid #39ff1466;box-shadow:0 0 25px #39ff1415;position:sticky;top:0;z-index:50;backdrop-filter:blur(12px)}
+  header h1{color:var(--green);font-size:26px;letter-spacing:2px;text-shadow:0 0 10px #39ff1480,0 0 24px #39ff1430}
+  nav{display:flex;flex-wrap:wrap;gap:22px;align-items:center}nav a{color:#d7ddd9;text-decoration:none;font-weight:900;font-size:17px;transition:.3s;text-shadow:0 0 8px #39ff1430}nav a:hover{color:var(--green);text-shadow:0 0 8px #39ff14,0 0 20px #39ff1466}
+  section{padding:75px 25px}.courses{min-height:calc(100vh - 85px);padding-top:70px;position:relative;overflow:hidden}.courses:before,.courses:after{content:"";position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none}.courses:before{width:280px;height:280px;background:#39ff1410;top:100px;left:-100px}.courses:after{width:250px;height:250px;background:#ff174410;bottom:80px;right:-100px}
+  .roadmap-title{text-align:center;position:relative;z-index:1}.roadmap-title .eyebrow{display:inline-block;color:var(--red);font-size:14px;font-weight:900;letter-spacing:4px;margin-bottom:12px;text-shadow:0 0 12px #ff174466}.roadmap-title h2{font-size:52px;color:#fff;letter-spacing:2px;text-shadow:0 0 8px #fff2,0 0 25px #39ff1430;margin-bottom:12px}.roadmap-title h2 span{color:var(--green);text-shadow:0 0 10px #39ff14,0 0 30px #39ff1455}.roadmap-title .sub{color:var(--muted);font-size:17px;max-width:720px;margin:0 auto 65px;line-height:1.8}
+  .roadmap{max-width:1100px;margin:0 auto;position:relative;padding:20px 0 30px}.roadmap-line{position:absolute;top:72px;bottom:75px;right:50%;width:5px;transform:translateX(50%);background:linear-gradient(180deg,var(--green),#1fff00 55%,var(--red));box-shadow:0 0 8px var(--green),0 0 25px #39ff1488,0 0 35px #ff174433;border-radius:99px}.road-step{position:relative;width:50%;padding:0 65px 75px}.road-step:nth-of-type(odd){margin-right:50%;text-align:right}.road-step:nth-of-type(even){margin-left:50%;text-align:left}.road-node{position:absolute;top:0;width:62px;height:62px;border-radius:50%;display:grid;place-items:center;background:#070908;border:3px solid var(--green);color:var(--green);font-size:22px;font-weight:1000;box-shadow:0 0 10px #39ff14,0 0 28px #39ff1477, inset 0 0 15px #39ff1422;z-index:2}.road-step:nth-of-type(odd) .road-node{left:auto;right:-31px}.road-step:nth-of-type(even) .road-node{left:-31px;right:auto}.road-card{background:linear-gradient(145deg,#0d110e,#080a09);border:1px solid #39ff1466;border-radius:18px;padding:25px 27px;min-height:175px;position:relative;overflow:hidden;box-shadow:0 12px 35px #000b,0 0 18px #39ff1412;transition:.35s}.road-card:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,#39ff140c,transparent 35%,#ff174408);pointer-events:none}.road-card:hover{transform:translateY(-6px) scale(1.01);border-color:var(--green);box-shadow:0 16px 45px #000,0 0 25px #39ff1430}.road-card h3{font-size:25px;color:#fff;margin-bottom:8px;position:relative}.road-card h3 span{color:var(--green)}.road-card p{color:#aeb5b1;line-height:1.7;font-size:14px;position:relative}.difficulty{display:inline-flex;align-items:center;gap:8px;margin-top:15px;padding:7px 12px;border-radius:999px;border:1px solid #ff174466;background:#ff17440d;color:#ff536f;font-weight:900;font-size:13px;box-shadow:0 0 15px #ff17441a}.difficulty .dots{display:flex;gap:3px}.difficulty i{width:7px;height:7px;border-radius:50%;background:#252927}.difficulty i.on{background:var(--red);box-shadow:0 0 8px var(--red)}.road-step:nth-of-type(odd) .road-card{border-right:2px solid var(--green)}.road-step:nth-of-type(even) .road-card{border-left:2px solid var(--red)}
+  .road-end{text-align:center;color:#777;font-size:13px;letter-spacing:2px;margin-top:-10px}.road-end span{color:var(--red);text-shadow:0 0 10px #ff1744}
+  .other-courses{max-width:1000px;margin:30px auto 20px;padding:34px;border:1px solid #39ff1444;border-radius:22px;background:linear-gradient(145deg,#0b0f0c,#090b0a);box-shadow:0 0 30px #39ff1410;text-align:center;position:relative;overflow:hidden}.other-courses:before{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:#39ff1410;filter:blur(45px);left:-60px;top:-70px}.other-courses h3{font-size:27px;color:var(--green);margin-bottom:10px;text-shadow:0 0 12px #39ff1470}.other-courses p{color:#aeb5b1;line-height:1.8;max-width:700px;margin:0 auto 22px}.other-btn{display:inline-block;padding:12px 22px;border-radius:8px;background:var(--red);color:#fff;text-decoration:none;font-weight:900;box-shadow:0 0 18px #ff174433;transition:.3s}.other-btn:hover{background:var(--green);color:#050607;box-shadow:0 0 20px #39ff14}
+  footer{background:#030403;border-top:1px solid #39ff1444;text-align:center;padding:30px;color:#777}.footer-link{color:var(--green);text-decoration:none}
+  .course-modal{display:none;position:fixed;inset:0;z-index:1000;background:#000e;padding:18px;overflow:auto}.course-modal.show{display:block}.lesson-shell{max-width:1100px;margin:20px auto;background:#080a09;border:1px solid #39ff1466;border-radius:14px;overflow:hidden;box-shadow:0 0 45px #39ff1415}.lesson-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:20px;border-bottom:1px solid #243027}.lesson-head h2,.lesson-sidebar h3{color:var(--green);text-shadow:0 0 10px #39ff1455}.close-modal{background:#150b0d;color:white;border:1px solid #ff174466;padding:10px 16px;border-radius:7px;cursor:pointer}.lesson-layout{display:grid;grid-template-columns:280px 1fr;min-height:450px}.lesson-sidebar{padding:18px;background:#060806;border-left:1px solid #243027}.lesson-list{list-style:none;display:grid;gap:8px;margin-top:12px}.lesson-list button{width:100%;text-align:right;color:#ddd;background:#0d110e;border:1px solid #202b24;padding:12px;border-radius:7px;cursor:pointer}.lesson-list button.active,.lesson-list button:hover{border-color:var(--green);color:var(--green);box-shadow:0 0 12px #39ff1418}.lesson-content{padding:24px;min-width:0}.lesson-content h3{color:white;font-size:25px;margin-bottom:12px}.lesson-description{color:#ccc;line-height:1.8;margin-bottom:18px}.video-frame{width:100%;aspect-ratio:16/9;background:#050505;border:1px solid #27322b;border-radius:10px;overflow:hidden;margin:15px 0 22px}.video-frame iframe,.video-frame video{width:100%;height:100%;border:0;display:block}.video-placeholder{height:100%;display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center;color:#aaa;text-align:center;padding:20px}.resource-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}.resource-list a{color:var(--green);text-decoration:none;border:1px solid #315138;background:#0d110e;border-radius:7px;padding:10px 13px;overflow-wrap:anywhere}.lesson-nav{display:flex;justify-content:space-between;gap:10px;margin-top:24px}.lesson-nav button{padding:11px 16px;border:0;border-radius:7px;background:var(--red);color:white;cursor:pointer;font-weight:bold}.lesson-nav button:disabled{opacity:.35;cursor:not-allowed}.course-note{color:#999;font-size:13px;margin-top:18px;line-height:1.7}
+  @media(max-width:760px){header{padding:18px}header h1{font-size:20px}section{padding:55px 18px}.roadmap-title h2{font-size:37px}.roadmap-line{right:28px;transform:none}.road-step,.road-step:nth-of-type(odd),.road-step:nth-of-type(even){width:100%;margin:0;text-align:right;padding:0 0 45px 0;padding-right:75px}.road-step:nth-of-type(even){text-align:right}.road-node,.road-step:nth-of-type(odd) .road-node,.road-step:nth-of-type(even) .road-node{right:0;left:auto;width:58px;height:58px}.road-card{min-height:0}.lesson-layout{grid-template-columns:1fr}.lesson-sidebar{border-left:0;border-bottom:1px solid #243027}.lesson-list{grid-template-columns:1fr 1fr}}
+  @media(max-width:500px){nav{gap:12px}nav a{font-size:14px}.roadmap-title .sub{font-size:15px}.road-card h3{font-size:21px}.road-card{padding:20px}.other-courses{padding:25px 18px}}
+
+  :root{--blue:#00b8ff;--amber:#ffb300;--purple:#b46bff}
+  .hub{max-width:1150px;margin:0 auto;position:relative;z-index:1}
+  .hub-hero{text-align:center;padding:70px 25px 10px;position:relative;z-index:1}
+  .hub-hero .eyebrow{display:inline-block;color:var(--red);font-size:14px;font-weight:900;letter-spacing:4px;margin-bottom:12px;text-shadow:0 0 12px #ff174466}
+  .hub-hero h2{font-size:52px;letter-spacing:2px;margin-bottom:12px;text-shadow:0 0 25px #39ff1430}.hub-hero h2 span{color:var(--green);text-shadow:0 0 10px #39ff14,0 0 30px #39ff1455}
+  .hub-hero .sub{color:var(--muted);font-size:17px;max-width:720px;margin:0 auto 10px;line-height:1.8}
+  .hub-nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px auto 0;max-width:900px}
+  .hub-nav a{padding:9px 16px;border-radius:999px;border:1px solid #39ff1455;background:#0b0f0c;color:#d7ddd9;text-decoration:none;font-weight:800;font-size:14px;transition:.3s}
+  .hub-nav a:hover{color:#050607;background:var(--green);box-shadow:0 0 18px #39ff1466}
+  .group{padding:55px 25px 10px;scroll-margin-top:90px}
+  .group-head{margin-bottom:26px;padding-right:16px;border-right:4px solid var(--gc)}
+  .group-head .eyebrow{color:var(--gc);font-size:12px;font-weight:900;letter-spacing:3px;text-shadow:0 0 10px var(--gc)}
+  .group-head h3{font-size:30px;color:#fff;margin:4px 0 6px}.group-head p{color:var(--muted);line-height:1.8;font-size:15px;max-width:760px}
+  .g-green{--gc:var(--green)}.g-red{--gc:var(--red)}.g-blue{--gc:var(--blue)}.g-amber{--gc:var(--amber)}.g-purple{--gc:var(--purple)}
+  .track-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:20px}
+  .track-card{display:flex;flex-direction:column;background:linear-gradient(145deg,#0d110e,#080a09);border:1px solid color-mix(in srgb,var(--gc) 40%,transparent);border-radius:18px;padding:24px;text-decoration:none;color:inherit;position:relative;overflow:hidden;box-shadow:0 12px 35px #000b;transition:.35s}
+  .track-card:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,color-mix(in srgb,var(--gc) 9%,transparent),transparent 45%);pointer-events:none}
+  .track-card:hover{transform:translateY(-6px);border-color:var(--gc);box-shadow:0 16px 45px #000,0 0 26px color-mix(in srgb,var(--gc) 28%,transparent)}
+  .track-card .ic{font-size:34px;margin-bottom:12px;position:relative}
+  .track-card h4{font-size:20px;color:#fff;margin-bottom:8px;line-height:1.5;position:relative}
+  .track-card p{color:#aeb5b1;font-size:14px;line-height:1.75;flex:1;position:relative}
+  .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;position:relative}
+  .chip{padding:5px 11px;border-radius:999px;font-size:12px;font-weight:800;border:1px solid color-mix(in srgb,var(--gc) 50%,transparent);color:var(--gc);background:color-mix(in srgb,var(--gc) 8%,transparent)}
+  .chip.plain{color:#b9c0bc;border-color:#2c3630;background:#0d110e}
+  .go{margin-top:16px;color:var(--gc);font-weight:900;font-size:14px;position:relative}
+  .back-link{display:inline-block;color:var(--green);text-decoration:none;font-weight:900;margin:0 0 20px;padding:8px 14px;border:1px solid #39ff1455;border-radius:8px}.back-link:hover{background:var(--green);color:#050607}
+  .track-hero{text-align:center;padding:50px 25px 0;position:relative;z-index:1}.track-hero .big{font-size:56px}
+  .track-hero h2{font-size:40px;color:#fff;margin:10px 0}.track-hero h2 span{color:var(--green)}
+  .track-hero .sub{color:var(--muted);font-size:17px;max-width:760px;margin:0 auto 14px;line-height:1.8}
+  .track-hero .meta{justify-content:center;margin:8px 0 50px}
+  .more-tracks{max-width:1000px;margin:30px auto 20px}
+  @media(max-width:760px){.hub-hero h2{font-size:36px}.track-hero h2{font-size:28px}.group{padding:45px 18px 5px}}
+
+  .lesson-sidebar{max-height:75vh;overflow:auto}.lesson-list .pl{border:1px solid #202b24;border-radius:9px;background:#0a0d0b;overflow:hidden}
+  .lesson-list .pl-head{display:flex;justify-content:space-between;align-items:center;gap:8px;border:0;border-radius:0;background:#0d110e;font-weight:900}
+  .lesson-list .pl-head small{color:#8d968f;font-weight:700;white-space:nowrap}.lesson-list .pl.open .pl-head{color:var(--green);border-bottom:1px solid #202b24}
+  .pl-videos{list-style:none;display:none;max-height:340px;overflow:auto;padding:6px;gap:6px}.pl.open .pl-videos{display:grid}.pl-videos button{font-size:13px;padding:9px}
+  .pl-empty{padding:12px;color:#8d968f;font-size:13px;line-height:1.7}.pl-crumb{color:var(--red);font-size:13px;font-weight:900;margin-bottom:6px}
+  .vrow{display:flex;gap:6px;align-items:stretch}.lesson-list .vrow .vbtn{flex:1;width:auto;min-width:0}.lesson-list .vrow .vchk{flex:none;width:34px;padding:0;text-align:center;color:#4b5650;font-size:14px}
+  .lesson-list .vbtn.done{color:#7ddc6a;border-color:#2c5a2a;opacity:.75}.lesson-list .vchk.on{background:var(--green);color:#050607;border-color:var(--green);font-weight:900}.lesson-list .vchk:hover{border-color:var(--green);color:var(--green)}.lesson-list .vchk.on:hover{color:#050607}
+  #ytBox{width:100%;height:100%}
+</style></head><body>
+<header><h1>COBRA7</h1><nav><a href="index.html#home">الرئيسية</a><a href="courses.html">الأكاديمية</a><a href="shop.html">المتجر</a><a href="workshops.html">الورش</a><a href="consulting.html">الاستشارات</a><a href="community.html">المجتمع</a><a href="services.html">الخدمات</a><a href="certifications.html">الشهادات</a><a href="index.html#contact">تواصل</a></nav></header>
+<section class="courses" id="courses" style="padding-top:20px">
+  <div class="hub"><a class="back-link" href="courses.html">→ كل المسارات</a></div>
+  <div class="track-hero" id="trackHero"></div>
+  <div class="roadmap" id="roadmap"></div>
+  <div class="other-courses more-tracks" id="otherTracks"></div>
+</section>
+<div class="course-modal" id="courseModal" aria-hidden="true"><div class="lesson-shell">
+<div class="lesson-head"><h2 id="modalCourseTitle">دروس الكورس</h2><button class="close-modal" id="closeModal">إغلاق ✕</button></div>
+<div class="lesson-layout"><aside class="lesson-sidebar"><h3>محتويات الكورس</h3><ul class="lesson-list" id="lessonList"></ul></aside>
+<main class="lesson-content" id="lessonDetails"><h3>اختار درس من القائمة</h3></main></div></div></div>
+<footer><p><a href="index.html" style="color:var(--green);text-decoration:none">العودة للرئيسية</a></p><p>&copy; 2026 Cobra7. جميع الحقوق محفوظة.</p></footer>
+<script src="academy-data.js"></script>
+<script>
+const params=new URLSearchParams(location.search),track=TRACKS.find(t=>t.id===params.get("t"));
+if(!track){location.replace("courses.html")}
+const grp=track?GROUPS.find(g=>g.id===track.group):null;
+if(track){
+  document.title=track.title+" | Cobra7";
+  const plCount=track.stages.reduce((n,s)=>n+(s.playlists?s.playlists.length:0),0),lessonsCount=track.stages.reduce((n,s)=>n+(s.lessons?s.lessons.length:0),0),cntText=plCount?plCount+' بلاي ليست':lessonsCount+' دروس';
+  document.getElementById("trackHero").innerHTML='<div class="big">'+track.icon+'</div><div class="eyebrow" style="color:var(--red);font-weight:900;letter-spacing:4px;font-size:13px">'+grp.eyebrow+'</div><h2>'+track.title+'</h2><p class="sub">'+track.desc+'</p><div class="meta g-'+grp.color+'"><span class="chip">'+track.level+'</span><span class="chip plain">'+track.stages.length+' مراحل</span><span class="chip plain">'+cntText+'</span></div>';
+  const rm=document.getElementById("roadmap");
+  let html='<div class="roadmap-line"></div>';
+  track.stages.forEach((s,i)=>{
+    const dots=[1,2,3,4].map(n=>'<i'+(n<=s.difficulty?' class="on"':'')+'></i>').join("");
+    html+='<div class="road-step"><div class="road-node">'+String(i+1).padStart(2,"0")+'</div><div class="road-card" onclick="openCourse('+i+')" style="cursor:pointer"><h3>'+s.title.replace(/^(.*?) — /,'<span>$1</span> — ')+'</h3><p>'+s.desc+'</p><p style="margin-top:10px;color:var(--green);font-weight:900">'+(s.playlists?'📚 '+s.playlists.length+' بلاي ليست':'🎬 '+s.lessons.length+' دروس')+'</p><div class="difficulty">درجة الصعوبة <span class="dots">'+dots+'</span> '+s.label+'</div></div></div>';
+  });
+  html+='<div class="road-end">أنت هنا <span>⬇</span> — كمّل الطريق وخليك أقوى</div>';
+  rm.innerHTML=html;
+  const others=TRACKS.filter(t=>t.id!==track.id);
+  document.getElementById("otherTracks").innerHTML='<h3>🧭 مسارات تانية ممكن تهمك</h3><p>كمّل رحلتك واستكشف باقي مسارات الأكاديمية.</p><a class="other-btn" href="courses.html">شوف كل المسارات ←</a>';
+}
+const stages=track?track.stages.map(s=>({title:s.title,playlists:stagePlaylists(s)})):[];
+const modal=document.getElementById("courseModal"),titleEl=document.getElementById("modalCourseTitle"),listEl=document.getElementById("lessonList"),details=document.getElementById("lessonDetails");
+let si=0,pi=0,vi=0;
+/* ---------- حفظ المشاهدة والعناوين في المتصفح ---------- */
+function loadJSON(k){try{return JSON.parse(localStorage.getItem(k)||"{}")||{}}catch(e){return {}}}
+function saveJSON(k,o){try{localStorage.setItem(k,JSON.stringify(o))}catch(e){}}
+const watched=loadJSON("cobra7_watched"),titleCache=loadJSON("cobra7_titles");
+function isW(k){return !!watched[k]}
+function setW(k,val){if(val)watched[k]=1;else delete watched[k];saveJSON("cobra7_watched",watched);renderList()}
+/* ---------- أدوات يوتيوب ---------- */
+function ytId(url){try{const u=new URL(url);let id=u.hostname.includes("youtu.be")?u.pathname.slice(1):u.searchParams.get("v");if(!id&&u.pathname.includes("/embed/"))id=u.pathname.split("/embed/")[1];return id?id.split("&")[0].split("?")[0]:""}catch(e){return ""}}
+function listId(v){const m=String(v||"").match(/[?&]list=([\w-]+)/);return m?m[1]:String(v||"").trim()}
+function isPLMode(p){return !p.videos.length&&!!p.ytList}
+function vKeyOf(v){return v.videoType==="youtube"?"yt:"+ytId(v.video):"f:"+v.video}
+let ytReady=null;
+function loadYT(){if(ytReady)return ytReady;ytReady=new Promise((res,rej)=>{if(window.YT&&YT.Player)return res();const prev=window.onYouTubeIframeAPIReady;window.onYouTubeIframeAPIReady=()=>{if(prev)prev();res()};const s=document.createElement("script");s.src="https://www.youtube.com/iframe_api";s.onerror=rej;document.head.appendChild(s)});return ytReady}
+let player=null,timer=null,curId=null,renderTok=0;
+function destroyPlayer(){clearInterval(timer);timer=null;if(player){try{player.destroy()}catch(e){}player=null}}
+function tick(){if(!player||!player.getCurrentTime)return;try{if(player.getPlayerState()!==1)return;const d=player.getDuration(),c=player.getCurrentTime(),id=player.getVideoData().video_id;if(d>0&&id&&c/d>=0.9&&!isW("yt:"+id))setW("yt:"+id,true)}catch(e){}}
+function syncCurrent(){
+  if(!player||!player.getVideoData)return;let d;try{d=player.getVideoData()}catch(e){return}
+  if(!d||!d.video_id)return;
+  const changed=curId!==d.video_id;curId=d.video_id;
+  if(d.title&&titleCache[curId]!==d.title){titleCache[curId]=d.title;saveJSON("cobra7_titles",titleCache)}
+  const p=stages[si].playlists[pi];
+  if(isPLMode(p)){const t=document.getElementById("vTitle"),c=document.getElementById("vCrumb"),idx=p._ids?p._ids.indexOf(curId):-1;
+    if(t&&d.title)t.textContent=d.title;if(c&&idx>=0)c.textContent="📚 "+p.title+" • فيديو "+(idx+1)+" من "+p._ids.length}
+  if(changed)renderList();
+}
+function onState(e){
+  const S=YT.PlayerState;
+  if(e.data===S.PLAYING)syncCurrent();
+  if(e.data===S.ENDED){
+    if(curId)setW("yt:"+curId,true);
+    const p=stages[si].playlists[pi];
+    if(!isPLMode(p)&&vi<p.videos.length-1){vi++;renderList();renderLesson(true)}
+  }
+}
+function fetchIds(p,tok,n){
+  if(tok!==renderTok||!player)return;let ids=null;try{ids=player.getPlaylist()}catch(e){}
+  if(ids&&ids.length){p._ids=ids;renderList();loadTitles(p,tok)}
+  else if(n<25)setTimeout(()=>fetchIds(p,tok,n+1),700);
+}
+async function loadTitles(p,tok){
+  const need=p._ids.filter(id=>!titleCache[id]);
+  for(let i=0;i<need.length;i+=6){
+    if(tok!==renderTok)return;
+    await Promise.all(need.slice(i,i+6).map(async id=>{try{const r=await fetch("https://www.youtube.com/oembed?url="+encodeURIComponent("https://www.youtube.com/watch?v="+id)+"&format=json");if(!r.ok)return;const j=await r.json();if(j&&j.title)titleCache[id]=j.title}catch(e){}}));
+    saveJSON("cobra7_titles",titleCache);if(modal.classList.contains("show"))renderList();
+  }
+}
+/* ---------- فتح/قفل النافذة ---------- */
+function openCourse(i){si=i;pi=0;vi=0;titleEl.textContent=stages[i].title;renderList();renderLesson();modal.classList.add("show");modal.setAttribute("aria-hidden","false");document.body.style.overflow="hidden"}
+function closeCourse(){renderTok++;destroyPlayer();modal.classList.remove("show");modal.setAttribute("aria-hidden","true");document.body.style.overflow="";const f=modal.querySelector("iframe");if(f)f.src="";const v=modal.querySelector("video");if(v)v.pause()}
+/* ---------- القايمة الجانبية ---------- */
+function renderList(){
+  const old=listEl.querySelector(".pl.open .pl-videos"),st=old?old.scrollTop:0;
+  listEl.innerHTML="";
+  stages[si].playlists.forEach((p,i)=>{
+    const pm=isPLMode(p);
+    const items=pm?(p._ids||[]).map((id,j)=>({key:"yt:"+id,title:titleCache[id]||("فيديو "+(j+1))})):p.videos.map(v=>({key:vKeyOf(v),title:v.title}));
+    const done=items.filter(x=>isW(x.key)).length;
+    const item=document.createElement("li");item.className="pl"+(i===pi?" open":"");
+    const head=document.createElement("button");head.className="pl-head";
+    const sp=document.createElement("span");sp.textContent="📚 "+p.title;
+    const sm=document.createElement("small");sm.textContent=items.length?(done+"/"+items.length+" ✓"):(p.ytList?"بلاي ليست":"قريبًا");
+    head.appendChild(sp);head.appendChild(sm);
+    head.onclick=()=>{if(pi!==i){pi=i;vi=0;renderList();renderLesson()}else item.classList.toggle("open")};
+    item.appendChild(head);
+    const ul=document.createElement("ul");ul.className="pl-videos";
+    if(items.length){
+      items.forEach((x,j)=>{
+        const isCur=pm?(i===pi&&curId&&x.key==="yt:"+curId):(i===pi&&j===vi);
+        const li=document.createElement("li");li.className="vrow";
+        const b=document.createElement("button");b.className="vbtn"+(isCur?" active":"")+(isW(x.key)?" done":"");
+        b.textContent=(isW(x.key)?"✓ ":"")+(j+1)+". "+x.title;
+        b.onclick=()=>{
+          if(pm&&i===pi&&player&&player.playVideoAt){player.playVideoAt(j)}
+          else{pi=i;vi=j;renderList();renderLesson()}
+        };
+        const c=document.createElement("button");c.className="vchk"+(isW(x.key)?" on":"");c.title=isW(x.key)?"إلغاء علامة المشاهدة":"علّم إنك شفته";c.textContent="✓";
+        c.onclick=e=>{e.stopPropagation();setW(x.key,!isW(x.key))};
+        li.appendChild(b);li.appendChild(c);ul.appendChild(li);
+      });
+    }else{
+      const e=document.createElement("li");e.className="pl-empty";
+      e.textContent=pm?(i===pi?"جاري تحميل قايمة الفيديوهات…":"افتح البلاي ليست دي عشان تظهر فيديوهاتها."):"لسه مفيش فيديوهات مضافة للبلاي ليست دي.";
+      ul.appendChild(e);
+    }
+    item.appendChild(ul);listEl.appendChild(item);
+    if(i===pi)ul.scrollTop=st;
+  });
+}
+/* ---------- المشغّل ---------- */
+function renderLesson(auto){
+  destroyPlayer();const tok=++renderTok;curId=null;
+  const p=stages[si].playlists[pi],vids=p.videos,v=vids[vi],pm=isPLMode(p);
+  let box='<div class="video-placeholder"><strong>🎬 مفيش فيديوهات مضافة للبلاي ليست دي لسه</strong><span>أضف رابط بلاي ليست يوتيوب في academy-data.js.</span></div>',title=p.title,desc=p.description||"",crumb="📚 "+p.title,res=[];
+  if(v){
+    title=v.title;desc=v.description||p.description||"";crumb="📚 "+p.title+" • فيديو "+(vi+1)+" من "+vids.length;res=v.resources||[];
+    if(v.videoType==="youtube"&&ytId(v.video)){box='<div id="ytBox"></div>';curId=ytId(v.video)}
+    else if(v.videoType==="file"&&v.video)box='<video id="fileVid" controls preload="metadata"><source src="'+v.video+'">المتصفح لا يدعم تشغيل الفيديو.</video>';
+  }else if(pm&&listId(p.ytList))box='<div id="ytBox"></div>';
+  const resources=res.length?'<h4 style="color:var(--green);margin-top:20px">ملفات وروابط الدرس</h4><div class="resource-list">'+res.map(r=>'<a href="'+r.url+'" target="_blank" rel="noopener noreferrer">'+(r.type==="pdf"?"📄 ":r.type==="image"?"🖼️ ":"🔗 ")+r.title+'</a>').join("")+'</div>':"";
+  const nav=(!pm&&vids.length>1)?'<div class="lesson-nav"><button id="prevLesson" '+(vi===0?"disabled":"")+'>الفيديو السابق</button><button id="nextLesson" '+(vi===vids.length-1?"disabled":"")+'>الفيديو التالي</button></div>':"";
+  details.innerHTML='<div class="pl-crumb" id="vCrumb">'+crumb+'</div><h3 id="vTitle">'+title+'</h3><p class="lesson-description">'+desc+'</p><div class="video-frame">'+box+'</div>'+resources+nav;
+  const pv=document.getElementById("prevLesson"),nx=document.getElementById("nextLesson");
+  if(pv)pv.onclick=()=>{if(vi>0){vi--;renderList();renderLesson()}};if(nx)nx.onclick=()=>{if(vi<vids.length-1){vi++;renderList();renderLesson()}};
+  const fv=document.getElementById("fileVid");
+  if(fv){const k=vKeyOf(v);fv.ontimeupdate=()=>{if(fv.duration&&fv.currentTime/fv.duration>=0.9&&!isW(k))setW(k,true)};fv.onended=()=>{setW(k,true);if(vi<vids.length-1){vi++;renderList();renderLesson(true)}}}
+  if(document.getElementById("ytBox")){
+    loadYT().then(()=>{
+      if(tok!==renderTok||!document.getElementById("ytBox"))return;
+      const vars={rel:0,modestbranding:1,playsinline:1};
+      const cfg={host:"https://www.youtube-nocookie.com",width:"100%",height:"100%",playerVars:vars,events:{onStateChange:onState}};
+      if(pm){vars.listType="playlist";vars.list=listId(p.ytList);if(vi>0)vars.index=vi;cfg.events.onReady=()=>fetchIds(p,tok,0)}
+      else{cfg.videoId=curId;if(auto)vars.autoplay=1}
+      player=new YT.Player("ytBox",cfg);
+      timer=setInterval(tick,1000);
+    }).catch(()=>{
+      const el=document.getElementById("ytBox");if(!el||tok!==renderTok)return;
+      const src=pm?ytListEmbed(p.ytList):"https://www.youtube-nocookie.com/embed/"+curId;
+      el.outerHTML='<iframe src="'+src+'" title="فيديو" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+    });
+  }
+}
+document.getElementById("closeModal").onclick=closeCourse;modal.addEventListener("click",e=>{if(e.target===modal)closeCourse()});document.addEventListener("keydown",e=>{if(e.key==="Escape"&&modal.classList.contains("show"))closeCourse()});
+</script></body></html>

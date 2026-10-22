@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>الأكاديمية | Cobra7</title><style>
+  :root{--black:#050607;--black2:#0b0e0c;--green:#39ff14;--green2:#16c60c;--red:#ff1744;--white:#f5f7f6;--muted:#a9b0ac;}
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,sans-serif}
+  html{scroll-behavior:smooth}
+  body{background:var(--black);color:var(--white);overflow-x:hidden}
+  body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 25%,#39ff1408,transparent 35%),linear-gradient(180deg,#050607,#080a09 55%,#030403);z-index:-1}
+  header{background:#050607eF;padding:20px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;border-bottom:1px solid #39ff1466;box-shadow:0 0 25px #39ff1415;position:sticky;top:0;z-index:50;backdrop-filter:blur(12px)}
+  header h1{color:var(--green);font-size:26px;letter-spacing:2px;text-shadow:0 0 10px #39ff1480,0 0 24px #39ff1430}
+  nav{display:flex;flex-wrap:wrap;gap:22px;align-items:center}nav a{color:#d7ddd9;text-decoration:none;font-weight:900;font-size:17px;transition:.3s;text-shadow:0 0 8px #39ff1430}nav a:hover{color:var(--green);text-shadow:0 0 8px #39ff14,0 0 20px #39ff1466}
+  section{padding:75px 25px}.courses{min-height:calc(100vh - 85px);padding-top:70px;position:relative;overflow:hidden}.courses:before,.courses:after{content:"";position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none}.courses:before{width:280px;height:280px;background:#39ff1410;top:100px;left:-100px}.courses:after{width:250px;height:250px;background:#ff174410;bottom:80px;right:-100px}
+  .roadmap-title{text-align:center;position:relative;z-index:1}.roadmap-title .eyebrow{display:inline-block;color:var(--red);font-size:14px;font-weight:900;letter-spacing:4px;margin-bottom:12px;text-shadow:0 0 12px #ff174466}.roadmap-title h2{font-size:52px;color:#fff;letter-spacing:2px;text-shadow:0 0 8px #fff2,0 0 25px #39ff1430;margin-bottom:12px}.roadmap-title h2 span{color:var(--green);text-shadow:0 0 10px #39ff14,0 0 30px #39ff1455}.roadmap-title .sub{color:var(--muted);font-size:17px;max-width:720px;margin:0 auto 65px;line-height:1.8}
+  .roadmap{max-width:1100px;margin:0 auto;position:relative;padding:20px 0 30px}.roadmap-line{position:absolute;top:72px;bottom:75px;right:50%;width:5px;transform:translateX(50%);background:linear-gradient(180deg,var(--green),#1fff00 55%,var(--red));box-shadow:0 0 8px var(--green),0 0 25px #39ff1488,0 0 35px #ff174433;border-radius:99px}.road-step{position:relative;width:50%;padding:0 65px 75px}.road-step:nth-of-type(odd){margin-right:50%;text-align:right}.road-step:nth-of-type(even){margin-left:50%;text-align:left}.road-node{position:absolute;top:0;width:62px;height:62px;border-radius:50%;display:grid;place-items:center;background:#070908;border:3px solid var(--green);color:var(--green);font-size:22px;font-weight:1000;box-shadow:0 0 10px #39ff14,0 0 28px #39ff1477, inset 0 0 15px #39ff1422;z-index:2}.road-step:nth-of-type(odd) .road-node{left:auto;right:-31px}.road-step:nth-of-type(even) .road-node{left:-31px;right:auto}.road-card{background:linear-gradient(145deg,#0d110e,#080a09);border:1px solid #39ff1466;border-radius:18px;padding:25px 27px;min-height:175px;position:relative;overflow:hidden;box-shadow:0 12px 35px #000b,0 0 18px #39ff1412;transition:.35s}.road-card:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,#39ff140c,transparent 35%,#ff174408);pointer-events:none}.road-card:hover{transform:translateY(-6px) scale(1.01);border-color:var(--green);box-shadow:0 16px 45px #000,0 0 25px #39ff1430}.road-card h3{font-size:25px;color:#fff;margin-bottom:8px;position:relative}.road-card h3 span{color:var(--green)}.road-card p{color:#aeb5b1;line-height:1.7;font-size:14px;position:relative}.difficulty{display:inline-flex;align-items:center;gap:8px;margin-top:15px;padding:7px 12px;border-radius:999px;border:1px solid #ff174466;background:#ff17440d;color:#ff536f;font-weight:900;font-size:13px;box-shadow:0 0 15px #ff17441a}.difficulty .dots{display:flex;gap:3px}.difficulty i{width:7px;height:7px;border-radius:50%;background:#252927}.difficulty i.on{background:var(--red);box-shadow:0 0 8px var(--red)}.road-step:nth-of-type(odd) .road-card{border-right:2px solid var(--green)}.road-step:nth-of-type(even) .road-card{border-left:2px solid var(--red)}
+  .road-end{text-align:center;color:#777;font-size:13px;letter-spacing:2px;margin-top:-10px}.road-end span{color:var(--red);text-shadow:0 0 10px #ff1744}
+  .other-courses{max-width:1000px;margin:30px auto 20px;padding:34px;border:1px solid #39ff1444;border-radius:22px;background:linear-gradient(145deg,#0b0f0c,#090b0a);box-shadow:0 0 30px #39ff1410;text-align:center;position:relative;overflow:hidden}.other-courses:before{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:#39ff1410;filter:blur(45px);left:-60px;top:-70px}.other-courses h3{font-size:27px;color:var(--green);margin-bottom:10px;text-shadow:0 0 12px #39ff1470}.other-courses p{color:#aeb5b1;line-height:1.8;max-width:700px;margin:0 auto 22px}.other-btn{display:inline-block;padding:12px 22px;border-radius:8px;background:var(--red);color:#fff;text-decoration:none;font-weight:900;box-shadow:0 0 18px #ff174433;transition:.3s}.other-btn:hover{background:var(--green);color:#050607;box-shadow:0 0 20px #39ff14}
+  footer{background:#030403;border-top:1px solid #39ff1444;text-align:center;padding:30px;color:#777}.footer-link{color:var(--green);text-decoration:none}
+  .course-modal{display:none;position:fixed;inset:0;z-index:1000;background:#000e;padding:18px;overflow:auto}.course-modal.show{display:block}.lesson-shell{max-width:1100px;margin:20px auto;background:#080a09;border:1px solid #39ff1466;border-radius:14px;overflow:hidden;box-shadow:0 0 45px #39ff1415}.lesson-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:20px;border-bottom:1px solid #243027}.lesson-head h2,.lesson-sidebar h3{color:var(--green);text-shadow:0 0 10px #39ff1455}.close-modal{background:#150b0d;color:white;border:1px solid #ff174466;padding:10px 16px;border-radius:7px;cursor:pointer}.lesson-layout{display:grid;grid-template-columns:280px 1fr;min-height:450px}.lesson-sidebar{padding:18px;background:#060806;border-left:1px solid #243027}.lesson-list{list-style:none;display:grid;gap:8px;margin-top:12px}.lesson-list button{width:100%;text-align:right;color:#ddd;background:#0d110e;border:1px solid #202b24;padding:12px;border-radius:7px;cursor:pointer}.lesson-list button.active,.lesson-list button:hover{border-color:var(--green);color:var(--green);box-shadow:0 0 12px #39ff1418}.lesson-content{padding:24px;min-width:0}.lesson-content h3{color:white;font-size:25px;margin-bottom:12px}.lesson-description{color:#ccc;line-height:1.8;margin-bottom:18px}.video-frame{width:100%;aspect-ratio:16/9;background:#050505;border:1px solid #27322b;border-radius:10px;overflow:hidden;margin:15px 0 22px}.video-frame iframe,.video-frame video{width:100%;height:100%;border:0;display:block}.video-placeholder{height:100%;display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center;color:#aaa;text-align:center;padding:20px}.resource-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}.resource-list a{color:var(--green);text-decoration:none;border:1px solid #315138;background:#0d110e;border-radius:7px;padding:10px 13px;overflow-wrap:anywhere}.lesson-nav{display:flex;justify-content:space-between;gap:10px;margin-top:24px}.lesson-nav button{padding:11px 16px;border:0;border-radius:7px;background:var(--red);color:white;cursor:pointer;font-weight:bold}.lesson-nav button:disabled{opacity:.35;cursor:not-allowed}.course-note{color:#999;font-size:13px;margin-top:18px;line-height:1.7}
+  @media(max-width:760px){header{padding:18px}header h1{font-size:20px}section{padding:55px 18px}.roadmap-title h2{font-size:37px}.roadmap-line{right:28px;transform:none}.road-step,.road-step:nth-of-type(odd),.road-step:nth-of-type(even){width:100%;margin:0;text-align:right;padding:0 0 45px 0;padding-right:75px}.road-step:nth-of-type(even){text-align:right}.road-node,.road-step:nth-of-type(odd) .road-node,.road-step:nth-of-type(even) .road-node{right:0;left:auto;width:58px;height:58px}.road-card{min-height:0}.lesson-layout{grid-template-columns:1fr}.lesson-sidebar{border-left:0;border-bottom:1px solid #243027}.lesson-list{grid-template-columns:1fr 1fr}}
+  @media(max-width:500px){nav{gap:12px}nav a{font-size:14px}.roadmap-title .sub{font-size:15px}.road-card h3{font-size:21px}.road-card{padding:20px}.other-courses{padding:25px 18px}}
+
+  :root{--blue:#00b8ff;--amber:#ffb300;--purple:#b46bff}
+  .hub{max-width:1150px;margin:0 auto;position:relative;z-index:1}
+  .hub-hero{text-align:center;padding:70px 25px 10px;position:relative;z-index:1}
+  .hub-hero .eyebrow{display:inline-block;color:var(--red);font-size:14px;font-weight:900;letter-spacing:4px;margin-bottom:12px;text-shadow:0 0 12px #ff174466}
+  .hub-hero h2{font-size:52px;letter-spacing:2px;margin-bottom:12px;text-shadow:0 0 25px #39ff1430}.hub-hero h2 span{color:var(--green);text-shadow:0 0 10px #39ff14,0 0 30px #39ff1455}
+  .hub-hero .sub{color:var(--muted);font-size:17px;max-width:720px;margin:0 auto 10px;line-height:1.8}
+  .hub-nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px auto 0;max-width:900px}
+  .hub-nav a{padding:9px 16px;border-radius:999px;border:1px solid #39ff1455;background:#0b0f0c;color:#d7ddd9;text-decoration:none;font-weight:800;font-size:14px;transition:.3s}
+  .hub-nav a:hover{color:#050607;background:var(--green);box-shadow:0 0 18px #39ff1466}
+  .group{padding:55px 25px 10px;scroll-margin-top:90px}
+  .group-head{margin-bottom:26px;padding-right:16px;border-right:4px solid var(--gc)}
+  .group-head .eyebrow{color:var(--gc);font-size:12px;font-weight:900;letter-spacing:3px;text-shadow:0 0 10px var(--gc)}
+  .group-head h3{font-size:30px;color:#fff;margin:4px 0 6px}.group-head p{color:var(--muted);line-height:1.8;font-size:15px;max-width:760px}
+  .g-green{--gc:var(--green)}.g-red{--gc:var(--red)}.g-blue{--gc:var(--blue)}.g-amber{--gc:var(--amber)}.g-purple{--gc:var(--purple)}
+  .track-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:20px}
+  .track-card{display:flex;flex-direction:column;background:linear-gradient(145deg,#0d110e,#080a09);border:1px solid color-mix(in srgb,var(--gc) 40%,transparent);border-radius:18px;padding:24px;text-decoration:none;color:inherit;position:relative;overflow:hidden;box-shadow:0 12px 35px #000b;transition:.35s}
+  .track-card:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,color-mix(in srgb,var(--gc) 9%,transparent),transparent 45%);pointer-events:none}
+  .track-card:hover{transform:translateY(-6px);border-color:var(--gc);box-shadow:0 16px 45px #000,0 0 26px color-mix(in srgb,var(--gc) 28%,transparent)}
+  .track-card .ic{font-size:34px;margin-bottom:12px;position:relative}
+  .track-card h4{font-size:20px;color:#fff;margin-bottom:8px;line-height:1.5;position:relative}
+  .track-card p{color:#aeb5b1;font-size:14px;line-height:1.75;flex:1;position:relative}
+  .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;position:relative}
+  .chip{padding:5px 11px;border-radius:999px;font-size:12px;font-weight:800;border:1px solid color-mix(in srgb,var(--gc) 50%,transparent);color:var(--gc);background:color-mix(in srgb,var(--gc) 8%,transparent)}
+  .chip.plain{color:#b9c0bc;border-color:#2c3630;background:#0d110e}
+  .go{margin-top:16px;color:var(--gc);font-weight:900;font-size:14px;position:relative}
+  .back-link{display:inline-block;color:var(--green);text-decoration:none;font-weight:900;margin:0 0 20px;padding:8px 14px;border:1px solid #39ff1455;border-radius:8px}.back-link:hover{background:var(--green);color:#050607}
+  .track-hero{text-align:center;padding:50px 25px 0;position:relative;z-index:1}.track-hero .big{font-size:56px}
+  .track-hero h2{font-size:40px;color:#fff;margin:10px 0}.track-hero h2 span{color:var(--green)}
+  .track-hero .sub{color:var(--muted);font-size:17px;max-width:760px;margin:0 auto 14px;line-height:1.8}
+  .track-hero .meta{justify-content:center;margin:8px 0 50px}
+  .more-tracks{max-width:1000px;margin:30px auto 20px}
+  @media(max-width:760px){.hub-hero h2{font-size:36px}.track-hero h2{font-size:28px}.group{padding:45px 18px 5px}}
+</style></head><body>
+<header><h1>COBRA7</h1><nav><a href="index.html#home">الرئيسية</a><a href="courses.html">الأكاديمية</a><a href="shop.html">المتجر</a><a href="workshops.html">الورش</a><a href="consulting.html">الاستشارات</a><a href="community.html">المجتمع</a><a href="services.html">الخدمات</a><a href="certifications.html">الشهادات</a><a href="index.html#contact">تواصل</a></nav></header>
+<section style="padding:0">
+  <div class="hub-hero">
+    <div class="eyebrow">COBRA7 ACADEMY</div>
+    <h2>مسارات <span>الأكاديمية</span></h2>
+    <p class="sub">اختار المسار اللي يناسبك: برمجة، اختبار اختراق، أمن دفاعي، تحقيق سيبراني، وتخصصات تانية. كل مسار ليه خارطة طريق ودروس مرتبة مرحلة بمرحلة.</p>
+    <div class="hub-nav" id="hubNav"></div>
+  </div>
+  <div class="hub" id="hub"></div>
+  <div class="other-courses">
+    <h3>🚀 كورسات أخرى لتطوير نفسك</h3>
+    <p>خلصت مسارك؟ هنا تقدر توسّع مهاراتك بكورسات إضافية تساعدك تطور نفسك، تتعلم أدوات جديدة، وتبني خبرة أقوى جنب مسارك الأساسي.</p>
+    <a class="other-btn" href="more.html">اكتشف الكورسات الإضافية ←</a>
+  </div>
+</section>
+<footer><p><a href="index.html" style="color:var(--green);text-decoration:none">العودة للرئيسية</a></p><p>&copy; 2026 Cobra7. جميع الحقوق محفوظة.</p></footer>
+<script src="academy-data.js"></script>
+<script>
+const hub=document.getElementById("hub"),nav=document.getElementById("hubNav");
+GROUPS.forEach(g=>{
+  const tracks=TRACKS.filter(t=>t.group===g.id); if(!tracks.length) return;
+  const a=document.createElement("a");a.href="#"+g.id;a.textContent=g.title;nav.appendChild(a);
+  const sec=document.createElement("section");sec.className="group g-"+g.color;sec.id=g.id;
+  sec.innerHTML='<div class="group-head"><div class="eyebrow">'+g.eyebrow+'</div><h3>'+g.title+'</h3><p>'+g.sub+'</p></div><div class="track-grid"></div>';
+  const grid=sec.querySelector(".track-grid");
+  tracks.forEach(t=>{
+    const pls=t.stages.reduce((n,s)=>n+(s.playlists?s.playlists.length:0),0),lessons=t.stages.reduce((n,s)=>n+(s.lessons?s.lessons.length:0),0),cnt=pls?pls+' بلاي ليست':lessons+' دروس';
+    const c=document.createElement("a");c.className="track-card";c.href="track.html?t="+encodeURIComponent(t.id);
+    c.innerHTML='<div class="ic">'+t.icon+'</div><h4>'+t.title+'</h4><p>'+t.desc+'</p><div class="meta"><span class="chip">'+t.level+'</span><span class="chip plain">'+t.stages.length+' مراحل</span><span class="chip plain">'+cnt+'</span></div><div class="go">ادخل المسار ←</div>';
+    grid.appendChild(c);
+  });
+  hub.appendChild(sec);
+});
+</script>
+</body></html>
