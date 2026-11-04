@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head><meta charset="UTF-8"><title>لاب 6: IDOR</title>
+<style>
+body{font-family:'Segoe UI',Tahoma,sans-serif;padding:20px;background:#fff3e0}
+.c{background:#fff;padding:20px;border-radius:8px;box-shadow:0 4px 8px #0002;max-width:640px;margin:auto}
+h1{color:#e65100;text-align:center;font-size:22px}code,pre{direction:ltr;display:block;background:#f3f3f3;padding:10px;border-radius:6px;font-size:13px;word-break:break-all;white-space:pre-wrap;text-align:left}
+input{padding:9px;width:100%;box-sizing:border-box;margin:6px 0;border:1px solid #bbb;border-radius:4px;direction:ltr}
+.btn{padding:9px 16px;background:#e65100;color:#fff;border:0;border-radius:5px;cursor:pointer;font-size:15px}#out{margin-top:12px;font-weight:bold}
+</style></head><body><div class="c">
+<h1>🟡 لاب 6: الوصول لبيانات حد تاني (IDOR)</h1>
+<p>انت مسجل كمستخدم رقم <b>3</b>. التطبيق بيجيب الملف الشخصي بالـ id من غير ما يتأكد إنه بتاعك. شوف الطلب اللي بيتبعت وجرّب تغيّر الرقم.</p>
+<input id="id" value="3" type="number"><button class="btn" onclick="get()">عرض الملف الشخصي</button>
+<code id="req">GET /api/profile?id=3</code><pre id="out"></pre>
+</div><script>
+const DB={1:{name:"admin",role:"admin",note:"FLAG{IDOR_Found}"},2:{name:"sara",role:"user",note:"-"},3:{name:"you",role:"user",note:"مفيش حاجة مهمة هنا"}};
+function get(){const id=document.getElementById('id').value;document.getElementById('req').textContent='GET /api/profile?id='+id;
+// الثغرة: مفيش تحقق إن الـ id بتاع المستخدم الحالي
+document.getElementById('out').textContent=DB[id]?JSON.stringify(DB[id],null,2):'404 Not Found'}
+</script></body></html>

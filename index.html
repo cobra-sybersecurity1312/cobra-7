@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cobra7 | تعلّم الأمن السيبراني والبرمجة من الصفر</title>
+<meta name="description" content="Cobra7: أكاديمية عربية لتعلّم الأمن السيبراني والبرمجة من الصفر بمسارات منظمة وتطبيق عملي في بيئات تدريب آمنة.">
+<meta name="theme-color" content="#030506">
+<link rel="icon" href="cobra-logo.jpg">
+<meta property="og:type" content="website"><meta property="og:locale" content="ar_EG">
+<meta property="og:title" content="Cobra7 | تعلّم الأمن السيبراني والبرمجة من الصفر">
+<meta property="og:description" content="مسارات منظمة وتطبيق عملي في بيئات تدريب آمنة.">
+<meta property="og:image" content="cobra-logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Orbitron:wght@500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Orbitron:wght@500;600;700;800&display=swap"></noscript><script>document.documentElement.classList.add("ch-js")</script><style>
+  :root {
+    --black: #0a0a0f;
+    --purple: #3b0a5e;
+    --purple-light: #7b2cbf;
+    --green: #39ff14;
+    --red: #ff1744;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: #e0e0e0; }
+  header {
+    background: linear-gradient(135deg, var(--black), var(--purple));
+    padding: 20px 40px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;
+    border-bottom: 2px solid var(--green);
+  }
+  header h1 { color: var(--green); font-size:26px; letter-spacing:2px; }
+  nav {display:flex;flex-wrap:wrap;gap:22px;align-items:center}
+  nav a { color:#d9b8ff; margin-left:0; text-decoration:none; font-weight:900; font-size:17px; transition:0.3s; text-shadow:0 0 7px #9d4edd,0 0 15px #7b2cbf; }
+  nav a:hover { color:#fff; text-shadow:0 0 8px #c77dff,0 0 20px #9d4edd,0 0 30px #7b2cbf; transform:translateY(-1px); }
+  .hero {
+    text-align:center;
+    padding:100px 20px;
+    background: radial-gradient(circle at center, var(--purple) 0%, var(--black) 70%);
+  }
+  .hero h2 { font-size:40px; color:#fff; margin-bottom:20px; }
+  .hero span { color: var(--green); }
+  .hero p { font-size:18px; color:#ccc; max-width:600px; margin:0 auto 30px; }
+  .btn {
+    background: var(--red);
+    color:#fff; padding:14px 32px; border:none; border-radius:6px;
+    font-size:16px; font-weight:bold; cursor:pointer; transition:0.3s; text-decoration:none; display:inline-block;
+  }
+  .btn:hover { background: var(--green); color:var(--black); }
+  section { padding:80px 40px; }
+  .courses { background:#111018; }
+  .courses h2 { text-align:center; color:var(--green); margin-bottom:15px; font-size:32px; }
+  .courses .sub { text-align:center; color:#aaa; margin-bottom:50px; }
+  .course-grid { display:flex; flex-wrap:wrap; gap:30px; justify-content:center; max-width:1100px; margin:0 auto; }
+  .card {
+    position:relative;
+    background: linear-gradient(145deg, #15121e, #1d0f2b);
+    border:1px solid var(--purple-light);
+    border-radius:10px; padding:30px 25px 25px; width:320px;
+    transition:0.3s;
+  }
+  .card:hover { border-color: var(--red); transform:translateY(-5px); }
+  .num {
+    position:absolute; top:-18px; right:20px;
+    width:38px; height:38px; border-radius:50%;
+    background: var(--green); color: var(--black);
+    font-weight:bold; font-size:18px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .card h3 { color:#fff; margin-bottom:12px; margin-top:6px; }
+  .card p { color:#aaa; font-size:14px; line-height:1.6; }
+  .about { text-align:center; }
+  .about h2 { color:var(--red); font-size:32px; margin-bottom:20px; }
+  .about p { max-width:700px; margin:0 auto; color:#ccc; line-height:1.8; }
+  footer {
+    background:var(--black); border-top:2px solid var(--purple-light);
+    text-align:center; padding:30px; color:#777;
+  }
+
+  .card{cursor:pointer}.open-course{display:inline-block;margin-top:18px;color:var(--green);font-weight:bold}
+  .course-modal{display:none;position:fixed;inset:0;z-index:1000;background:#000e;padding:18px;overflow:auto}
+  .course-modal.show{display:block}.lesson-shell{max-width:1100px;margin:20px auto;background:#100d17;border:1px solid var(--purple-light);border-radius:14px;overflow:hidden}
+  .lesson-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:20px;border-bottom:1px solid #39214c}
+  .lesson-head h2,.lesson-sidebar h3{color:var(--green)}.close-modal{background:#291338;color:white;border:1px solid var(--purple-light);padding:10px 16px;border-radius:7px;cursor:pointer}
+  .lesson-layout{display:grid;grid-template-columns:280px 1fr;min-height:450px}.lesson-sidebar{padding:18px;background:#0c0b11;border-left:1px solid #39214c}
+  .lesson-list{list-style:none;display:grid;gap:8px;margin-top:12px}.lesson-list button{width:100%;text-align:right;color:#ddd;background:#17121f;border:1px solid #33213f;padding:12px;border-radius:7px;cursor:pointer}
+  .lesson-list button.active,.lesson-list button:hover{border-color:var(--green);color:var(--green)}.lesson-content{padding:24px;min-width:0}
+  .lesson-content h3{color:white;font-size:25px;margin-bottom:12px}.lesson-description{color:#ccc;line-height:1.8;margin-bottom:18px}
+  .video-frame{width:100%;aspect-ratio:16/9;background:#050505;border:1px solid #352044;border-radius:10px;overflow:hidden;margin:15px 0 22px}
+  .video-frame iframe,.video-frame video{width:100%;height:100%;border:0;display:block}.video-placeholder{height:100%;display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center;color:#aaa;text-align:center;padding:20px}
+  .resource-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}.resource-list a{color:var(--green);text-decoration:none;border:1px solid #4d2c65;background:#17121f;border-radius:7px;padding:10px 13px;overflow-wrap:anywhere}
+  .lesson-nav{display:flex;justify-content:space-between;gap:10px;margin-top:24px}.lesson-nav button{padding:11px 16px;border:0;border-radius:7px;background:var(--red);color:white;cursor:pointer;font-weight:bold}
+  .lesson-nav button:disabled{opacity:.35;cursor:not-allowed}.course-note{color:#999;font-size:13px;margin-top:18px;line-height:1.7}
+  @media(max-width:760px){header{padding:18px}header h1{font-size:20px}section{padding:55px 18px}.hero h2{font-size:29px}.lesson-layout{grid-template-columns:1fr}.lesson-sidebar{border-left:0;border-bottom:1px solid #39214c}.lesson-list{grid-template-columns:1fr 1fr}.lesson-content{padding:17px}}
+
+  .about-card{max-width:900px;margin:0 auto;padding:35px;background:linear-gradient(145deg,#15121e,#1d0f2b);border:1px solid var(--purple-light);border-radius:18px;display:flex;align-items:center;gap:30px;text-align:right;box-shadow:0 15px 45px #0005}
+  .profile-photo{width:210px;height:210px;flex-shrink:0;object-fit:cover;border-radius:50%;border:3px solid var(--green);box-shadow:0 0 25px #39ff1440}
+  .about-card h3{color:var(--green);font-size:25px;margin:10px 0}.about-card .role{color:#bbb;margin-bottom:15px}.about-card p{max-width:none;margin:0;line-height:1.9}
+  .contact-grid{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-top:30px}.social-link{min-width:180px;padding:18px 24px;border:1px solid var(--purple-light);border-radius:10px;background:#17121f;color:#fff;text-decoration:none;font-weight:bold;transition:.25s}.social-link:hover{transform:translateY(-4px);border-color:var(--green);color:var(--green)}
+  .more-section{text-align:center;background:#111018}.more-section h2{color:var(--green);margin-bottom:15px}.more-section p{color:#bbb;line-height:1.8;max-width:700px;margin:0 auto 25px}
+  @media(max-width:650px){.about-card{flex-direction:column;text-align:center;padding:24px}.profile-photo{width:170px;height:170px}.social-link{width:100%}}
+  :root{--black:#050708;--green:#39ff14;--green2:#00e676;--purple:#7c3aed;--purple2:#a855f7;--red:#ff1744;--text:#eef2f5}
+  *{font-family:'Cairo','Segoe UI',Tahoma,sans-serif}
+  body{background:#030506;overflow-x:hidden}
+  body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(circle at 15% 20%,#39ff1412 0 12%,transparent 32%),radial-gradient(circle at 85% 15%,#8b5cf622 0 14%,transparent 34%),linear-gradient(180deg,#030506,#07050b 55%,#030506)}
+  header{position:sticky;top:0;z-index:100;background:rgba(3,5,6,.78);backdrop-filter:blur(16px);padding:17px 40px;border-bottom:1px solid #39ff1455;box-shadow:0 0 30px #39ff1410,0 8px 35px #0008}
+  header h1{font-family:'Orbitron','Cairo',sans-serif;color:#fff;letter-spacing:2px;text-shadow:0 0 8px #39ff14,0 0 25px #39ff1466;font-size:25px}
+  nav a{color:#d9d9e8;text-shadow:0 0 8px #8b5cf655;font-weight:700;position:relative;padding:6px 2px}
+  nav a:after{content:"";position:absolute;right:0;left:0;bottom:0;height:2px;background:linear-gradient(90deg,var(--green),var(--purple2));transform:scaleX(0);transform-origin:center;transition:.3s;box-shadow:0 0 10px var(--green)}
+  nav a:hover:after{transform:scaleX(1)}
+  .hero{position:relative;min-height:calc(100vh - 76px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:90px 20px;overflow:hidden;background:radial-gradient(ellipse at 50% 45%,#7c3aed22 0%,#39ff1410 24%,transparent 58%)}
+  .hero:before{content:"";position:absolute;width:520px;height:520px;border:1px solid #39ff1428;border-radius:50%;box-shadow:0 0 45px #39ff1412,inset 0 0 45px #7c3aed12;animation:spin 18s linear infinite}
+  .hero:after{content:"";position:absolute;width:760px;height:760px;border:1px dashed #a855f722;border-radius:50%;animation:spin 28s linear infinite reverse}
+  .hero-logo{position:absolute;z-index:1;width:380px;height:380px;object-fit:contain;border-radius:50%;opacity:.34;filter:drop-shadow(0 0 18px #39ff14) drop-shadow(0 0 45px #7c3aed);mix-blend-mode:screen;animation:logoFloat 5s ease-in-out infinite}
+  @keyframes logoFloat{0%,100%{transform:scale(1) translateY(0)}50%{transform:scale(1.035) translateY(-8px)}}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .hero>*{position:relative;z-index:2}
+  .hero h2{font-size:clamp(34px,6vw,68px);font-weight:900;line-height:1.25;max-width:950px;margin-bottom:22px;color:#fff;text-shadow:0 0 12px #fff2,0 0 35px #7c3aed55}
+  .hero h2 span{color:var(--green);text-shadow:0 0 8px var(--green),0 0 30px #39ff1466}
+  .hero p{font-size:19px;max-width:720px;line-height:2;color:#c9ccd4;text-shadow:0 0 10px #000;margin-bottom:36px}
+  .btn{background:linear-gradient(135deg,var(--green),#12c94b);color:#031006;border:1px solid #8aff72;border-radius:10px;padding:15px 35px;font-size:17px;font-weight:900;box-shadow:0 0 12px #39ff1466,0 0 35px #39ff1428;transition:.3s;position:relative;overflow:hidden}
+  .btn:before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent,#fff8,transparent);transform:translateX(-120%);transition:.6s}
+  .btn:hover:before{transform:translateX(120%)}
+  .btn:hover{background:linear-gradient(135deg,#b06cff,#7c3aed);color:#fff;border-color:#d8b4ff;box-shadow:0 0 18px #a855f799,0 0 45px #7c3aed55;transform:translateY(-3px)}
+  .more-section,.courses{background:linear-gradient(180deg,#07090a,#090610);position:relative}
+  .more-section h2,.courses h2{font-size:35px;text-shadow:0 0 15px #39ff1455}
+  .about-card,.card,.social-link{box-shadow:0 0 25px #39ff1408,0 15px 50px #0009}
+  footer{background:#020304}
+  @media(max-width:760px){header{position:relative;padding:15px 18px}.hero{min-height:75vh;padding:70px 18px}.hero:before{width:330px;height:330px}.hero:after{width:480px;height:480px}.hero p{font-size:16px}.hero h2{font-size:32px}}
+
+
+
+  /* ===== Premium Cyber Notice + Journey ===== */
+  .cyber-notice{position:relative;padding:85px 20px 45px;overflow:hidden;background:linear-gradient(180deg,#030506,#07040d);isolation:isolate}
+  .cyber-notice:before{content:"";position:absolute;inset:-30%;z-index:-3;background:radial-gradient(circle at 20% 30%,#39ff1420,transparent 24%),radial-gradient(circle at 80% 40%,#a855f720,transparent 27%),radial-gradient(circle at 50% 100%,#7c3aed18,transparent 35%);animation:ambientMove 12s ease-in-out infinite alternate}
+  .notice-grid{position:absolute;inset:0;z-index:-2;opacity:.22;background-image:linear-gradient(#7c3aed22 1px,transparent 1px),linear-gradient(90deg,#39ff1422 1px,transparent 1px);background-size:55px 55px;mask-image:linear-gradient(to bottom,transparent,#000 18%,#000 82%,transparent);animation:gridMove 12s linear infinite}
+  .notice-orb{position:absolute;border-radius:50%;filter:blur(8px);opacity:.6;z-index:-1}
+  .notice-orb-1{width:260px;height:260px;right:3%;top:20%;background:#39ff1422;box-shadow:0 0 100px #39ff1455;animation:floatOrb 7s ease-in-out infinite}
+  .notice-orb-2{width:300px;height:300px;left:2%;bottom:0;background:#8b5cf622;box-shadow:0 0 120px #8b5cf655;animation:floatOrb 9s ease-in-out infinite reverse}
+  .notice-card{position:relative;max-width:1100px;margin:0 auto;padding:38px 45px;background:linear-gradient(145deg,rgba(8,12,12,.95),rgba(17,7,28,.96));border:1px solid #7c3aed;border-radius:24px;box-shadow:0 0 0 1px #39ff1420 inset,0 0 25px #7c3aed44,0 0 70px #39ff1415,0 25px 70px #000c;overflow:hidden}
+  .notice-card:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 20%,#39ff1408 40%,transparent 60%);transform:translateX(-120%);animation:scan 6s ease-in-out infinite}
+  .notice-card:after{content:"";position:absolute;inset:8px;border:1px solid #39ff1422;border-radius:18px;pointer-events:none}
+  .notice-top{position:relative;display:flex;align-items:center;justify-content:center;gap:22px;text-align:center;z-index:1}
+  .notice-kicker{display:block;color:#39ff14;font-family:'Orbitron','Cairo',sans-serif;font-size:11px;letter-spacing:2px;margin-bottom:3px;text-shadow:0 0 10px #39ff14}
+  .notice-top h2{font-size:42px;color:#c084fc;text-shadow:0 0 10px #a855f7,0 0 35px #7c3aed;font-weight:900}
+  .notice-icon{width:46px;height:46px;border:2px solid #a855f7;border-radius:12px;display:grid;place-items:center;color:#39ff14;font-size:26px;box-shadow:0 0 18px #a855f755, inset 0 0 15px #39ff1420;animation:pulseGlow 2s ease-in-out infinite}
+  .notice-divider{width:min(620px,90%);height:1px;margin:18px auto 22px;background:linear-gradient(90deg,transparent,#39ff14,#a855f7,transparent);box-shadow:0 0 12px #39ff14}
+  .notice-card h3{text-align:center;color:#39ff14;font-size:25px;margin-bottom:18px;text-shadow:0 0 12px #39ff1466}
+  .notice-card p{position:relative;z-index:1;color:#d9dbe2;line-height:2;text-align:center;font-size:16px}
+  .notice-card strong{color:#ff4d6d;text-shadow:0 0 8px #ff174466}
+  .legal-box{position:relative;margin:25px auto 20px;padding:22px 25px;border-radius:15px;background:linear-gradient(135deg,#100912,#0a0d0e);border:1px solid #ff174466;box-shadow:inset 0 0 30px #ff17440a,0 0 20px #7c3aed15}
+  .legal-title{text-align:center;color:#d8a4ff;font-size:23px;font-weight:900;margin-bottom:8px;text-shadow:0 0 12px #a855f7}
+  .ethics-line{position:relative;z-index:1;margin-top:22px;text-align:center;color:#39ff14;font-size:17px;font-weight:900;text-shadow:0 0 9px #39ff14,0 0 25px #39ff1455}
+  .journey-section{position:relative;min-height:430px;display:flex;align-items:center;justify-content:center;text-align:center;padding:75px 20px;overflow:hidden;background:radial-gradient(ellipse at center bottom,#7c3aed20,transparent 48%),linear-gradient(180deg,#07040d,#020405)}
+  .journey-section:before{content:"";position:absolute;width:620px;height:620px;border:1px solid #7c3aed2e;border-radius:50%;box-shadow:0 0 80px #7c3aed20,inset 0 0 80px #39ff1412;animation:spin 25s linear infinite}
+  .journey-section:after{content:"";position:absolute;left:-10%;right:-10%;bottom:-75px;height:190px;background:radial-gradient(ellipse,#39ff1420 0%,transparent 62%);filter:blur(10px);animation:pulseGlow 4s ease-in-out infinite}
+  .journey-content{position:relative;z-index:2;max-width:800px}
+  .journey-badge{display:inline-block;padding:7px 15px;border:1px solid #39ff1466;border-radius:30px;color:#39ff14;font-family:'Orbitron','Cairo',sans-serif;font-size:11px;letter-spacing:2px;box-shadow:0 0 15px #39ff1420;background:#39ff1408}
+  .journey-content h2{font-size:clamp(36px,5vw,58px);margin:18px 0;color:#fff;text-shadow:0 0 15px #fff2,0 0 35px #7c3aed55}
+  .journey-content h2 span{color:#39ff14;text-shadow:0 0 9px #39ff14,0 0 30px #39ff1466}
+  .journey-content p{max-width:700px;margin:0 auto 30px;color:#cdd0d8;font-size:18px;line-height:2}
+  .journey-btn{display:inline-flex;align-items:center;gap:18px;text-decoration:none;padding:16px 30px;border-radius:13px;background:linear-gradient(135deg,#39ff14,#00c853);box-shadow:0 0 18px #39ff1477,0 0 55px #7c3aed33;color:#031006}
+  .journey-btn b{font-size:25px;line-height:1;transition:.3s}.journey-btn:hover b{transform:translateX(-6px)}
+  @keyframes ambientMove{0%{transform:translate3d(-2%,-1%,0) scale(1)}100%{transform:translate3d(2%,2%,0) scale(1.08)}}
+  @keyframes gridMove{from{background-position:0 0,0 0}to{background-position:0 55px,55px 0}}
+  @keyframes floatOrb{0%,100%{transform:translateY(0) translateX(0)}50%{transform:translateY(-28px) translateX(20px)}}
+  @keyframes scan{0%,55%{transform:translateX(-120%)}75%,100%{transform:translateX(120%)}}
+  @keyframes pulseGlow{0%,100%{filter:brightness(1);transform:scale(1)}50%{filter:brightness(1.35);transform:scale(1.04)}}
+  @media(max-width:700px){.notice-card{padding:30px 18px}.notice-top h2{font-size:34px}.notice-icon{width:40px;height:40px;font-size:22px}.notice-card h3{font-size:21px}.notice-card p{font-size:14px}.journey-content p{font-size:16px}.journey-section:before{width:400px;height:400px}}
+
+  /* Keep the Cobra logo centered inside the hero's animated circle. */
+  .hero > .hero-logo{
+    position:absolute;
+    top:50%;
+    left:50%;
+    translate:-50% -50%;
+    z-index:1;
+    width:min(350px, 68vw);
+    height:min(350px, 68vw);
+    object-fit:contain;
+    opacity:.48;
+    pointer-events:none;
+  }
+  @media(max-width:760px){
+    .hero > .hero-logo{width:min(245px, 68vw);height:min(245px, 68vw);opacity:.42}
+  }
+
+
+  .offer{padding:70px 20px;text-align:center;background:linear-gradient(180deg,var(--black),#12091c)}
+  .offer h2{color:var(--green);font-size:34px;margin-bottom:10px}
+  .offer .sub{color:#aaa;margin-bottom:34px}
+  .offer-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;max-width:1000px;margin:0 auto}
+  .offer-card{width:290px;padding:28px 22px;background:linear-gradient(145deg,#15121e,#1d0f2b);border:1px solid var(--purple-light);border-radius:14px;text-decoration:none;color:#e0e0e0;transition:.3s}
+  .offer-card:hover{border-color:var(--green);transform:translateY(-5px);box-shadow:0 0 22px #39ff1430}
+  .offer-card .ic{font-size:38px;display:block;margin-bottom:10px}
+  .offer-card h3{color:#fff;margin-bottom:8px}
+  .offer-card p{color:#aaa;font-size:14px;line-height:1.8}
+  .offer-card .go{display:block;margin-top:12px;color:var(--green);font-weight:bold;font-size:14px}
+
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+  .btn-ghost{background:transparent;color:#fff;border:1px solid #a855f7;box-shadow:none}
+  .btn-ghost:hover{background:#7c3aed33;color:#fff;border-color:#c084fc}
+  .soon{display:inline-block;margin-top:12px;padding:3px 12px;border:1px dashed #6b5a85;border-radius:20px;color:#b9a8d6;font-size:13px}
+  .offer-card.is-soon{opacity:.78}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+  /* ===== لوحة المتصدرين في الرئيسية ===== */
+  .lbs{position:relative;padding:84px 20px 90px;text-align:center;overflow:hidden;background:linear-gradient(180deg,#12091c,#07050b 60%,#050708)}
+  .lbs:before{content:"";position:absolute;inset:-40% -10% auto;height:120%;background:radial-gradient(ellipse at 50% 0,#ffc83d1c,transparent 55%),radial-gradient(circle at 15% 60%,#7c3aed26,transparent 40%),radial-gradient(circle at 88% 70%,#39ff1412,transparent 38%);animation:lbsAmb 9s ease-in-out infinite alternate;pointer-events:none}
+  .lbs:after{content:"";position:absolute;inset:0;background-image:linear-gradient(#39ff1409 1px,transparent 1px),linear-gradient(90deg,#39ff1409 1px,transparent 1px);background-size:55px 55px;mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent);-webkit-mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent);animation:gridMove 6s linear infinite;pointer-events:none}
+  .lbs-in{position:relative;z-index:1;max-width:880px;margin:0 auto}
+  .lbs-badge{display:inline-block;padding:7px 15px;border:1px solid #ffc83d66;border-radius:30px;color:#ffc83d;font-family:'Orbitron','Cairo',sans-serif;font-size:11px;letter-spacing:2px;background:#ffc83d0d;box-shadow:0 0 18px #ffc83d22;margin-bottom:14px}
+  .lbs h2{font-size:36px;color:#fff;margin-bottom:8px}.lbs h2 span{color:var(--green);text-shadow:0 0 14px #39ff1488}
+  .lbs .sub{color:#aaa;line-height:1.9;margin-bottom:38px}
+  .lbs-podium{display:flex;justify-content:center;align-items:flex-end;gap:14px;margin-bottom:30px;min-height:250px}
+  .lbs-pod{flex:1;max-width:240px;display:flex;flex-direction:column;align-items:center;opacity:0}
+  .lbs-pod .crown{font-size:34px;height:40px;animation:lbsFloat 2.6s ease-in-out infinite;filter:drop-shadow(0 0 10px #ffc83d)}
+  .lbs-pod .crown.e{visibility:hidden;animation:none}
+  .lbs .av{--h:200;width:62px;height:62px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:26px;color:#fff;background:linear-gradient(135deg,hsl(var(--h) 75% 45%),hsl(calc(var(--h) + 50) 80% 35%));border:2px solid #ffffff40;box-shadow:0 0 18px hsl(var(--h) 80% 50% / .45)}
+  .lbs .av.sm{width:40px;height:40px;font-size:18px;border-width:1px}
+  .lbs-pod.p1 .av{width:82px;height:82px;font-size:34px;border-color:#ffc83d;box-shadow:0 0 0 4px #ffc83d22,0 0 30px #ffc83d77;animation:lbsPulse 2.4s ease-in-out infinite}
+  .lbs-pod .nm{font-weight:900;color:#fff;margin:10px 0 2px;max-width:100%;overflow-wrap:anywhere;font-size:16px}
+  .lbs-pod.p1 .nm{font-size:19px;background:linear-gradient(90deg,#ffc83d,#fff3b0,#ffc83d);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:lbsShine 3s linear infinite}
+  .lbs .pts{color:var(--green);font-weight:900}.lbs-pod .pts{margin-bottom:10px;font-size:15px}
+  .lbs-plinth{width:100%;border-radius:14px 14px 0 0;display:grid;place-items:start center;padding-top:12px;font-family:'Orbitron','Cairo',sans-serif;font-weight:800;font-size:26px;transform-origin:bottom;border:1px solid #7c3aed66;border-bottom:0;background:linear-gradient(180deg,#2a1752,#120a22)}
+  .lbs-pod.p1 .lbs-plinth{height:128px;color:#ffc83d;border-color:#ffc83d88;background:linear-gradient(180deg,#4a3a10,#1a1408)}
+  .lbs-pod.p2 .lbs-plinth{height:96px;color:#cfd8dc}.lbs-pod.p3 .lbs-plinth{height:72px;color:#ffab76}
+  .lbs-list{display:grid;gap:10px;text-align:right}
+  .lbs-row{position:relative;overflow:hidden;display:grid;grid-template-columns:38px 40px 1fr auto;align-items:center;gap:12px;padding:11px 16px;border-radius:14px;background:linear-gradient(145deg,#100d19,#150c22);border:1px solid #7c3aed44;opacity:0;transition:transform .25s,border-color .25s,box-shadow .25s}
+  .lbs-row:hover{transform:translateX(-5px) scale(1.01);border-color:var(--green);box-shadow:0 0 22px #39ff1424}
+  .lbs-row:before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 35%,#ffffff12 50%,transparent 65%);transform:translateX(120%);transition:transform .7s}.lbs-row:hover:before{transform:translateX(-120%)}
+  .lbs-row .rk{font-family:'Orbitron','Cairo',sans-serif;color:#8f98a3;font-weight:800;text-align:center}
+  .lbs-row .mid{min-width:0}.lbs-row .nm{display:block;color:#eef2f5;font-weight:800;overflow-wrap:anywhere;margin-bottom:6px}
+  .lbs-row .bar{display:block;height:5px;border-radius:9px;background:#ffffff12;overflow:hidden}.lbs-row .bar u{display:block;height:100%;width:var(--w);border-radius:9px;background:linear-gradient(90deg,#7c3aed,var(--green));transform-origin:right;transform:scaleX(0)}
+  .lbs-row.me{border-color:var(--green);background:linear-gradient(145deg,#0c1a0f,#12081f)}.lbs-row.me .nm:after,.lbs-pod.me .nm:after{content:" (أنت)";color:var(--green);font-size:13px;-webkit-text-fill-color:var(--green)}
+  .lbs-state{padding:34px 20px;border:1px dashed #5b4a78;border-radius:16px;color:#b9c0bc;line-height:1.9}
+  .lbs-sk{display:grid;gap:10px}.lbs-sk i{display:block;height:58px;border-radius:14px;background:linear-gradient(100deg,#120d1d 30%,#201533 50%,#120d1d 70%);background-size:300% 100%;animation:lbsShim 1.4s linear infinite}
+  .lbs-foot{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center}.lbs-note{width:100%;color:#8d9591;font-size:13.5px}
+  .lbs.on .lbs-pod{animation:lbsRise .85s cubic-bezier(.2,.9,.3,1.15) both;animation-delay:calc(var(--i) * .16s)}
+  .lbs.on .lbs-pod .lbs-plinth{animation:lbsGrow .9s cubic-bezier(.2,.9,.3,1) both;animation-delay:calc(var(--i) * .16s + .1s)}
+  .lbs.on .lbs-row{animation:lbsSlide .6s cubic-bezier(.2,.9,.3,1) both;animation-delay:calc(.5s + var(--i) * .07s)}
+  .lbs.on .lbs-row .bar u{animation:lbsBar 1s cubic-bezier(.2,.9,.3,1) both;animation-delay:calc(.7s + var(--i) * .07s)}
+  @keyframes lbsAmb{to{transform:translate3d(3%,4%,0) scale(1.08)}}
+  @keyframes lbsFloat{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-8px) rotate(6deg)}}
+  @keyframes lbsPulse{0%,100%{box-shadow:0 0 0 4px #ffc83d22,0 0 26px #ffc83d66}50%{box-shadow:0 0 0 9px #ffc83d14,0 0 44px #ffc83daa}}
+  @keyframes lbsShine{to{background-position:-200% 0}}
+  @keyframes lbsShim{to{background-position:-300% 0}}
+  @keyframes lbsRise{from{opacity:0;transform:translateY(60px) scale(.85)}to{opacity:1;transform:none}}
+  @keyframes lbsGrow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+  @keyframes lbsSlide{from{opacity:0;transform:translateX(60px)}to{opacity:1;transform:none}}
+  @keyframes lbsBar{to{transform:scaleX(1)}}
+  @media(max-width:600px){.lbs{padding:64px 14px 70px}.lbs h2{font-size:28px}.lbs-podium{gap:8px}.lbs .av{width:48px;height:48px;font-size:21px}.lbs-pod.p1 .av{width:64px;height:64px;font-size:27px}.lbs-pod .nm{font-size:13px}.lbs-pod.p1 .nm{font-size:15px}.lbs-pod .pts{font-size:12.5px}.lbs-plinth{font-size:20px}.lbs-row{grid-template-columns:30px 36px 1fr auto;gap:8px;padding:10px 12px}}
+  @media(prefers-reduced-motion:reduce){.lbs-pod,.lbs-row{opacity:1!important}.lbs-row .bar u{transform:none!important}}
+  @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+  .about-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+  @media(max-width:650px){.about-actions{justify-content:center}}
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" media="print" onload="this.media='all'"><link rel="stylesheet" href="intro.css"><link rel="stylesheet" href="cobra-home.css"><meta name="referrer" content="strict-origin-when-cross-origin"><script src="guard.js"></script>
+</head><body>
+<script src="intro.js"></script>
+<header>
+  <h1>COBRA7</h1>
+  <nav><a href="index.html#home">الرئيسية</a><a href="courses.html">الأكاديمية</a><a href="workshops.html">الورش</a><a href="consulting.html">الاستشارات</a><a href="services.html">الخدمات</a><a href="profile.html">ملفي</a><a href="about.html">عنّا</a><a href="index.html#contact">تواصل</a></nav>
+</header>
+<section class="ch-hero" id="chHero"><a id="home" aria-hidden="true"></a>
+  <div class="ch-spot"></div>
+  <div class="ch-wrap ch-hero-grid">
+    <div>
+      <span class="ch-kick"><i></i>أكاديمية عربية للأمن السيبراني والبرمجة</span>
+      <h2><span class="ln"><span>من الصفر لأول شغل</span></span><span class="ln"><span>في الأمن السيبراني</span></span></h2>
+      <p class="sub">مسارات مرتبة خطوة بخطوة، وتطبيق على لابات حقيقية في بيئات آمنة وقانونية. تبدأ إزاي ووصولك لإيه؟ هتلاقيه تحت.</p>
+      <div class="ch-cta" id="chHeroCta">
+        <a class="ch-btn" data-buy href="courses.html"><span class="l">ابدأ التعلّم الآن</span><small></small></a>
+        <a class="ch-btn ghost" href="lab-01.html">جرّب لاب مجاني (5 دقايق)</a>
+      </div>
+      <p class="ch-micro">اللابات شغالة دلوقتي ومش محتاجة تسجيل. <b>جرّب قبل ما تقرر.</b></p>
+    </div>
+    <div class="ch-term" aria-hidden="true"><div class="ch-term-bar"><i></i><i></i><i></i><span>cobra7 : ~</span></div><div class="ch-term-body" id="chTermBody"></div></div>
+  </div>
+</section>
+<div class="ch-stats"><div class="ch-stats-in" id="chStats"></div></div>
+<section class="ch-sec" id="outcomes"><div class="ch-wrap">
+  <h2 class="ch-h">الشغل اللي هتقدر تعمله بعد الكورس</h2>
+  <p class="ch-lead">اختار الدور اللي يشدك، وشوف هتعمل إيه فيه بالظبط، وأنهي كورسات بتوصّلك له.</p>
+  <div class="ch-roles" id="chRoles"></div>
+  <p class="ch-note">ده المسار اللي بيجهّزك للدور، مش ضمان توظيف. الشغل بيعتمد على مجهودك وعلى السوق.</p>
+</div></section>
+<section class="ch-sec ch-road" id="roadmap"><div class="ch-wrap" id="chRoad">
+  <h2 class="ch-h">مش عارف تبدأ منين؟ حدد مكانك</h2>
+  <p class="ch-lead">جاوب على سؤالين، والخريطة تقولك أنت فين وإيه الخطوة الجاية.</p>
+  <div class="ch-q"><h3>أنت فين دلوقتي؟</h3><div class="ch-chips" id="chLevels"></div></div>
+  <div class="ch-q"><h3>عايز توصل لإيه؟</h3><div class="ch-chips" id="chGoals"></div></div>
+  <div class="ch-road-grid"><ol class="ch-path" id="chPath" aria-live="polite"></ol><aside class="ch-side" id="chSide"></aside></div>
+</div></section>
+<section class="ch-sec" id="try"><div class="ch-wrap">
+  <h2 class="ch-h">جرّب قبل ما تبدأ</h2>
+  <p class="ch-lead">دي لابات حقيقية شغالة دلوقتي. افتح أي واحد وحلّه في دقايق، من غير حساب ولا دفع.</p>
+  <div class="ch-labs" id="chLabs"></div>
+  <div class="ch-after"><span>وأول فيديو في كل كورس هيكون مجاني للمعاينة أول ما يتنزّل.</span><a class="ch-btn ghost" href="workshops.html">شوف كل اللابات</a></div>
+</div></section>
+<section class="ch-sec ch-proof" id="chProof" hidden><div class="ch-wrap">
+  <h2 class="ch-h">اللي اتعلموا معانا بيقولوا إيه</h2>
+  <div id="chProofBody"></div>
+  <p style="margin-top:22px"><a class="ch-btn ghost" href="about.html#reviews">اكتب تقييمك</a></p>
+</div></section>
+<section class="ch-sec ch-gift" id="gift"><div class="ch-wrap ch-gift-grid">
+  <div class="ch-doc" aria-hidden="true"><b>Linux<br>Cheat Sheet</b><code>$ ls -la</code><code>$ grep -r "pass" .</code><code>$ chmod 640 file</code><i></i><i></i><i></i><code>$ ss -tulpn</code><i></i><i></i></div>
+  <div>
+    <h2 class="ch-h">هدية: ورقة أوامر لينكس للمبتدئين</h2>
+    <p class="ch-lead">30 أمر هتستخدمهم كل يوم في الأمن السيبراني، متقسمين ومشروحين في ملف PDF جاهز للطباعة. سيب إيميلك وهتتنزل فورًا. وبعدها هنبعتلك كورسات جديدة وعروض.</p>
+    <form class="ch-form" id="chGift" novalidate>
+      <label class="t" for="chMail">إيميلك</label>
+      <div class="ch-field"><input id="chMail" type="email" autocomplete="email" inputmode="email" placeholder="name@example.com" required><button class="ch-btn" type="submit">نزّل الـPDF</button></div>
+      <div class="ch-hp" aria-hidden="true"><input type="text" tabindex="-1" autocomplete="off" name="website"></div>
+      <label class="ch-chk"><input type="checkbox"><span>موافق أستلم من Cobra7 كورسات جديدة وعروض على الإيميل. أقدر ألغي الاشتراك في أي وقت.</span></label>
+      <div class="ch-msg" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</div></section>
+<section class="offer" id="offer">
+  <h2>ماذا نقدم في Cobra7؟</h2>
+  <p class="sub">الأكاديمية والورش والاستشارات والخدمات متاحين الآن</p>
+  <div class="offer-grid">
+    <a class="offer-card" href="courses.html"><span class="ic">🎓</span><h3>الأكاديمية</h3><p>كورسات أمن سيبراني وبرمجة من الصفر للاحتراف بمسار منظم.</p><span class="go">استكشف الكورسات ←</span></a>
+    <a class="offer-card" href="workshops.html"><span class="ic">🧪</span><h3>ورش ولابات عملية</h3><p>لابات من TryHackMe وPortSwigger وHack The Box وغيرهم، بشرح مبسط وفايدة كل لاب.</p><span class="go">استكشف اللابات ←</span></a>
+    <a class="offer-card" href="consulting.html"><span class="ic">🧑‍🏫</span><h3>الاستشارات والدروس الخاصة</h3><p>دروس خاصة 1:1 في الأمن والبرمجة، واستشارات أمنية وتقنية وتوجيه مهني، وتواصل مباشر على تليجرام.</p><span class="go">احجز جلستك ←</span></a>
+    <a class="offer-card" href="services.html"><span class="ic">💻</span><h3>الخدمات</h3><p>تصميم وتطوير مواقع ومتاجر وتطبيقات ويب، وفحص وتأمين الأنظمة.</p><span class="go">استكشف الخدمات ←</span></a>
+  </div>
+</section>
+<section class="lbs" id="leaderboard" aria-labelledby="lbsT">
+  <div class="lbs-in">
+    <span class="lbs-badge">LEADERBOARD</span>
+    <h2 id="lbsT">🏆 لوحة <span>المتصدرين</span></h2>
+    <p class="sub">أفضل المتعلمين في أكاديمية Cobra7. كل فيديو بتخلصه بـ 10 نقاط، وكل لاب بتحله بـ 50 نقطة.</p>
+    <div id="lbHome" aria-live="polite"><div class="lbs-sk"><i></i><i></i><i></i><i></i></div></div>
+    <div class="lbs-foot"><a class="btn btn-ghost" href="leaderboard.html">عرض اللوحة كاملة ←</a><p class="lbs-note">الأسماء هي اللي اختارها أصحابها وقت التسجيل. فعّل إيميلك عشان تظهر هنا.</p></div>
+  </div>
+</section>
+<section class="about" id="about">
+  <h2>عن المؤسس والشركة</h2>
+  <div class="about-card">
+  <img src="islam-cobra.jpg" alt="المطور إسلام علي محمود شمس الدين" class="profile-photo">
+    <div><h3>المؤسس: إسلام علي محمود شمس الدين</h3><div class="role"><h4>الشهرة: كوبرا</h4></div>
+    <p>Cobra7 أكاديمية تقنية بتقدم تعليم الأمن السيبراني والبرمجة بشكل عملي ومنظم. هدفنا نأهل الشباب لسوق العمل، وهنضيف خدمات تطوير المواقع والاستشارات الأمنية تدريجيًا.</p>
+    <div class="about-actions"><a class="btn" data-tg href="https://t.me/cobra7_com" target="_blank" rel="noopener noreferrer">✈ انضم لجروب التليجرام</a><a class="btn btn-ghost" href="about.html">خبراتي وإنجازاتي ←</a></div></div>
+  </div>
+</section>
+<section class="cyber-notice" id="notice">
+  <div class="notice-orb notice-orb-1"></div>
+  <div class="notice-orb notice-orb-2"></div>
+  <div class="notice-grid"></div>
+  <div class="notice-card">
+    <div class="notice-top">
+      <span class="notice-icon">⚠</span>
+      <div>
+        <span class="notice-kicker">COBRA • SECURITY AWARENESS</span>
+        <h2>تنبيه</h2>
+      </div>
+      <span class="notice-icon">⚠</span>
+    </div>
+    <div class="notice-divider"></div>
+    <h3>للأغراض التعليمية فقط</h3>
+    <p>جميع المحتويات والتقنيات والأدوات والموارد المتوفرة على هذه المنصة مخصصة <strong>للأغراض التعليمية والبحثية</strong> فقط. تهدف هذه المواد إلى مساعدة متخصصي الأمن والطلاب والمخترقين الأخلاقيين على تحسين مهاراتهم ومعارفهم في مجال الأمن السيبراني.</p>
+    <div class="legal-box">
+      <div class="legal-title">إشعار قانوني</div>
+      <p><strong>لا</strong> تستخدم هذه الأساليب ضد أنظمة لا تملكها أو لا تملك <strong>تفويضًا كتابيًا صريحًا</strong> لاختبارها. يُعدّ الوصول غير المصرح به إلى أنظمة الحاسوب غير قانوني ويعاقب عليه القانون في معظم الدول. يتحمل المستخدمون وحدهم مسؤولية أفعالهم. لا يتحمل منشئو هذه المنصة والقائمون على صيانتها أي مسؤولية عن إساءة استخدام هذه المعلومات.</p>
+    </div>
+    <div class="ethics-line">🛡️ احرص دائمًا على اتباع أساليب القرصنة الأخلاقية والحصول على التفويض اللازم! 🛡️</div>
+  </div>
+</section>
+
+<section class="about" id="contact">
+  <h2>تواصل معنا</h2>
+  <p>تابع Cobra7 على منصات التواصل الاجتماعي، أو كلمنا على تيليجرام لأي استفسار.</p>
+  <div class="contact-grid">
+    <a class="social-link" href="https://www.youtube.com/@cobra_security7" target="_blank" rel="noopener noreferrer">▶ يوتيوب</a>
+    <a class="social-link" href="https://t.me/cobra7_com" target="_blank" rel="noopener noreferrer">✈ تيليجرام</a>
+    <a class="social-link" href="https://www.instagram.com/cobra7_com">◎ إنستجرام</a>
+  </div>
+</section>
+<footer><p>&copy; 2026 Cobra7. جميع الحقوق محفوظة.</p></footer>
+<script src="academy-data.js"></script><script src="about-data.js"></script><script src="reviews-data.js"></script><script src="cobra-shared.js"></script>
+<script>
+document.querySelectorAll("[data-tg]").forEach(a=>{if(SITE.telegramGroup)a.href=SITE.telegramGroup});
+</script>
+<div class="ch-sticky" id="chSticky"><a class="ch-btn" data-buy href="courses.html"><span class="l">ابدأ التعلّم الآن</span></a><span class="pr" id="chStickyPrice"></span></div>
+<script src="cobra-home.js"></script>
+<script src="firebase-config.js"></script>
+<script type="module" src="auth.js"></script>
+<script type="module">
+const box=document.getElementById("lbHome"),sec=document.getElementById("leaderboard");
+const esc=x=>String(x==null?"":x).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const hue=n=>{let h=0;for(const c of String(n))h=(h*31+c.codePointAt(0))%360;return h};
+const ini=n=>esc([...String(n||"?").trim()][0]||"?").toUpperCase();
+const still=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const state=t=>{box.innerHTML='<div class="lbs-state">'+t+'</div>'};
+let ready=false,seen=false,counted=false;
+function count(){
+  if(counted||!ready||!seen)return;counted=true;
+  box.querySelectorAll("[data-n]").forEach(el=>{
+    const to=+el.dataset.n;if(still||!to){el.textContent=to;return}
+    const t0=performance.now(),d=1200;
+    const step=t=>{const p=Math.min(1,(t-t0)/d),e=1-Math.pow(1-p,3);el.textContent=Math.round(to*e);if(p<1)requestAnimationFrame(step)};
+    requestAnimationFrame(step);
+  });
+}
+if("IntersectionObserver"in window){
+  new IntersectionObserver((es,ob)=>{if(es.some(e=>e.isIntersecting)){sec.classList.add("on");seen=true;count();ob.disconnect()}},{threshold:.18}).observe(sec);
+}else{sec.classList.add("on");seen=true}
+function build(rows,uid){
+  const medal=["🥇","🥈","🥉"],top=rows.slice(0,3),max=rows[0].points||1;
+  const slots=[1,0,2].filter(i=>i<top.length);
+  let h='<div class="lbs-podium">'+slots.map(i=>{const r=top[i];
+    return '<div class="lbs-pod p'+(i+1)+(r.id===uid?' me':'')+'" style="--i:'+(i===0?2:i===1?0:1)+'"><div class="crown'+(i?' e':'')+'">👑</div><div class="av" style="--h:'+hue(r.name)+'">'+ini(r.name)+'</div><div class="nm">'+esc(r.name)+'</div><div class="pts"><b data-n="'+(+r.points||0)+'">0</b> نقطة '+medal[i]+'</div><div class="lbs-plinth"><span>'+(i+1)+'</span></div></div>'}).join("")+'</div>';
+  const rest=rows.slice(3,10);
+  if(rest.length)h+='<div class="lbs-list">'+rest.map((r,k)=>'<div class="lbs-row'+(r.id===uid?' me':'')+'" style="--i:'+k+'"><span class="rk">'+(k+4)+'</span><span class="av sm" style="--h:'+hue(r.name)+'">'+ini(r.name)+'</span><div class="mid"><span class="nm">'+esc(r.name)+'</span><i class="bar"><u style="--w:'+Math.max(4,Math.round((r.points/max)*100))+'%"></u></i></div><span class="pts"><b data-n="'+(+r.points||0)+'">0</b> ⭐</span></div>').join("")+'</div>';
+  box.innerHTML=h;ready=true;count();
+}
+const CA=window.CobraAuth;
+if(!CA||!CA.enabled){state("لوحة المتصدرين هتتفعل قريبًا مع الحسابات. 🚀")}
+else{
+  try{
+    const api=await CA.ready;
+    if(!api){state("مقدرناش نحمّل اللوحة دلوقتي. جرّب تحدّث الصفحة بعد شوية.")}
+    else{
+      const {F,db,auth}=api;
+      const snap=await F.getDocs(F.query(F.collection(db,"leaderboard"),F.orderBy("points","desc"),F.limit(10)));
+      const rows=snap.docs.map(d=>({id:d.id,...d.data()})).filter(r=>r.points>0);
+      if(!rows.length){state('لسه مفيش متصدرين. كن أول واحد! 💪<br><button class="btn" id="lbGo" style="margin-top:14px">سجّل واتعلّم</button>');document.getElementById("lbGo").onclick=()=>auth.currentUser?location.href="courses.html":api.open("up")}
+      else{
+        let uid=null;try{await new Promise(r=>{const u=auth.onAuthStateChanged(x=>{uid=x&&x.uid;u();r()})})}catch(e){}
+        build(rows,uid);
+      }
+    }
+  }catch(e){console.warn(e);state("مقدرناش نحمّل اللوحة دلوقتي. جرّب تحدّث الصفحة بعد شوية.")}
+}
+</script>
+</body></html>

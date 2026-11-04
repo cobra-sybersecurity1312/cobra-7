@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>ملفي الشخصي | Cobra7</title>
+<meta name="description" content="تقدمك في أكاديمية Cobra7: نقاطك ومستواك والشارات اللي جمعتها واللابات اللي حليتها.">
+<meta name="theme-color" content="#030506">
+<link rel="icon" href="cobra-logo.jpg">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap"></noscript>
+<script src="guard.js"></script>
+<style>
+:root{--bg:#030506;--panel:#0a0e0c;--line:#1d2a22;--g:#39ff14;--p:#a855f7;--amber:#ffc83d;--mute:#9aa6a0;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo','Segoe UI',Tahoma,sans-serif}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:#eef2f5;min-height:100vh;overflow-x:hidden}
+header{position:sticky;top:0;z-index:100;background:rgba(3,5,6,.85);backdrop-filter:blur(14px);padding:16px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;border-bottom:1px solid #39ff1455}
+header h1{font-size:24px;letter-spacing:2px;color:#fff;text-shadow:0 0 8px #39ff14,0 0 25px #39ff1466}
+nav{display:flex;flex-wrap:wrap;gap:22px;align-items:center}
+nav a{color:#d9d9e8;text-decoration:none;font-weight:700;font-size:17px;padding:6px 2px;border-bottom:2px solid transparent;transition:.2s}
+nav a:hover,nav a.on{color:#fff;border-color:var(--g)}
+.wrap{max-width:980px;margin:0 auto;padding:44px 20px 90px}
+a:focus-visible,button:focus-visible{outline:2px solid #fff;outline-offset:3px}
+
+.me{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center;padding-bottom:30px;border-bottom:1px solid var(--line)}
+.av{width:96px;height:96px;border-radius:50%;display:grid;place-items:center;font-size:40px;font-weight:900;color:#fff;background:linear-gradient(135deg,hsl(var(--h,150) 70% 40%),hsl(calc(var(--h,150) + 50) 75% 30%));border:3px solid #ffffff30}
+.me h2{font-size:clamp(24px,4vw,34px);font-weight:900;overflow-wrap:anywhere}
+.lv{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:6px;color:#c3cbc6}
+.lv b{color:var(--amber);font-size:19px}
+.rank[hidden]{display:none}
+.rank{display:inline-block;padding:3px 12px;border:1px solid #39ff1455;border-radius:20px;color:var(--g);font-size:13.5px;font-weight:800}
+.xp{margin-top:18px}
+.xp-top{display:flex;justify-content:space-between;gap:10px;font-size:14.5px;color:var(--mute);margin-bottom:8px}
+.xp-top b{color:var(--g);font-family:var(--mono);direction:ltr}
+.bar{height:10px;border-radius:10px;background:#16201a;overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:10px;background:linear-gradient(90deg,#7c3aed,var(--g));transition:width 1.1s cubic-bezier(.3,.7,.2,1)}
+
+.guest{display:none;margin-top:26px;padding:18px 20px;border:1px dashed #5b4a78;border-radius:12px;color:#d6c9ea;line-height:1.9;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.guest.on{display:flex}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:10px 24px;border-radius:10px;border:1px solid #8aff72;background:var(--g);color:#031006;font-weight:900;font-size:16px;text-decoration:none;cursor:pointer;font-family:inherit}
+.btn.ghost{background:transparent;color:#fff;border-color:#4b3a6b}
+.btn:hover{filter:brightness(1.08)}
+
+.nums{display:grid;grid-template-columns:repeat(4,1fr);margin:30px 0 46px;border-block:1px solid var(--line)}
+.num{padding:22px 10px;text-align:center;border-inline-start:1px solid var(--line)}
+.num:first-child{border-inline-start:0}
+.num b{display:block;font:800 clamp(26px,4vw,36px)/1.1 var(--mono);color:#fff;direction:ltr}
+.num span{display:block;margin-top:6px;color:var(--mute);font-size:14px}
+
+h3.sec{font-size:22px;font-weight:900;margin-bottom:6px}
+p.sec{color:var(--mute);margin-bottom:22px;line-height:1.8}
+.badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;margin-bottom:50px}
+.badge{position:relative;padding:20px 14px;border:1px solid var(--line);border-radius:14px;text-align:center;background:var(--panel)}
+.badge .ic{font-size:34px;display:block;margin-bottom:8px}
+.badge b{display:block;font-size:15.5px}
+.badge small{display:block;margin-top:5px;color:var(--mute);font-size:12.5px;line-height:1.6}
+.badge.got{border-color:#39ff1466;background:linear-gradient(160deg,#0d1a10,#0a0e0c)}
+.badge.lock{opacity:.5}
+.badge.lock .ic{filter:grayscale(1)}
+.badge.new{animation:pop .9s cubic-bezier(.2,1.4,.3,1)}
+.badge.new:after{content:"جديدة";position:absolute;top:-9px;inset-inline-start:10px;background:var(--amber);color:#201600;font-size:11.5px;font-weight:900;padding:2px 9px;border-radius:20px}
+@keyframes pop{0%{transform:scale(.7);box-shadow:0 0 0 0 #ffc83d99}60%{transform:scale(1.06);box-shadow:0 0 0 14px #ffc83d00}100%{transform:none}}
+
+.labs{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:30px}
+.lab{display:grid;grid-template-columns:34px 1fr auto;gap:14px;align-items:center;padding:15px 18px;border-bottom:1px solid var(--line);background:var(--panel);text-decoration:none;color:inherit}
+.lab:last-child{border-bottom:0}
+.lab:hover{background:#0f1612}
+.lab .ck{width:26px;height:26px;border-radius:50%;border:2px solid #34423a;display:grid;place-items:center;font-size:14px;color:#031006}
+.lab.done .ck{background:var(--g);border-color:var(--g)}
+.lab b{font-size:16px}
+.lab small{display:block;color:var(--mute);font-size:13px;margin-top:2px}
+.lab .pt{font:700 14px var(--mono);color:var(--amber);direction:ltr}
+.lab.done .pt{color:var(--g)}
+.next{margin-bottom:46px;padding:22px;border:1px solid #39ff1455;border-radius:14px;background:linear-gradient(135deg,#0b160e,#0a0e0c);display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}
+.next h4{font-size:15px;color:var(--mute);font-weight:700;margin-bottom:4px}
+.next b{font-size:20px}
+.foot{color:#6f7a74;font-size:13.5px;line-height:1.9;margin-top:10px}
+@media(max-width:760px){header{padding:10px 14px;gap:6px 10px}header h1{font-size:19px}header nav{order:3;width:100%;flex-wrap:nowrap;overflow-x:auto;gap:16px;scrollbar-width:none}header nav::-webkit-scrollbar{display:none}header nav a{white-space:nowrap;font-size:15px}
+  .me{grid-template-columns:1fr;text-align:center;justify-items:center}.lv{justify-content:center}.xp{width:100%}
+  .nums{grid-template-columns:repeat(2,1fr)}.num:nth-child(odd){border-inline-start:0}.num:nth-child(n+3){border-top:1px solid var(--line)}
+  .guest{text-align:center;justify-content:center}.next .btn{width:100%}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header><h1>COBRA7</h1>
+<nav><a href="index.html#home">الرئيسية</a><a href="courses.html">الأكاديمية</a><a href="workshops.html">الورش</a><a href="leaderboard.html">المتصدرين</a><a href="profile.html" class="on" aria-current="page">ملفي</a><a href="index.html#contact">تواصل</a></nav>
+</header>
+<main class="wrap">
+  <section class="me" aria-label="ملخص الحساب">
+    <div class="av" id="av" aria-hidden="true">؟</div>
+    <div>
+      <h2 id="nm">طالب Cobra7</h2>
+      <div class="lv"><span>المستوى <b id="lvNo">1</b></span><span id="lvName">مستجد</span><span class="rank" id="rank" hidden></span></div>
+      <div class="xp"><div class="xp-top"><span id="xpTxt">جاري الحساب...</span><b id="xpPts">0</b></div><div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="bar"><i id="barI"></i></div></div>
+    </div>
+  </section>
+
+  <div class="guest" id="guest"><span>تقدمك محفوظ على الجهاز ده بس. سجّل حساب عشان يتحفظ وتدخل منافسة المتصدرين.</span><button class="btn" type="button" id="guestBtn">سجّل حساب مجاني</button></div>
+
+  <div class="nums">
+    <div class="num"><b id="nPts">0</b><span>نقطة</span></div>
+    <div class="num"><b id="nVid">0</b><span>فيديو خلّصته</span></div>
+    <div class="num"><b id="nLab">0/8</b><span>لاب اتحل</span></div>
+    <div class="num"><b id="nBad">0</b><span>شارة</span></div>
+  </div>
+
+  <div class="next" id="next" hidden><div><h4>اللاب الجاي ليك</h4><b id="nextT"></b></div><a class="btn" id="nextA" href="workshops.html">افتح اللاب</a></div>
+
+  <h3 class="sec">الشارات</h3>
+  <p class="sec">كل شارة ليها شرط واضح. اللي لسه مقفولة مكتوب تحتها تعمل إيه.</p>
+  <div class="badges" id="badges"></div>
+
+  <h3 class="sec">لابات كوبرا</h3>
+  <p class="sec">كل لاب بتحله بيزوّد 50 نقطة.</p>
+  <div class="labs" id="labs"></div>
+  <p class="foot">النقاط: 10 لكل فيديو تخلّصه، و50 لكل لاب. نفس النقاط بتتحسب في لوحة المتصدرين.</p>
+</main>
+
+<script src="cobra-shared.js"></script>
+<script>
+(function(){
+  var $=function(i){return document.getElementById(i)};
+  var esc=function(x){return String(x==null?'':x).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})};
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var userName=null, firstRender=true;
+  function hue(n){var h=0;String(n).split('').forEach(function(c){h=(h*31+c.codePointAt(0))%360});return h}
+  function seen(){try{var r=localStorage.getItem('cobra7_badges_seen');return r===null?null:JSON.parse(r)}catch(e){return null}}
+  function render(){
+    var s=CobraProgress.state(), name=userName||'طالب Cobra7';
+    $('nm').textContent=name; $('av').textContent=Array.from(name.trim())[0]||'؟'; $('av').style.setProperty('--h',hue(name));
+    $('lvNo').textContent=s.levelNo; $('lvName').textContent=s.level.name;
+    $('xpPts').textContent=s.points+(s.next?' / '+s.next.xp:'');
+    $('xpTxt').textContent=s.next?('باقي '+s.toNext+' نقطة وتبقى "'+s.next.name+'"'):'وصلت لأعلى مستوى. كوبرا الحقيقي!';
+    var bar=$('bar'); bar.setAttribute('aria-valuenow',s.pct);
+    requestAnimationFrame(function(){requestAnimationFrame(function(){$('barI').style.width=s.pct+'%'})});
+    $('nPts').textContent=s.points; $('nVid').textContent=s.videos; $('nLab').textContent=s.labsDone.length+'/'+CobraProgress.LABS.length;
+    var got=s.badges.filter(function(b){return b.got}); $('nBad').textContent=got.length;
+    var old=seen(), fresh=old===null?[]:got.filter(function(b){return old.indexOf(b.id)<0}).map(function(b){return b.id});
+    $('badges').innerHTML=s.badges.map(function(b){
+      return '<div class="badge '+(b.got?'got':'lock')+(fresh.indexOf(b.id)>=0?' new':'')+'"><span class="ic" aria-hidden="true">'+b.icon+'</span><b>'+esc(b.title)+'</b><small>'+(b.got?'اتفتحت':esc(b.hint))+'</small></div>';
+    }).join('');
+    try{localStorage.setItem('cobra7_badges_seen',JSON.stringify(got.map(function(b){return b.id})))}catch(e){}
+    var done={}; s.labsDone.forEach(function(l){done[l.id]=1});
+    $('labs').innerHTML=CobraProgress.LABS.map(function(l){var d=done[l.id];
+      return '<a class="lab'+(d?' done':'')+'" href="'+l.file+'"><span class="ck" aria-hidden="true">'+(d?'✓':'')+'</span><span><b>لاب '+l.id.slice(-2).replace(/^0/,'')+': '+esc(l.title)+'</b><small>'+esc(l.level)+' · '+esc(l.cat)+'</small></span><span class="pt">'+(d?'+50 ✓':'+50')+'</span></a>';
+    }).join('');
+    var nx=$('next'); if(s.labNext){nx.hidden=false;$('nextT').textContent='لاب '+s.labNext.id.slice(-2).replace(/^0/,'')+': '+s.labNext.title;$('nextA').href=s.labNext.file}else{nx.hidden=true}
+    firstRender=false;
+  }
+  render();
+  window.addEventListener('storage',render);
+  window.addEventListener('cobra:synced',render);
+  window.addEventListener('pageshow',function(e){if(e.persisted)render()});
+
+  /* الحساب والترتيب (لو Firebase متفعّل) */
+  function boot(){
+  var CA=window.CobraAuth;
+  function showGuest(){ $('guest').classList.add('on'); $('guestBtn').onclick=function(){ if(CA&&CA.enabled&&CA.open){CA.open('up')} else { $('guest').classList.remove('on') } }; }
+  if(!CA||!CA.enabled){ return; /* من غير حسابات: التقدم محلي بس، فمفيش بانر تسجيل */ }
+  {
+    CA.ready.then(function(api){
+      if(!api){return showGuest()}
+      api.auth.onAuthStateChanged(function(u){
+        if(!u){userName=null;showGuest();render();return}
+        $('guest').classList.remove('on');
+        userName=String(u.displayName||(u.email||'').split('@')[0]||'مستخدم').slice(0,30); render();
+        var F=api.F,db=api.db;
+        F.getDocs(F.query(F.collection(db,'leaderboard'),F.orderBy('points','desc'),F.limit(100))).then(function(snap){
+          var i=snap.docs.findIndex(function(d){return d.id===u.uid}), r=$('rank');
+          if(i>=0){r.textContent='الترتيب #'+(i+1)+' في المتصدرين';r.hidden=false}
+          else if(!u.emailVerified){r.textContent='فعّل إيميلك عشان تظهر في المتصدرين';r.hidden=false}
+        }).catch(function(){});
+      });
+    }).catch(showGuest);
+  }
+  }
+  window.addEventListener('DOMContentLoaded',boot);
+})();
+</script>
+<script src="firebase-config.js"></script>
+<script type="module" src="auth.js"></script>
+</body></html>

@@ -1,0 +1,41 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn()  { return request.auth != null; }
+    function owner(uid)  { return signedIn() && request.auth.uid == uid; }
+    function verified()  { return signedIn() && request.auth.token.email_verified == true; }
+    function goodName(n) { return n is string && n.size() >= 1 && n.size() <= 30; }
+
+    // بيانات المستخدم الخاصة: بيقراها ويكتبها صاحبها بس
+    match /users/{uid} {
+      allow read: if owner(uid);
+      allow create, update: if owner(uid)
+        && request.resource.data.keys().hasOnly(['name', 'watched', 'labs', 'updatedAt'])
+        && goodName(request.resource.data.name)
+        && request.resource.data.get('labs', {}) is map
+        && request.resource.data.get('labs', {}).keys().hasOnly(['cobra-lab-01','cobra-lab-02','cobra-lab-03','cobra-lab-04','cobra-lab-05','cobra-lab-06','cobra-lab-07','cobra-lab-08'])
+        && request.resource.data.watched is map
+        && request.resource.data.watched.size() <= 1000
+        && request.resource.data.updatedAt == request.time;
+      allow delete: if owner(uid);
+    }
+
+    // لوحة المتصدرين: القراءة للكل، والكتابة لصاحب الحساب المفعّل بس،
+    // والنقاط لازم تساوي 10 × عدد الفيديوهات + 50 × عدد لابات Cobra7 المسجّلة (ومعرّفات اللابات المسموحة متحددة هنا). لو ضفت لاب جديد ضيف معرّفه في قايمة labs
+    match /leaderboard/{uid} {
+      allow read: if true;
+      allow create, update: if owner(uid) && verified()
+        && request.resource.data.keys().hasOnly(['name', 'points', 'updatedAt'])
+        && goodName(request.resource.data.name)
+        && request.resource.data.points is int
+        && request.resource.data.points == getAfter(/databases/$(database)/documents/users/$(uid)).data.watched.size() * 10
+                                       + getAfter(/databases/$(database)/documents/users/$(uid)).data.get('labs', {}).size() * 50
+        && request.resource.data.updatedAt == request.time;
+      allow delete: if owner(uid);
+    }
+
+    // أي حاجة تانية ممنوعة
+    match /{document=**} { allow read, write: if false; }
+  }
+}

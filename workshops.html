@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin"><script src="guard.js"></script>
+<title>الورش واللابات العملية | Cobra7</title>
+<meta name="description" content="لابات وورش عملية في الأمن السيبراني والبرمجة من منصات موثوقة (TryHackMe, PortSwigger, Hack The Box, OverTheWire, picoCTF, Coddy) مع شرح مبسط وفايدة كل لاب.">
+<meta name="theme-color" content="#030506"><link rel="icon" href="cobra-logo.jpg">
+<style>
+:root{--green:#39ff14;--purple:#7c3aed;--purple2:#a855f7;--muted:#a9b0ac}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,sans-serif}
+html{scroll-behavior:smooth}body{background:#030506;color:#eef2f5;min-height:100vh;display:flex;flex-direction:column}
+header{position:sticky;top:0;z-index:50;background:rgba(3,5,6,.85);backdrop-filter:blur(14px);padding:17px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-bottom:1px solid #39ff1455}
+header h1{font-size:24px;color:#fff;letter-spacing:2px;text-shadow:0 0 8px #39ff14,0 0 24px #39ff1466}
+nav{display:flex;flex-wrap:wrap;gap:22px}nav a{color:#d9d9e8;text-decoration:none;font-weight:800;font-size:17px;transition:.3s}nav a:hover,nav a.on{color:var(--green)}
+main{flex:1;padding:50px 20px 70px;background:radial-gradient(ellipse at 50% 0,#7c3aed22,transparent 55%)}.wrap{max-width:1100px;margin:0 auto}
+h2{text-align:center;font-size:40px;margin-bottom:10px}h2 span{color:var(--green);text-shadow:0 0 12px #39ff1488}
+.sub{text-align:center;color:var(--muted);line-height:1.9;max-width:760px;margin:0 auto 26px}
+.warn{max-width:860px;margin:0 auto 28px;padding:14px 18px;border:1px solid #ffc83d66;background:#ffc83d10;border-radius:12px;color:#f1deaa;line-height:1.8;font-size:14.5px}
+.plats{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:22px}
+.plats a{padding:8px 16px;border-radius:999px;border:1px solid #39ff1455;background:#0b0f0c;color:#e8eee9;text-decoration:none;font-weight:800;font-size:14px;transition:.2s}.plats a:hover{border-color:var(--green);color:var(--green)}
+.filters{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center;margin-bottom:10px}
+.fg{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:6px 8px;border:1px solid #2a2440;border-radius:12px}.fg small{color:var(--muted);margin:0 6px}
+.chip{padding:7px 14px;border-radius:999px;border:1px solid #33433a;background:#070908;color:#cfd5d1;font-weight:800;font-size:13.5px;cursor:pointer;font-family:inherit}.chip:hover{border-color:var(--green)}.chip.on{background:#39ff1418;border-color:var(--green);color:var(--green)}
+.count{text-align:center;color:var(--muted);font-size:14px;margin:10px 0 24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:18px}
+.lab{display:flex;flex-direction:column;background:linear-gradient(145deg,#0d110e,#10081a);border:1px solid #7c3aed66;border-radius:18px;padding:22px;position:relative;transition:.25s}
+.lab:hover{border-color:var(--purple2);transform:translateY(-4px);box-shadow:0 10px 36px #7c3aed26}
+.lab.done{border-color:#39ff1488}
+.step{position:absolute;top:14px;left:16px;color:#7f8a85;font-weight:900;font-size:13px}
+.top{display:flex;align-items:center;gap:10px;margin-bottom:10px}.top .ic{font-size:28px}.top .pl{font-weight:900;color:#d9d9e8}.top .tp{color:var(--muted);font-size:13px}
+.lab h3{font-size:19px;line-height:1.5;margin-bottom:10px;color:#fff}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}.b{padding:3px 11px;border-radius:999px;font-size:12px;font-weight:800;border:1px solid #3a3f3c;color:#cfd5d1}
+.b.free{border-color:#39ff1488;color:#39ff14}.b.fm{border-color:#ffc83d88;color:#ffc83d}.b.paid{border-color:#ff6b8188;color:#ff7b92}
+.lab h4{color:var(--green);font-size:14px;margin:10px 0 4px}.lab p{color:#b9c0bc;line-height:1.85;font-size:14.5px}
+.lab ul{list-style:none;display:grid;gap:6px;margin-top:2px}.lab li{color:#d4d9d6;font-size:14.5px;line-height:1.7;padding-right:22px;position:relative}.lab li:before{content:"✓";position:absolute;right:0;color:var(--green);font-weight:900}
+.pre{margin-top:12px;padding:9px 12px;border-radius:10px;background:#0a0b10;border:1px dashed #3a3552;color:#aab;font-size:13px;line-height:1.7}
+.meta{color:var(--muted);font-size:13px;margin-top:10px}
+.act{margin-top:auto;padding-top:16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.go{display:inline-block;padding:11px 20px;border-radius:10px;font-weight:900;text-decoration:none;background:linear-gradient(135deg,var(--green),#12c94b);color:#031006;font-size:15px;transition:.2s}.go:hover{transform:translateY(-2px);box-shadow:0 0 18px #39ff1466}
+.done-btn{padding:10px 14px;border-radius:10px;border:1px solid #33433a;background:#070908;color:#cfd5d1;font-weight:800;cursor:pointer;font-size:13.5px;font-family:inherit}.done-btn.on{border-color:var(--green);color:var(--green);background:#39ff1414}
+.empty{grid-column:1/-1;text-align:center;padding:40px;border:1px dashed #5b4a78;border-radius:14px;color:#aab}
+.foot{max-width:860px;margin:36px auto 0;text-align:center;color:#8d9591;font-size:13.5px;line-height:1.9}
+a:focus-visible,button:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+footer{text-align:center;padding:26px;color:#777;border-top:1px solid #39ff1433}
+@media(max-width:700px){header{padding:15px 18px;justify-content:center}nav{gap:14px;justify-content:center}h2{font-size:30px}.grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ===== أقسام المستويات ===== */
+.lvnav{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:0 0 28px}
+.lvnav a{padding:8px 16px;border-radius:999px;border:1px solid var(--c);color:var(--c);text-decoration:none;font-weight:900;font-size:14px;background:#070908}.lvnav a:hover{background:#ffffff0d}
+.sec{margin-bottom:46px;scroll-margin-top:90px}
+.sec-h{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:2px solid var(--c);padding-bottom:8px;margin-bottom:8px}
+.sec-h h3{font-size:26px;color:var(--c)}.sec-n{color:var(--muted);font-size:14px;font-weight:800}.sec-d{color:var(--muted);line-height:1.8;margin-bottom:18px}
+.lab.own{border-color:var(--c);box-shadow:inset 0 0 0 1px var(--c)}.b.mine{border-color:#a855f7;color:#d8b4fe}
+.flagbox{margin-top:14px;padding:12px;border:1px solid #39ff1466;border-radius:10px;background:#071009}.flagbox input{width:100%;padding:9px;margin:6px 0;border-radius:8px;border:1px solid #33433a;background:#070908;color:#fff}.flagbox button,.lv-side>button{padding:8px 14px;border-radius:9px;border:1px solid var(--green);background:#070908;color:var(--green);font-weight:800;cursor:pointer;font-family:inherit;margin-top:6px}.fok{color:var(--green)!important;font-weight:800;margin-top:8px}
+/* ===== عارض اللابات جوه الموقع ===== */
+.lv{position:fixed;inset:0;z-index:3000;background:#030506;display:none;flex-direction:column}.lv.show{display:flex}
+.lv-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 16px;background:#0b0f0c;border-bottom:1px solid #39ff1455}
+.lv-bar .t{flex:1;min-width:160px;font-weight:900;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lv-bar button,.lv-bar a{padding:8px 14px;border-radius:9px;border:1px solid #39ff1466;background:#070908;color:#e8eee9;font-weight:800;font-size:13.5px;text-decoration:none;cursor:pointer;font-family:inherit}
+.lv-bar button:hover,.lv-bar a:hover{border-color:var(--green);color:var(--green)}.lv-bar .x{border-color:#ff6b8199;color:#ff7b92}
+.lv-hint{padding:9px 16px;background:#ffc83d12;border-bottom:1px solid #ffc83d44;color:#f1deaa;font-size:13.5px;line-height:1.7}
+.lv-hint a{color:var(--green);font-weight:900}
+.lv-main{flex:1;display:flex;min-height:0}.lv-frame{flex:1;border:0;background:#fff;min-width:0}
+.lv-side{width:330px;overflow:auto;padding:18px;background:#0a0b10;border-right:1px solid #2a2440}
+.lv-side h4{color:var(--green);font-size:14px;margin:12px 0 4px}.lv-side h4:first-child{margin-top:0}.lv-side p,.lv-side li{color:#c3c9c6;font-size:14px;line-height:1.8}
+.lv-side ul{list-style:none;display:grid;gap:5px}.lv-side li{padding-right:20px;position:relative}.lv-side li:before{content:"✓";position:absolute;right:0;color:var(--green);font-weight:900}
+.lv-side .pre{margin-top:12px}
+.lv-noembed{flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:30px;color:#cfd5d1;line-height:1.9}
+@media(max-width:800px){.lv-main{flex-direction:column-reverse}.lv-side{width:auto;max-height:34%;border-right:0;border-top:1px solid #2a2440}}
+.open-btn{border:0;cursor:pointer;font-family:inherit}.ext{color:var(--muted);font-size:13px;text-decoration:none;font-weight:800}.ext:hover{color:var(--green)}
+</style></head><body>
+<header><h1>COBRA7</h1><nav><a href="index.html#home">الرئيسية</a><a href="courses.html">الأكاديمية</a><a href="workshops.html" class="on">الورش</a><a href="consulting.html">الاستشارات</a><a href="services.html">الخدمات</a><a href="about.html">عنّا</a><a href="index.html#contact">تواصل</a></nav></header>
+<main><div class="wrap">
+<h2>ورش و<span>لابات</span> عملية</h2>
+<p class="sub">التعلم الحقيقي بيتعمل بالتطبيق. جمعنالك لابات وورش من أقوى منصات التدريب، مرتبة من الأسهل للأصعب، ومعاها شرح مبسط لكل واحدة وإيه اللي هتستفيده لما تحلها.</p>
+<div class="warn" id="note">⚠️</div>
+<div class="plats" id="plats"></div>
+<div class="filters" id="filters"></div>
+<div class="count" id="count"></div>
+<div class="lvnav" id="lvnav"></div>
+<div id="grid"></div>
+<p class="foot">اللابات دي بتتعمل على منصات خارجية مملوكة لأصحابها، وCobra7 بترشحها بس ومفيش شراكة رسمية معاهم. المحتوى والأسعار والحدود المجانية بتتغير، فراجع صفحة اللاب قبل ما تبدأ. علامة «خلصته» بتتحفظ على جهازك بس.</p>
+</div></main>
+<footer>&copy; 2026 Cobra7. جميع الحقوق محفوظة.</footer>
+<div class="lv" id="lv" role="dialog" aria-modal="true" aria-labelledby="lvT">
+  <div class="lv-bar"><button class="x" id="lvClose">✕ رجوع للورش</button><span class="t" id="lvT"></span><button id="lvSide">📖 الشرح</button><button id="lvDone"></button><a id="lvExt" target="_blank" rel="noopener noreferrer">↗ فتح في تبويب جديد</a></div>
+  <div class="lv-hint" id="lvHint">لو الصفحة ظهرت فاضية أو كتب «refused to connect»، يبقى المنصة بتمنع عرضها جوه المواقع التانية. دوس على <b>فتح في تبويب جديد</b>. وتسجيل الدخول جوه الإطار ممكن ما يشتغلش في بعض المتصفحات، فالأفضل تسجل دخولك في تبويب المنصة الأول.</div>
+  <div class="lv-main"><div class="lv-side" id="lvInfo"></div><div id="lvBody" style="flex:1;display:flex;min-width:0"></div></div>
+</div>
+<script src="workshops-data.js"></script>
+<script>
+const esc=x=>String(x==null?"":x).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const safe=u=>/^(https:\/\/|[\w-]+\.html$)/i.test(String(u||""))?esc(u):"#";
+const COST={free:["مجاني","free"],freemium:["مجاني بحدود","fm"],paid:["مدفوع","paid"]};
+document.getElementById("note").textContent="⚠️ "+LABS_NOTE;
+document.getElementById("plats").innerHTML=Object.values(PLATFORMS).filter(p=>p.url).map(p=>'<a href="'+safe(p.url)+'" target="_blank" rel="noopener noreferrer">'+esc(p.icon)+' '+esc(p.name)+'</a>').join("");
+const ALL=LABS.concat(COBRA_LABS.map(l=>Object.assign({platform:"cobra7",type:"لاب",cost:"free",own:true},l)));
+let done={};try{done=JSON.parse(localStorage.getItem("cobra7_labs")||"{}")||{}}catch(e){}
+const saveDone=()=>{try{localStorage.setItem("cobra7_labs",JSON.stringify(done))}catch(e){}};
+const LAB_PTS=50;
+const F={platform:"",level:"",cat:"",free:false};
+const uniq=k=>[...new Set(ALL.map(l=>l[k]))];
+function chips(key,label,vals){return '<div class="fg"><small>'+label+'</small><button class="chip on" data-k="'+key+'" data-v="">الكل</button>'+vals.map(v=>'<button class="chip" data-k="'+key+'" data-v="'+esc(v[0])+'">'+esc(v[1])+'</button>').join("")+'</div>'}
+document.getElementById("filters").innerHTML=
+  chips("platform","المنصة",Object.keys(PLATFORMS).map(k=>[k,PLATFORMS[k].name]))+
+  chips("level","المستوى",LEVELS.map(v=>[v.k,v.ic+" "+v.k]))+
+  chips("cat","المجال",uniq("cat").map(v=>[v,v]))+
+  '<div class="fg"><button class="chip" id="freeOnly">💚 المجاني فقط</button></div>';
+document.getElementById("filters").addEventListener("click",e=>{
+  const b=e.target.closest(".chip");if(!b)return;
+  if(b.id==="freeOnly"){F.free=!F.free;b.classList.toggle("on",F.free)}
+  else{const k=b.dataset.k;F[k]=b.dataset.v;b.parentElement.querySelectorAll(".chip").forEach(x=>x.classList.toggle("on",x===b))}
+  render();
+});
+const ownBadge=l=>done[l.id]?'<span class="b free">✓ خلصته · +'+LAB_PTS+' نقطة</span>':'<span class="b fm">🚩 سلّم الـ Flag عشان +'+LAB_PTS+' نقطة</span>';
+function card(l,i){
+  const p=PLATFORMS[l.platform]||{name:l.platform,icon:"🔗"},c=COST[l.cost]||["",""];
+  return '<article class="lab'+(l.own?' own':'')+(done[l.id]?' done':'')+'"><span class="step">#'+(i+1)+'</span>'+
+   '<div class="top"><span class="ic">'+esc(p.icon)+'</span><div><div class="pl">'+esc(p.name)+'</div><div class="tp">'+esc(l.type)+' · '+esc(l.cat)+'</div></div></div>'+
+   '<h3>'+esc(l.title)+'</h3>'+
+   '<div class="badges">'+(l.own?'<span class="b mine">⭐ Cobra7 Lab</span>':'')+'<span class="b">'+esc(l.level)+'</span><span class="b '+c[1]+'">'+c[0]+'</span>'+(l.time?'<span class="b">⏱ '+esc(l.time)+'</span>':'')+'</div>'+
+   '<h4>إيه ده؟</h4><p>'+esc(l.what)+'</p>'+
+   '<h4>هتستفيد إيه لما تحله؟</h4><ul>'+l.gain.map(g=>'<li>'+esc(g)+'</li>').join("")+'</ul>'+
+   (l.prereq?'<div class="pre"><b>قبل ما تبدأ:</b> '+esc(l.prereq)+'</div>':'')+
+   '<div class="act">'+(l.embed==="no"?'<a class="go" href="'+safe(l.url)+'" target="_blank" rel="noopener noreferrer">افتح اللاب ↗</a>':'<button class="go open-btn" data-open="'+esc(l.id)+'">افتح هنا ←</button>'+(l.own?'':'<a class="ext" href="'+safe(l.url)+'" target="_blank" rel="noopener noreferrer">↗ تبويب جديد</a>'))+(l.own?ownBadge(l):'<button class="done-btn'+(done[l.id]?' on':'')+'" data-id="'+esc(l.id)+'" aria-pressed="'+(done[l.id]?'true':'false')+'">'+(done[l.id]?'✓ خلصته':'علّم إنك خلصته')+'</button>')+'</div></article>';
+}
+function render(){
+  const list=ALL.filter(l=>(!F.platform||l.platform===F.platform)&&(!F.level||l.level===F.level)&&(!F.cat||l.cat===F.cat)&&(!F.free||l.cost==="free"||l.cost==="freemium"));
+  const n=Object.keys(done).filter(k=>ALL.some(l=>l.id===k)).length;
+  document.getElementById("count").textContent=list.length+" من "+ALL.length+" · خلصت "+n+" لاب";
+  let out="",nav="";
+  LEVELS.forEach(L=>{
+    const items=list.filter(l=>l.level===L.k).sort((a,b)=>(b.own?1:0)-(a.own?1:0));
+    if(!items.length)return;
+    const fin=items.filter(l=>done[l.id]).length;
+    nav+='<a href="#lvl-'+L.id+'" style="--c:'+L.c+'">'+L.ic+' '+esc(L.k)+' ('+items.length+')</a>';
+    out+='<section class="sec" id="lvl-'+L.id+'" style="--c:'+L.c+'"><div class="sec-h"><h3>'+L.ic+' المستوى: '+esc(L.k)+'</h3><span class="sec-n">'+fin+'/'+items.length+' خلصت</span></div><p class="sec-d">'+esc(L.d)+'</p><div class="grid">'+items.map((l,i)=>card(l,i)).join("")+'</div></section>';
+  });
+  document.getElementById("lvnav").innerHTML=nav;
+  document.getElementById("grid").innerHTML=out||'<div class="empty">مفيش لابات بالفلاتر دي. جرّب تغيّر الاختيار.</div>';
+}
+document.getElementById("grid").addEventListener("click",e=>{
+  const b=e.target.closest(".done-btn");if(!b)return;
+  const id=b.dataset.id;if(done[id])delete done[id];else done[id]=1;saveDone();render();
+});
+/* ---------- العارض ---------- */
+const lv=document.getElementById("lv");let curLab=null,lastFocus=null;
+const flagBox=l=>l.own?'<div class="flagbox"><h4>🚩 سلّم الـ Flag</h4>'+(done[l.id]?'<p class="fok">✅ خلصت اللاب ده وأخدت '+LAB_PTS+' نقطة.</p>':'<input id="flIn" dir="ltr" placeholder="FLAG{...}" autocomplete="off"><button id="flBtn">تسليم</button><p id="flMsg" role="status"></p>')+'</div>':'';
+function info(l){return '<h4>إيه ده؟</h4><p>'+esc(l.what)+'</p><h4>هتستفيد إيه؟</h4><ul>'+l.gain.map(g=>'<li>'+esc(g)+'</li>').join("")+'</ul>'+(l.prereq?'<div class="pre"><b>قبل ما تبدأ:</b> '+esc(l.prereq)+'</div>':'')+flagBox(l)}
+function syncDone(){const b=document.getElementById("lvDone");if(!curLab)return;b.style.display=curLab.own?"none":"";b.textContent=done[curLab.id]?"✓ خلصته":"علّم إنك خلصته";b.classList.toggle("on",!!done[curLab.id])}
+function openViewer(id,trigger){
+  const l=ALL.find(x=>x.id===id);if(!l)return;curLab=l;lastFocus=trigger||null;
+  document.getElementById("lvT").textContent=l.title;
+  document.getElementById("lvInfo").innerHTML=info(l);
+  const ext=document.getElementById("lvExt");ext.href=safe(l.url);ext.style.display=l.own?"none":"";document.getElementById("lvHint").style.display=l.own?"none":"";
+  const body=document.getElementById("lvBody");body.innerHTML="";
+  const f=document.createElement("iframe");f.className="lv-frame";f.title=l.title;f.src=safe(l.url);
+  f.setAttribute("referrerpolicy","no-referrer");f.setAttribute("loading","eager");
+  f.setAttribute("sandbox",l.own?"allow-scripts allow-forms allow-modals":"allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox");
+  body.appendChild(f);syncDone();
+  lv.classList.add("show");document.body.style.overflow="hidden";
+  document.getElementById("lvClose").focus();
+}
+function closeViewer(){lv.classList.remove("show");document.getElementById("lvBody").innerHTML="";document.body.style.overflow="";curLab=null;render();if(lastFocus&&lastFocus.focus)lastFocus.focus()}
+document.getElementById("lvClose").onclick=closeViewer;
+document.getElementById("lvSide").onclick=()=>{const s=document.getElementById("lvInfo");s.style.display=s.style.display==="none"?"":"none"};
+document.getElementById("lvDone").onclick=()=>{if(!curLab||curLab.own)return;if(done[curLab.id])delete done[curLab.id];else done[curLab.id]=1;saveDone();syncDone()};
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&lv.classList.contains("show"))closeViewer()});
+document.getElementById("grid").addEventListener("click",e=>{const b=e.target.closest&&e.target.closest(".open-btn");if(b)openViewer(b.dataset.open,b)});
+render();
+document.getElementById("lvInfo").addEventListener("click",async e=>{
+  if(!e.target||e.target.id!=="flBtn"||!curLab||!curLab.own)return;
+  const msg=document.getElementById("flMsg"),v=document.getElementById("flIn").value.trim();
+  const say=(t,c)=>{msg.textContent=t;msg.style.color=c};
+  if(!v)return say("اكتب الـ Flag الأول.","#ffc83d");
+  if(!(window.crypto&&crypto.subtle))return say("المتصفح ده مش بيدعم التحقق. افتح الموقع على HTTPS.","#ff7b92");
+  const buf=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(v));
+  const hex=[...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,"0")).join("");
+  if(hex!==curLab.flagHash)return say("❌ الـ Flag غلط. راجع اللاب وحاول تاني.","#ff7b92");
+  done[curLab.id]=1;saveDone();window.dispatchEvent(new CustomEvent("cobra:labs"));
+  document.getElementById("lvInfo").innerHTML=info(curLab);
+  const CA=window.CobraAuth,signed=CA&&CA.auth&&CA.auth.currentUser;
+  const m=document.createElement("p");m.className="fok";m.textContent="🎉 مبروك! +"+LAB_PTS+" نقطة."+(signed?"":" سجّل دخولك عشان النقط تتحفظ وتظهر في المتصدرين.");
+  document.getElementById("lvInfo").appendChild(m);
+  if(!signed&&CA&&CA.enabled){const b=document.createElement("button");b.textContent="تسجيل الدخول";b.onclick=()=>CA.ready.then(a=>a&&a.open("in"));document.getElementById("lvInfo").appendChild(b)}
+});
+window.addEventListener("cobra:synced",()=>{try{done=JSON.parse(localStorage.getItem("cobra7_labs")||"{}")||{}}catch(e){}render()});
+</script>
+<script src="firebase-config.js"></script>
+<script type="module" src="auth.js"></script>
+</body></html>

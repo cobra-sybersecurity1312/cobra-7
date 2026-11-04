@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عنّا | Cobra7</title>
+<meta name="description" content="تعرّف على كوبرا: الخبرات والشهادات والإنجازات على TryHackMe وغيرها، وآراء الطلاب والعملاء.">
+<meta name="theme-color" content="#030506"><link rel="icon" href="cobra-logo.jpg">
+<style>
+:root{--black:#050607;--green:#39ff14;--purple:#7c3aed;--purple2:#a855f7;--red:#ff1744;--muted:#a9b0ac}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,sans-serif}
+html{scroll-behavior:smooth}body{background:#030506;color:#eef2f5;min-height:100vh;display:flex;flex-direction:column}
+header{position:sticky;top:0;z-index:50;background:rgba(3,5,6,.85);backdrop-filter:blur(14px);padding:17px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-bottom:1px solid #39ff1455}
+header h1{font-size:24px;color:#fff;letter-spacing:2px;text-shadow:0 0 8px #39ff14,0 0 24px #39ff1466}
+nav{display:flex;flex-wrap:wrap;gap:22px}nav a{color:#d9d9e8;text-decoration:none;font-weight:800;font-size:17px;transition:.3s}nav a:hover,nav a.on{color:var(--green)}
+main{flex:1;padding:50px 20px 70px;background:radial-gradient(ellipse at 50% 0,#7c3aed22,transparent 55%)}
+.wrap{max-width:1000px;margin:0 auto}
+.btn{display:inline-block;padding:13px 26px;border-radius:10px;font-weight:900;font-size:16px;text-decoration:none;background:linear-gradient(135deg,var(--green),#12c94b);color:#031006;box-shadow:0 0 14px #39ff1466;transition:.25s;border:1px solid #8aff72}
+.btn:hover{transform:translateY(-2px);box-shadow:0 0 26px #39ff1499}
+.btn-ghost{background:transparent;color:#fff;border:1px solid var(--purple2);box-shadow:none}.btn-ghost:hover{background:#7c3aed33;box-shadow:none}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+.hero{display:flex;align-items:center;gap:30px;padding:34px;background:linear-gradient(145deg,#15121e,#1d0f2b);border:1px solid #7c3aed;border-radius:20px;box-shadow:0 0 30px #7c3aed33;margin-bottom:50px}
+.hero img{width:200px;height:200px;border-radius:50%;object-fit:cover;border:3px solid var(--green);box-shadow:0 0 25px #39ff1440;flex-shrink:0}
+.hero h2{font-size:30px;color:#fff}.hero .alias{color:var(--green);font-weight:800;margin:4px 0 12px}.hero p{color:#cfd3da;line-height:1.9;margin-bottom:18px}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.sec{margin-bottom:56px}.sec h3{font-size:28px;color:#fff;margin-bottom:6px}.sec h3 span{color:var(--green)}.sec .sub{color:var(--muted);margin-bottom:22px;line-height:1.8}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.card{background:linear-gradient(145deg,#0d110e,#10081a);border:1px solid #7c3aed66;border-radius:14px;padding:20px}
+.card h4{color:#fff;font-size:18px;margin-bottom:4px}.card .meta{color:var(--green);font-size:13px;font-weight:700;margin-bottom:8px}.card p{color:#b9c0bc;line-height:1.8;font-size:14px}
+.card .ic{font-size:30px;display:block;margin-bottom:6px}.card a.lnk{display:inline-block;margin-top:10px;color:var(--green);font-weight:800;text-decoration:none}
+.soon{padding:28px;border:1px dashed #5b4a78;border-radius:14px;color:#aab;text-align:center}
+.profiles{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px}
+.profiles a{padding:11px 20px;border-radius:10px;border:1px solid #39ff1466;background:#0b0f0c;color:#fff;text-decoration:none;font-weight:800;transition:.25s}.profiles a:hover{border-color:var(--green);color:var(--green);transform:translateY(-3px)}
+.tl{position:relative;padding-right:26px;display:grid;gap:14px}.tl:before{content:"";position:absolute;right:7px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--green),var(--purple2))}
+.tl .item{position:relative}.tl .item:before{content:"";position:absolute;right:-26px;top:20px;width:16px;height:16px;border-radius:50%;background:#050607;border:3px solid var(--green);box-shadow:0 0 10px var(--green)}
+.tgbox{text-align:center;padding:34px 20px;border:1px solid #39ff1455;border-radius:20px;background:linear-gradient(145deg,#0b0f0c,#12081f);margin-bottom:56px}
+.tgbox h3{font-size:26px;margin-bottom:8px}.tgbox p{color:#b9c0bc;margin-bottom:18px;line-height:1.8}
+footer{text-align:center;padding:26px;color:#777;border-top:1px solid #39ff1433}
+@media(max-width:700px){header{padding:15px 18px;justify-content:center}nav{gap:14px;justify-content:center}.hero{flex-direction:column;text-align:center}.actions{justify-content:center}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style><meta name="referrer" content="strict-origin-when-cross-origin"><script src="guard.js"></script>
+</head><body>
+<header><h1>COBRA7</h1><nav><a href="index.html#home">الرئيسية</a><a href="courses.html">الأكاديمية</a><a href="workshops.html">الورش</a><a href="consulting.html">الاستشارات</a><a href="services.html">الخدمات</a><a href="about.html" class="on">عنّا</a><a href="index.html#contact">تواصل</a></nav></header>
+<main><div class="wrap">
+
+<section class="hero">
+  <img src="islam-cobra.jpg" alt="إسلام علي محمود شمس الدين (كوبرا)">
+  <div>
+    <h2>إسلام علي محمود شمس الدين</h2><div class="alias">الشهرة: كوبرا · مؤسس Cobra7</div>
+    <p>طالب أمن سيبراني (Red Team) ومؤسس Cobra7: أكاديمية عربية بتقدم تعليم الأمن السيبراني والبرمجة بشكل عملي ومنظم، وهدفها تأهيل الشباب لسوق العمل.</p>
+    <div class="actions"><a class="btn" data-tg href="https://t.me/cobra7_com" target="_blank" rel="noopener noreferrer">✈ انضم لجروب التليجرام</a><a class="btn btn-ghost" href="#reviews">⭐ آراء الطلاب</a></div>
+  </div>
+</section>
+
+<section class="sec" id="experience"><h3>الخبرات <span>المهنية</span></h3><p class="sub">رحلتي العملية في مجال الأمن السيبراني والبرمجة.</p><div id="expBox"></div></section>
+<section class="sec" id="certs"><h3>الشهادات <span>والاعتمادات</span></h3><p class="sub">الشهادات اللي حصلت عليها فعلاً.</p><div id="certBox"></div></section>
+<section class="sec" id="achievements"><h3>الإنجازات <span>على المنصات</span></h3><p class="sub">تقدمي وتصنيفي على TryHackMe وHack The Box وغيرهم.</p><div class="profiles" id="profBox"></div><div id="achBox"></div></section>
+
+<section class="tgbox"><h3>💬 جروب Cobra7 على تيليجرام</h3><p>اسأل، شارك، وتابع جديد الكورسات والورش مع مجتمع من المتعلمين.</p><a class="btn" data-tg href="https://t.me/cobra7_com" target="_blank" rel="noopener noreferrer">✈ ادخل الجروب دلوقتي</a></section>
+
+<section class="sec" id="reviews"><h3>آراء <span>الطلاب والعملاء</span></h3><p class="sub">تجارب حقيقية من اللي اتعلموا أو اشتغلوا معانا.</p><div id="rvBox"></div></section>
+
+</div></main>
+<footer>&copy; 2026 Cobra7. جميع الحقوق محفوظة.</footer>
+<script src="academy-data.js"></script><script src="about-data.js"></script><script src="reviews-data.js"></script><script src="reviews.js"></script>
+<script>
+const esc=x=>String(x==null?"":x).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const safe=u=>/^https?:\/\//i.test(String(u||""))?esc(u):"";
+const soon=t=>'<div class="soon">'+t+' هتتضاف قريبًا.</div>';
+document.querySelectorAll("[data-tg]").forEach(a=>{if(SITE.telegramGroup)a.href=SITE.telegramGroup});
+const link=(u,t)=>safe(u)?'<a class="lnk" href="'+safe(u)+'" target="_blank" rel="noopener noreferrer">'+t+' ←</a>':'';
+document.getElementById("expBox").innerHTML=ABOUT.experience.length?'<div class="tl">'+ABOUT.experience.map(e=>'<div class="card item"><h4>'+esc(e.title)+'</h4><div class="meta">'+esc([e.org,e.period].filter(Boolean).join(" · "))+'</div>'+(e.desc?'<p>'+esc(e.desc)+'</p>':'')+'</div>').join("")+'</div>':soon("الخبرات");
+document.getElementById("certBox").innerHTML=ABOUT.certificates.length?'<div class="grid">'+ABOUT.certificates.map(c=>'<div class="card"><span class="ic">🏅</span><h4>'+esc(c.title)+'</h4><div class="meta">'+esc([c.issuer,c.year].filter(Boolean).join(" · "))+'</div>'+link(c.url,"التحقق من الشهادة")+'</div>').join("")+'</div>':soon("الشهادات");
+const profs=ABOUT.profiles.filter(p=>safe(p.url));
+document.getElementById("profBox").innerHTML=profs.map(p=>'<a href="'+safe(p.url)+'" target="_blank" rel="noopener noreferrer">'+esc(p.icon||"🔗")+' '+esc(p.name)+'</a>').join("");
+document.getElementById("achBox").innerHTML=ABOUT.achievements.length?'<div class="grid">'+ABOUT.achievements.map(a=>'<div class="card"><span class="ic">'+esc(a.badge||"🏆")+'</span><h4>'+esc(a.title)+'</h4><div class="meta">'+esc([a.platform,a.date].filter(Boolean).join(" · "))+'</div>'+(a.desc?'<p>'+esc(a.desc)+'</p>':'')+link(a.url,"شوف الإنجاز")+'</div>').join("")+'</div>':(profs.length?"":soon("الإنجازات"));
+CobraReviews.mount("rvBox",{heading:"قيّم تجربتك مع Cobra7",hint:"طالب أو عميل؟ شاركنا رأيك. التقييم بيتراجع قبل ما يتنشر."});
+</script>
+<script src="firebase-config.js"></script>
+<script type="module" src="auth.js"></script>
+</body></html>
