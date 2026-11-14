@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>لاب 3: استغلال ثغرة XSS</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #ffebee; }
+        .container { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-width: 600px; margin: auto;}
+        h1 { color: #c62828; text-align: center;}
+        input { padding: 10px; width: 75%; border: 1px solid #ccc; border-radius: 4px;}
+        .btn { padding: 10px 15px; background: #c62828; color: #fff; border: none; border-radius: 5px; cursor: pointer; }
+        .btn:hover { background: #b71c1c; }
+        #comments { margin-top: 20px; padding: 15px; background: #f9f9f9; border-right: 4px solid #c62828; border-radius: 4px; min-height: 100px;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔴 لاب 3: استغلال ثغرة XSS (Cross-Site Scripting)</h1>
+        <p>قم بإدخال كود جافا سكريبت ضار في حقل التعليقات ولاحظ ما سيحدث. جرب إدخال: <br><code>&lt;img src="x" onerror="alert('تم الاختراق')"&gt;</code></p>
+        <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+            <input type="text" id="comment" placeholder="اكتب تعليقك هنا...">
+            <button class="btn" onclick="addComment()">إضافة تعليق</button>
+        </div>
+        <h3>التعليقات المنشورة:</h3>
+        <div id="comments"></div>
+    </div>
+    <script>
+        function addComment() {
+            const comment = document.getElementById('comment').value;
+            // الثغرة: يتم إدراج المدخلات مباشرة بدون تعقيم (No HTML Sanitization)
+            document.getElementById('comments').innerHTML += "<p style='border-bottom: 1px solid #ccc; padding-bottom:5px;'>" + comment + "</p>";
+            if(/<\s*script|<[^>]+\son\w+\s*=/i.test(comment)){document.getElementById('comments').innerHTML+="<p style='color:green;font-weight:bold'>نفّذت الكود بنجاح! FLAG{XSS_Executed}</p>";}
+            document.getElementById('comment').value = ''; // تفريغ الحقل
+        }
+    </script>
+</body>
+</html>

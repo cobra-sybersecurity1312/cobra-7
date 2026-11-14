@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin"><script src="guard.js"></script>
+<title>المكتبة: ملخصات وقوائم وقوالب وأدوات | Cobra7</title>
+<meta name="description" content="مكتبة Cobra7: ملخصات PDF، قوائم فحص، قوالب تقارير، تقرير اختراق نموذجي، وأدوات أمنية بتشتغل في المتصفح.">
+<meta name="theme-color" content="#030506"><link rel="icon" href="cobra-logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Orbitron:wght@500;700&display=swap">
+<link rel="stylesheet" href="catalog.css"><link rel="stylesheet" href="cobra-fx.css">
+<style>
+.res .meta{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 12px;color:#9aa6a0;font-size:12.5px;font-weight:700}
+.res .meta i{font-style:normal;padding:2px 10px;border-radius:99px;border:1px solid #3a3f3c}
+.res .meta .free{border-color:#39ff1466;color:#39ff14;background:#39ff1408}
+.res .meta .paid{border-color:#ffc83d66;color:#ffc83d;background:#ffc83d0d}
+.res .btns{margin-top:auto;padding-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+.res .btns a{flex:1 1 auto;justify-content:center;font-size:14px;padding:10px 14px;text-decoration:none}
+.res .btns a.alt{background:transparent;border:1px solid #4b3a6b;color:#e3d4ff}
+.res .btns a.alt:hover{border-color:#a855f7;box-shadow:none}
+.res .btns a.dl{background:linear-gradient(135deg,#39ff14,#12c94b);color:#031006}
+.res .btns a.dl:hover{box-shadow:0 0 22px #39ff1466}
+.res .btns a:before{display:none}
+.notice{max-width:860px;margin:0 auto 22px;padding:12px 18px;border:1px solid #39ff1444;background:#39ff1409;border-radius:12px;color:#d3ead0;line-height:1.8;font-size:14px}
+</style>
+</head><body>
+<header><h1>COBRA7</h1><nav><a href="index.html#home">الرئيسية</a><a href="courses.html">الأكاديمية</a><a href="workshops.html">الورش</a><a href="library.html" class="on">المكتبة</a><a href="consulting.html">الاستشارات</a><a href="services.html">الخدمات</a><a href="about.html">عنّا</a></nav></header>
+<main>
+<section class="hero"><div class="fl" id="fl"></div><div class="in">
+  <span class="badge">RESOURCES</span>
+  <h2 class="t">المكتبة: <span>ملخصات وقوالب وأدوات</span></h2>
+  <p class="sub">ملفات PDF جاهزة للطباعة، قوائم فحص، قوالب تقارير، تقرير اختراق نموذجي، وأدوات أمنية بتشتغل جوه متصفحك.</p>
+  <div class="stats" id="stats"></div>
+</div></section>
+<section class="body"><div class="wrap">
+  <div class="notice">كل المحتوى ده للتعليم والعمل المصرّح بيه فقط. الأدوات بتشتغل في متصفحك ومبتبعتش أي بيانات لأي سيرفر.</div>
+  <input class="srch" id="q" type="search" placeholder="ابحث: OWASP، لينكس، تقرير..." aria-label="بحث في المكتبة">
+  <div class="filters" id="filters"></div>
+  <div class="count" id="count" aria-live="polite"></div>
+  <div class="grid" id="grid"></div>
+  <div class="cta"><h3>محتاج ملف أو أداة مش موجودة؟</h3><p>قولي إيه اللي ناقصك وهضيفه في المكتبة.</p><a class="tg big" id="req" target="_blank" rel="noopener noreferrer">✈ اقترح ملف</a></div>
+</div></section>
+</main>
+<footer>&copy; 2026 Cobra7. جميع الحقوق محفوظة.</footer>
+<script src="about-data.js"></script><script src="library-data.js"></script>
+<script>
+(function(){
+const L=window.LIB,$=id=>document.getElementById(id);
+const esc=x=>String(x==null?"":x).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const still=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const safe=u=>/^(https:\/\/|[\w\-\/.#]+$)/.test(u||"")?u:"#";
+const tg=(typeof SITE!=="undefined"&&/^https:\/\/t\.me\//.test(SITE.telegramContact||""))?SITE.telegramContact:"https://t.me/cobra7_com";
+$("req").href=tg+"?text="+encodeURIComponent("عايز أقترح ملف/أداة في مكتبة Cobra7: ");
+$("fl").innerHTML=["📘","✅","🧩","📑","🛠️","🔐","🧪","📄"].map((e,i)=>'<span style="--s:'+(26+(i*7)%30)+'px;--t:'+(7+(i*3)%6)+'s;--d:-'+(i*1.3)+'s;left:'+((i*37+8)%92)+'%;top:'+((i*23+10)%75)+'%">'+e+'</span>').join("");
+const nPdf=L.items.filter(i=>i.file).length,nTool=L.items.filter(i=>i.tool).length;
+$("stats").innerHTML=[[nPdf,"ملف PDF"],[nTool,"أداة"],[L.cats.length,"أقسام"]].map(s=>'<div class="stat"><b data-n="'+s[0]+'">'+(still?s[0]:0)+'</b><small>'+s[1]+'</small></div>').join("");
+if(!still)document.querySelectorAll("[data-n]").forEach(el=>{const to=+el.dataset.n,t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/1000);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(t0)});
+let cat="",qv="";
+const cnt=k=>L.items.filter(i=>!k||i.cat===k).length;
+$("filters").innerHTML='<button class="chip on" data-k="">الكل <small>'+cnt("")+'</small></button>'+L.cats.map(c=>'<button class="chip" data-k="'+esc(c.k)+'">'+c.ic+' '+esc(c.n)+' <small>'+cnt(c.k)+'</small></button>').join("");
+$("filters").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;cat=b.dataset.k;document.querySelectorAll("#filters .chip").forEach(x=>x.classList.toggle("on",x===b));render()});
+$("q").addEventListener("input",e=>{qv=e.target.value;render()});
+const io="IntersectionObserver"in window?new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.08}):null;
+function card(i){
+  const c=L.cats.find(x=>x.k===i.cat)||{n:""},paid=i.free===false;
+  let meta='<i class="'+(paid?'paid':'free')+'">'+(paid?esc(i.price||"مدفوع"):'مجاني')+'</i><i>'+esc(i.level)+'</i>';
+  if(i.file)meta+='<i dir="ltr">PDF</i><i>'+i.pages+' صفحات</i><i dir="ltr">'+i.kb+' KB</i>';
+  let btns='';
+  if(i.tool)btns='<a class="tg dl" href="'+esc(safe(i.tool))+'">افتح الأداة</a>';
+  else if(paid&&i.buy)btns='<a class="tg dl" href="'+esc(safe(i.buy))+'" target="_blank" rel="noopener noreferrer">اشتري الملف</a>';
+  else btns='<a class="tg dl" href="'+esc(safe(i.file))+'" download>⬇ تحميل PDF</a><a class="tg alt" href="'+esc(safe(i.file))+'" target="_blank" rel="noopener">👁 معاينة</a>'+(i.md?'<a class="tg alt" href="'+esc(safe(i.md))+'" download>نسخة قابلة للتعديل</a>':'');
+  return '<article class="card res"><span class="ic">'+i.icon+'</span><span class="ct">'+esc(c.n)+'</span><h3>'+esc(i.title)+'</h3><p>'+esc(i.desc)+'</p><div class="meta">'+meta+'</div><div class="btns">'+btns+'</div></article>';
+}
+function render(){
+  const q=qv.trim().toLowerCase(),ord=k=>L.cats.findIndex(c=>c.k===k);
+  const list=L.items.filter(i=>(!cat||i.cat===cat)&&(!q||[i.title,i.desc,(i.tags||[]).join(" ")].join(" ").toLowerCase().includes(q))).sort((a,b)=>ord(a.cat)-ord(b.cat));
+  $("count").textContent=list.length+" عنصر";
+  const g=$("grid");g.innerHTML=list.length?list.map(card).join(""):'<p style="grid-column:1/-1;text-align:center;color:#a9b0ac;padding:30px">مفيش نتيجة مطابقة. جرّب كلمة تانية أو اقترح الملف اللي محتاجه.</p>';
+  g.querySelectorAll(".card").forEach((el,i)=>{el.style.setProperty("--d",(i%3)*.09+"s");io?io.observe(el):el.classList.add("in")});
+}
+render();
+})();
+</script>
+<script src="cobra-fx.js"></script>
+<script src="firebase-config.js"></script>
+<script type="module" src="auth.js"></script>
+</body></html>

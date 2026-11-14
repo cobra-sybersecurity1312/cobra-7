@@ -1,0 +1,53 @@
+/* COBRA7 — طبقة الأنيميشن والأشكال (بتتفعل بإضافة cobra-fx.js). كل حاجة بـ transform/opacity بس عشان تفضل خفيفة. */
+@property --fxa{syntax:'<angle>';inherits:false;initial-value:0deg}
+html.fx main,html.fx footer{position:relative;z-index:1}
+html.fx .hero{background:none}
+.fx-bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.fx-s{position:absolute;will-change:transform}
+.fx-s svg{display:block;width:100%;height:auto;overflow:visible;fill:none;stroke-width:1.4;vector-effect:non-scaling-stroke}
+.fx-s .g{stroke:#39ff14}.fx-s .p{stroke:#a855f7}
+.fx-s .spin{transform-origin:50% 50%;animation:fxSpin var(--t,40s) linear infinite}
+.fx-s .spin.rev{animation-direction:reverse}
+.fx-s .bob{animation:fxBob var(--t,9s) ease-in-out infinite;animation-delay:var(--d,0s)}
+.fx-s .dash{stroke-dasharray:6 10;animation:fxDash 14s linear infinite}
+.fx-s .flow{stroke-dasharray:140;stroke-dashoffset:140;animation:fxFlow 6s ease-in-out infinite;animation-delay:var(--d,0s)}
+.fx-s .dot{fill:#39ff14;stroke:none;animation:fxPulse 3s ease-in-out infinite;animation-delay:var(--d,0s)}
+.fx-s{opacity:.34}
+@keyframes fxSpin{to{transform:rotate(360deg)}}
+@keyframes fxBob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-22px) rotate(6deg)}}
+@keyframes fxDash{to{stroke-dashoffset:-160}}
+@keyframes fxFlow{0%{stroke-dashoffset:140}45%,70%{stroke-dashoffset:0}100%{stroke-dashoffset:-140}}
+@keyframes fxPulse{0%,100%{opacity:.25;transform:scale(1)}50%{opacity:1;transform:scale(1.8)}}
+@keyframes fxLine{to{--fxa:360deg}}
+
+/* شريط تقدم السكرول */
+.fx-prog{position:fixed;top:0;right:0;left:0;height:3px;z-index:300;transform-origin:right center;transform:scaleX(var(--p,0));background:linear-gradient(90deg,#39ff14,#a855f7);box-shadow:0 0 12px #39ff14aa;pointer-events:none}
+
+/* حد متحرك على الكروت وقت الهوفر */
+html.fx .card:after,html.fx .res:after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;background:conic-gradient(from var(--fxa),transparent 0 55%,#39ff14,#a855f7 80%,transparent);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);opacity:0;transition:opacity .35s;animation:fxLine 3.2s linear infinite;pointer-events:none}
+html.fx .card:hover:after,html.fx .res:hover:after{opacity:1}
+
+/* عناوين الأقسام: خط بيترسم */
+html.fx .sech h3{position:relative;display:inline-block;padding-bottom:12px}
+html.fx .sech h3:after{content:"";position:absolute;right:0;bottom:0;height:3px;width:100%;border-radius:3px;background:linear-gradient(90deg,#39ff14,#a855f7);transform:scaleX(0);transform-origin:right;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+html.fx .sech.fx-in h3:after{transform:scaleX(1)}
+
+/* السعر والخصم */
+.price.pk{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px}
+.pk .hr b{font-size:21px;color:#ffc83d}
+.pkg{flex:1 1 100%;position:relative;margin-top:10px;padding:14px 14px 10px;border-radius:12px;border:1px solid #39ff1466;background:linear-gradient(135deg,#39ff1412,#a855f712);display:grid;grid-template-columns:1fr auto;align-items:center;gap:2px 12px}
+.pkg .off{position:absolute;top:-11px;left:12px;padding:2px 11px;border-radius:99px;background:#39ff14;color:#031006;font-size:12px;font-weight:900;box-shadow:0 0 14px #39ff1488}
+.pkg .pn{color:#e6ece8;font-weight:800;font-size:14px}
+.pkg .pp{display:flex;align-items:baseline;gap:6px;direction:rtl}
+.pkg .pp b{font-size:24px;color:#39ff14;font-variant-numeric:tabular-nums}
+.pkg .pp span{color:#cfd5d1;font-size:13px}
+.pkg .pp s{color:#8a918d;font-size:14px;position:relative}
+.pkg small{grid-column:1/-1;color:#d3ead0;font-size:12.5px;font-weight:700}
+html.fx .pkg .pp s{text-decoration:none}
+html.fx .pkg .pp s:after{content:"";position:absolute;right:-2px;left:-2px;top:52%;height:2px;background:#ff4d6d;transform:scaleX(0);transform-origin:right;transition:transform .55s .25s cubic-bezier(.3,.7,.2,1)}
+html.fx .pkg.fx-in .pp s:after{transform:scaleX(1)}
+html.fx .pkg.fx-in .off{animation:fxPop .7s .9s cubic-bezier(.2,1.5,.3,1) both}
+@keyframes fxPop{0%{transform:scale(.4);opacity:0}100%{transform:none;opacity:1}}
+
+@media(max-width:700px){.fx-s:nth-child(n+7){display:none}.fx-s{opacity:.26}}
+@media(prefers-reduced-motion:reduce){.fx-s *,.fx-prog{animation:none!important;transition:none!important}html.fx .sech h3:after{transform:none}html.fx .pkg .pp s:after{transform:none}.fx-s .flow{stroke-dashoffset:0}}

@@ -1,0 +1,34 @@
+/* COBRA7 — تحسين الأداء (بيتحمّل آخر ملف CSS). الشكل نفسه تقريبًا، بس من غير الحاجات اللي بتعمل لاج.
+   القاعدة: ما نحرّكش غير transform / opacity (بيتنفذوا على كارت الشاشة من غير ما الصفحة تتعاد رسمها). */
+
+/* 1) الهيدر: blur الخلفية فوق محتوى متحرك بيتعاد حسابه في كل فريم. بنستبدله بلون صلب شبه شفاف. */
+header{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:rgba(3,5,6,.95)!important}
+.ch-sticky{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:#050808f5!important}
+
+/* 2) أي أنيميشن في قسم برّه الشاشة بيقف (الـJS بيضيف pf-off). ده لوحده بيشيل معظم الحِمل. */
+.pf-off,.pf-off::before,.pf-off::after,.pf-off *,.pf-off *::before,.pf-off *::after{animation-play-state:paused!important}
+
+/* 3) أنيميشنات كانت بتحرّك خصائص تقيلة، اتحوّلت لـ transform/scale بنفس الإحساس */
+@keyframes cmBob{0%,100%{translate:0 0}50%{translate:0 -7px}}                 /* كان margin-top: بيعيد حساب الـlayout */
+@keyframes cmCore{0%,100%{scale:1}50%{scale:1.05}}                            /* كان box-shadow */
+@keyframes fxCore{0%,100%{scale:1}50%{scale:1.05}}                            /* كان box-shadow */
+@keyframes pulseGlow{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}   /* كان filter: brightness */
+.cm-core,.cm-center{box-shadow:0 0 44px #39ff1488,0 0 90px #7c3aed55}
+.fx-core{box-shadow:0 0 56px #39ff1488,0 0 115px #7c3aed66}
+.cm-panel:before{animation:none!important}                                    /* حدّ conic بيدور: كان بيعيد رسم اللوحة كل فريم */
+.notice-grid,.lbs:after{animation:none!important}                             /* شبكة بتتحرك بـ background-position على عرض الشاشة */
+
+/* 4) طبقات ضبابية ضخمة: الـgradient نفسه ناعم، فمفيش داعي لـblur فوقه */
+.fx-aur{filter:none!important}
+.notice-orb{filter:none!important}
+.fx-beam{mix-blend-mode:normal!important}                                     /* mix-blend بيجبر المتصفح يقرأ الخلفية كل فريم */
+
+/* 5) وضع الأجهزة الضعيفة (الـJS بيفعّله تلقائي لو الفريمات قليلة): بنوقف الزينة التقيلة بس. الحلقة ثلاثية الأبعاد والمحتوى زي ما هم. */
+.pf-lite .fx-aur,.pf-lite .fx-cv,.pf-lite .cm-radar,.pf-lite .notice-orb{display:none!important}
+.pf-lite .fx-row{animation:none!important}                                    /* الشريط ده عرضه 20 ألف بكسل: أكبر طبقة في الصفحة */
+.pf-lite .fx-card,.pf-lite .fx-card.k{box-shadow:0 6px 18px #000a!important}
+.pf-lite .fx-aur i,.pf-lite .fx-floor,.pf-lite .fx-beam,.pf-lite .fx-hud,.pf-lite .fx-ring,.pf-lite .fx-pad,
+.pf-lite .fx-card:before,.pf-lite .fx-btn:before,.pf-lite .cm-ring,.pf-lite .cm-orbit,.pf-lite .cm-orbit span,
+.pf-lite .cm-glow,.pf-lite .cm-blip,.pf-lite .cm-art img,.pf-lite .cm-svg circle,.pf-lite .notice-card:before,
+.pf-lite .cyber-notice:before,.pf-lite .journey-section:before,.pf-lite .journey-section:after,
+.pf-lite .hero:before,.pf-lite .hero:after{animation:none!important}

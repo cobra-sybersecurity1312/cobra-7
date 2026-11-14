@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة اللابات - Cobra 7</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #121212; color: #e0e0e0; margin: 0; padding: 40px 20px; }
+        h1 { text-align: center; color: #00e676; margin-bottom: 40px; }
+        
+        .labs-grid { display: flex; gap: 30px; flex-wrap: wrap; justify-content: center; max-width: 1100px; margin: auto;}
+        
+        .lab-card { 
+            background: #1e1e1e; border-radius: 12px; padding: 25px; width: 300px; 
+            box-shadow: 0 8px 16px rgba(0,0,0,0.5); border: 1px solid #333;
+            transition: transform 0.3s, border-color 0.3s; 
+        }
+        .lab-card:hover { transform: translateY(-5px); border-color: #00e676; }
+        .lab-card h3 { margin-top: 0; font-size: 22px; }
+        
+        .lab-btn { 
+            display: block; width: 100%; padding: 12px; background: #00e676; color: #121212; 
+            border: none; border-radius: 6px; cursor: pointer; margin-top: 20px; font-weight: bold; font-size: 16px; 
+        }
+        .lab-btn:hover { background: #00c853; }
+        
+        /* Modal (نافذة اللاب) */
+        #lab-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; backdrop-filter: blur(5px); }
+        .modal-content { position: relative; width: 95%; height: 90%; margin: 2.5% auto; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 0 30px rgba(0,230,118,0.2); }
+        .close-btn { 
+            position: absolute; top: 15px; right: 15px; background: #d32f2f; color: white; 
+            border: none; padding: 10px 20px; cursor: pointer; font-size: 16px; border-radius: 6px; z-index: 1001; font-weight: bold;
+        }
+        .close-btn:hover { background: #b71c1c; }
+        iframe { width: 100%; height: 100%; border: none; background: #fff; }
+    </style>
+</head>
+<body>
+    <h1>منصة تحديات Cobra 7 - اللابات التفاعلية</h1>
+    <div id="labs-container" class="labs-grid"></div>
+
+    <!-- النافذة المنبثقة للاب -->
+    <div id="lab-modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeLab()">إغلاق اللاب ✖</button>
+            <iframe id="lab-frame" src=""></iframe>
+        </div>
+    </div>
+
+    <script>
+        const cobraLabs = [
+            { title: "لاب 1: أساسيات البيانات", level: "مبتدئ", levelColor: "#69f0ae", desc: "تعلم كيفية جلب وقراءة البيانات من الكائنات الخلفية بنجاح.", file: "lab-01.html" },
+            { title: "لاب 2: تجاوز المصادقة", level: "متوسط", levelColor: "#ffb74d", desc: "اكتشف الثغرة في كود التحقق من جهة العميل وتجاوز تسجيل الدخول.", file: "lab-02.html" },
+            { title: "لاب 3: استغلال XSS", level: "متقدم", levelColor: "#ff5252", desc: "تحدي لحقن كود جافا سكريبت خبيث في حقل إدخال غير محمي.", file: "lab-03.html" }
+        ];
+
+        const container = document.getElementById('labs-container');
+        cobraLabs.forEach(lab => {
+            const card = document.createElement('div');
+            card.className = 'lab-card';
+            card.innerHTML = `
+                <h3 style="color:${lab.levelColor}">${lab.title}</h3>
+                <p><strong>المستوى:</strong> <span style="color:${lab.levelColor}">${lab.level}</span></p>
+                <p style="color:#aaa; line-height: 1.5;">${lab.desc}</p>
+                <button class="lab-btn" onclick="openLab('${lab.file}')">ابدأ اللاب الآن</button>
+            `;
+            container.appendChild(card);
+        });
+
+        function openLab(file) {
+            document.getElementById('lab-frame').src = file;
+            document.getElementById('lab-modal').style.display = 'block';
+        }
+
+        function closeLab() {
+            document.getElementById('lab-modal').style.display = 'none';
+            document.getElementById('lab-frame').src = "";
+        }
+    </script>
+</body>
+</html>

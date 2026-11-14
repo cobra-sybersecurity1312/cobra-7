@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head><meta charset="UTF-8"><title>لاب 8: Path Traversal</title>
+<style>
+body{font-family:'Segoe UI',Tahoma,sans-serif;padding:20px;background:#ede7f6}
+.c{background:#fff;padding:20px;border-radius:8px;box-shadow:0 4px 8px #0002;max-width:640px;margin:auto}
+h1{color:#4527a0;text-align:center;font-size:22px}code,pre{direction:ltr;display:block;background:#f3f3f3;padding:10px;border-radius:6px;font-size:13px;word-break:break-all;white-space:pre-wrap;text-align:left}
+input{padding:9px;width:100%;box-sizing:border-box;margin:6px 0;border:1px solid #bbb;border-radius:4px;direction:ltr}
+.btn{padding:9px 16px;background:#4527a0;color:#fff;border:0;border-radius:5px;cursor:pointer;font-size:15px}#out{margin-top:12px;font-weight:bold}
+</style></head><body><div class="c">
+<h1>🔴 لاب 8: تخطي فلتر Path Traversal</h1>
+<p>عارض الملفات بيقرا من <span dir="ltr">/var/www/files/</span>. المطور حط فلتر بيشيل <span dir="ltr">../</span> من المسار. الـ Flag في <span dir="ltr">/var/www/secret/flag.txt</span>. اتخطى الفلتر.</p>
+<input id="f" value="report.txt"><button class="btn" onclick="rd()">عرض الملف</button>
+<code id="q">-</code><pre id="out"></pre>
+</div><script>
+const FS={"/var/www/files/report.txt":"تقرير شهري: كل شيء تمام.","/var/www/files/notes.txt":"ملاحظات داخلية.","/var/www/secret/flag.txt":"FLAG{Traversal_Filter_Bypassed}"};
+function rd(){let f=document.getElementById('f').value;
+// الفلتر الضعيف: بيشيل ../ مرة واحدة بس
+const clean=f.replace("../","");document.getElementById('q').textContent='open("/var/www/files/'+clean+'")';
+const parts=('/var/www/files/'+clean).split('/'),st=[];parts.forEach(s=>{if(s==='..')st.pop();else if(s&&s!=='.')st.push(s)});
+const r=FS['/'+st.join('/')];document.getElementById('out').textContent=r!==undefined?r:'File not found'}
+</script></body></html>

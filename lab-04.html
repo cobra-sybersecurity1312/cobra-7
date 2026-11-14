@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>لاب 4: تزوير JWT</title>
+<style>
+body{font-family:'Segoe UI',Tahoma,sans-serif;padding:20px;background:#ede7f6}
+.c{background:#fff;padding:20px;border-radius:8px;box-shadow:0 4px 8px #0002;max-width:680px;margin:auto}
+h1{color:#4527a0;text-align:center}code,textarea{direction:ltr;display:block;word-break:break-all;background:#f3f0fa;padding:10px;border-radius:6px;font-size:13px}
+textarea{width:100%;box-sizing:border-box;height:90px;border:1px solid #bbb}
+.btn{padding:10px 18px;background:#4527a0;color:#fff;border:0;border-radius:5px;cursor:pointer;font-size:15px;margin-top:10px}
+#out{margin-top:14px;font-weight:bold}
+</style>
+</head>
+<body>
+<div class="c">
+<h1>🔴 لاب 4: تزوير JWT</h1>
+<p>انت دخلت كمستخدم عادي (<b>guest</b>) وده التوكن بتاعك. السيرفر الوهمي بيدّي صفحة الأدمن لصاحب <b>role = admin</b> بس. فك التوكن، عدّل الصلاحية، وابعت توكن مزوّر يعدّي التحقق.</p>
+<code id="tok"></code>
+<p>التوكن اللي هتبعته (استخدم الـ Console: <span dir="ltr">btoa / atob</span>):</p>
+<textarea id="inp" placeholder="header.payload.signature"></textarea>
+<button class="btn" onclick="verify()">إرسال للسيرفر</button>
+<button class="btn" style="background:#888" onclick="document.getElementById('hint').hidden=false">تلميح</button>
+<p id="hint" hidden>💡 بعض السيرفرات القديمة بتثق في الـ Header، وبتقبل <span dir="ltr">alg: "none"</span> من غير توقيع. الـ Base64URL معناه: بدّل + بـ - و / بـ _ وامسح علامات =. التوقيع ممكن يكون فاضي بس خلي النقطة الأخيرة.</p>
+<p id="out"></p>
+</div>
+<script>
+const b64u=s=>btoa(s).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+const dec=s=>JSON.parse(atob(s.replace(/-/g,'+').replace(/_/g,'/')));
+const SIG="Zm9vYmFyU2VjcmV0"; // توقيع السيرفر الحقيقي (مش معروف للاعب)
+document.getElementById('tok').textContent=b64u('{"alg":"HS256","typ":"JWT"}')+'.'+b64u('{"user":"guest","role":"user"}')+'.'+'aW52YWxpZA';
+function verify(){
+  const o=document.getElementById('out'),t=document.getElementById('inp').value.trim().split('.');
+  try{
+    const h=dec(t[0]),p=dec(t[1]);
+    // الثغرة: السيرفر بيثق في الخوارزمية اللي جوه التوكن نفسه
+    const ok=(h.alg==='none')||(t[2]===SIG);
+    if(!ok){o.style.color='#c62828';o.textContent='❌ توقيع غير صالح.';return}
+    if(p.role==='admin'){o.style.color='green';o.textContent='✅ أهلاً أدمن! FLAG{JWT_None_Pwned}'}
+    else{o.style.color='#e65100';o.textContent='التوكن سليم بس الصلاحية: '+p.role}
+  }catch(e){o.style.color='#c62828';o.textContent='❌ توكن مش مكتوب صح.'}
+}
+</script>
+</body>
+</html>

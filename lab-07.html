@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head><meta charset="UTF-8"><title>لاب 7: SQL Injection</title>
+<style>
+body{font-family:'Segoe UI',Tahoma,sans-serif;padding:20px;background:#ffebee}
+.c{background:#fff;padding:20px;border-radius:8px;box-shadow:0 4px 8px #0002;max-width:640px;margin:auto}
+h1{color:#c62828;text-align:center;font-size:22px}code,pre{direction:ltr;display:block;background:#f3f3f3;padding:10px;border-radius:6px;font-size:13px;word-break:break-all;white-space:pre-wrap;text-align:left}
+input{padding:9px;width:100%;box-sizing:border-box;margin:6px 0;border:1px solid #bbb;border-radius:4px;direction:ltr}
+.btn{padding:9px 16px;background:#c62828;color:#fff;border:0;border-radius:5px;cursor:pointer;font-size:15px}#out{margin-top:12px;font-weight:bold}
+</style></head><body><div class="c">
+<h1>🟠 لاب 7: SQL Injection في تسجيل الدخول</h1>
+<p>الموقع بيبني استعلام SQL من مدخلاتك مباشرة. ادخل كـ <b>admin</b> من غير ما تعرف الباسوورد.</p>
+<input id="u" placeholder="اسم المستخدم"><input id="p" type="text" placeholder="الباسوورد"><button class="btn" onclick="login()">دخول</button>
+<p>الاستعلام اللي اتنفذ:</p><code id="q">-</code><p id="out"></p>
+</div><script>
+function login(){const u=document.getElementById('u').value,p=document.getElementById('p').value,o=document.getElementById('out');
+// الثغرة: دمج المدخلات داخل الاستعلام
+const q="SELECT * FROM users WHERE username='"+u+"' AND password='"+p+"'";document.getElementById('q').textContent=q;
+const inj=/'\s*or\s*'?1'?\s*=\s*'?1/i.test(u+p)||/^admin'\s*(--|#)/i.test(u);
+if(inj||(u==='admin'&&p==='Sup3rS3cret!')){o.style.color='green';o.textContent='✅ أهلاً admin! FLAG{SQLi_Login_Bypassed}'}else{o.style.color='#c62828';o.textContent='❌ بيانات غلط'}}
+</script></body></html>
